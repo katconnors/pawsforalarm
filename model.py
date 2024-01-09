@@ -105,5 +105,5 @@ class Shelter(database.Model):
 if __name__== "__main__":
     #will need to create server file
     from server import app
-    database_connect(app, "pfa")
+    database_connect(app, "pawsforalarm")
     # print("database connection established")
