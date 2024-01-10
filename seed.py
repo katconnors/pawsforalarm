@@ -14,14 +14,14 @@ database.create_all()
 
 #test user
 
-testadmin = User(username='tester', password='test')
-database.session.add(testadmin)
+pfaadmin = User(username='pfaadmin', password=os.environ["password"])
+database.session.add(pfaadmin)
 database.session.commit()
 
 
 #test shelter
 
-testshelter = Shelter(name="Test Shelter",street_address="123 Lane", city="Testville",zipcode=12345, website="test.com")
+testshelter = Shelter(name="Test Shelter",street_address="123 Lane", city="Testville",state="CA",zipcode=12345, website="test.com")
 database.session.add(testshelter)
 database.session.commit()
 

@@ -87,6 +87,7 @@ class Shelter(database.Model):
     name = database.Column(database.Text, nullable=False)
     street_address = database.Column(database.Text, nullable=False)
     city = database.Column(database.Text, nullable=False)
+    state = database.Column(database.Text, nullable=False)
     zipcode = database.Column(database.Integer, nullable=False)
     website = database.Column(database.Text, nullable=False)
 
