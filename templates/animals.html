@@ -5,6 +5,41 @@
     <br>
     
         <h4>Animals at Risk</h4>
+        <br>
+            <div class="row">
+                <div class="col">
+                    <h6>Filters </h6>
+                        <form action="/animals">
+                            <label for="type-selection">Type: </label>
+
+                            <select name="type" id="type-select">
+                                <!-- <option value="all">all</option> -->
+                                <option value="dog">dog</option>
+                                <option value="cat">cat</option>
+                            </select>
+
+                            <label for="state-selection">State: </label>
+
+                            <select name="state" id="state-select">
+                                <!-- <option value="all">all</option> -->
+                                <option value="CA">CA</option>
+                                <option value="other">other</option>
+                            </select>
+
+                            
+                            <br>
+                            <br>
+                        
+                            <button type="submit">Apply above filters</button>
+                        </form>
+                        <br>
+
+                        <form action="/animals">
+                            <button type="submit">Reset filters/view all</button> 
+                        </form>
+                </div>
+            </div>
+       <br>
         {% for animal in animals: %}
             {% if ((loop.index)-1) %3 == 0 %}
                 <div class="row">

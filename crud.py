@@ -18,10 +18,22 @@ def create_shelter(name,street_address,city,state,zipcode,website):
 
     return shelter
 
-def view_animals():
-    # edit to include filters as params
+def view_animals(type,state):
+
     
-    return Animal.query.all()
+    # update code when common states are assessed
+
+    if type and (state =="CA"):
+        return Animal.query.join(Shelter).filter(Shelter.state=="CA",Animal.type==type).all()
+    
+    elif type and (state !="CA"):
+        return Animal.query.join(Shelter).filter(Shelter.state!="CA", Animal.type==type).all()
+    
+
+    else:
+        return Animal.query.all()
+
+
 
 def specific_animal(id):
     
