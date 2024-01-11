@@ -15,7 +15,6 @@ database= SQLAlchemy()
 #connect the database with Flask
 
 #using the skeleton for the connection in the sql-alchemy 1 lecture
-#note that there is a slight mod to be similar to the flask-sqlalchemy doc
 
 def database_connect(app,database_name):
 
@@ -36,7 +35,6 @@ class Animal(database.Model):
 
     __tablename__ = "animals"
 
-    #does this need to be a primary key?
 
     id = database.Column(database.Integer,primary_key=True,autoincrement=True)
     name = database.Column(database.Text, nullable=False)

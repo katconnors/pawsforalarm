@@ -19,6 +19,7 @@ def create_shelter(name,street_address,city,state,zipcode,website):
     return shelter
 
 def view_animals():
+    # edit to include filters as params
     
     return Animal.query.all()
 

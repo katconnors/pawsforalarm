@@ -27,12 +27,14 @@ database.session.commit()
 
 
 #test animal
-#need to follow up on testing the foreign key
 
 testanimal = Animal(name="Dot",type="dog",breed="gs",age=7,gender="female",adopt_code=1234,url="dog.com",entry_source="admin",shelter_id=testshelter.id)
 database.session.add(testanimal)
 database.session.commit()
 
+
+
+#various test data 
 
 # create_shelter(name="Second Chance", street_address="123 Lane", city="Testville", state="CA", zipcode=334567,website="secondchance.com")
 
