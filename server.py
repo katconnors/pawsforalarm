@@ -21,9 +21,9 @@ def animals():
 
 # need to resolve the variable route issue
 @app.route('/animals/<id>')
-def animal():
+def animal(id):
 
-    animal = crud.specific_animal()
+    animal = crud.specific_animal(id)
     return render_template('animal_detail.html',animal=animal)
 
 

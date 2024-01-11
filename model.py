@@ -42,7 +42,7 @@ class Animal(database.Model):
     name = database.Column(database.Text, nullable=False)
     type = database.Column(database.Text, nullable=False)
     breed = database.Column(database.Text, nullable=False)
-    join_date = database.Column(database.DateTime, nullable=True)
+    join_date = database.Column(database.Date, nullable=True)
     age = database.Column(database.Integer, nullable=False)
     weight = database.Column(database.Integer, nullable=True)
     gender = database.Column(database.Text, nullable=False)
@@ -50,6 +50,7 @@ class Animal(database.Model):
     scheduled_euthanasia_date = database.Column(database.Date, nullable=True)
     adopt_code = database.Column(database.Text, nullable=False)
     bio = database.Column(database.Text, nullable=True)
+    url = database.Column(database.Text, nullable=False)
     entry_source = database.Column(database.Text, nullable=False)
     shelter_id = database.Column(database.Integer, database.ForeignKey('shelters.id'))
 

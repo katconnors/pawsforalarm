@@ -1,12 +1,51 @@
 {% extends 'base.html' %}
 
-{{animal.name}}
-{{animal.type}}
-{{animal.breed}}
-{{animal.scheduled_euthanasia_date}}
-{{animal.join_date}}
-{{animal.age}}
-{{animal.weight}}
-{{animal.gender}}
-{{animal.adopt_code}}
-{{animal.bio}}
+{% block main %}
+    
+        <h4>Animal Details </h4>
+        <div class="row">
+            <div class="col">
+                Name: {{animal.name}} <br>
+
+                Animal Type: {{animal.type}} <br>
+
+                Breed: {{animal.breed}} <br>
+
+                {% if animal.scheduled_euthanasia_date!=None %}
+                    Scheduled Euthanasia Date: {{animal.scheduled_euthanasia_date}} <br>
+                {% endif %}
+
+                {% if animal.join_date!=None %}
+                    Join Date: {{animal.join_date}} <br>
+                {% endif %}
+
+                Age: {{animal.age}} years <br>
+
+                {% if animal.weight!=None %}
+                    Weight: {{animal.weight}} pounds <br>
+                {% endif %}
+
+                Gender: {{animal.gender}} <br>
+
+                Adoption Code: {{animal.adopt_code}} <br>
+
+
+                {% if animal.bio!=None %}
+                    Bio: {{animal.bio}} <br>
+                {% endif %}
+
+                <!-- make sure to use a full http link -->
+
+                Url: <a href="{{animal.url}}">adoption link </a> <br>
+
+                Shelter Name: {{animal.shelter.name}} <br>
+
+                Shelter City: {{animal.shelter.city}}<br>
+
+                Shelter State: {{animal.shelter.state}}<br>
+
+                Shelter Website: <a href="{{animal.shelter.website}}">{{animal.shelter.name}}</a> <br>
+            </div>
+        </div>
+    
+{% endblock main %}

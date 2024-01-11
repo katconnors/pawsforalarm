@@ -3,7 +3,8 @@
 
 {% block main %}
     <br>
-    <div class="container text-center">
+    
+        <h4>Animals at Risk</h4>
         {% for animal in animals: %}
             {% if ((loop.index)-1) %3 == 0 %}
                 <div class="row">
@@ -14,15 +15,16 @@
                 {{animal.type}} <br>
                 {{animal.breed}} <br>
                 {{animal.age}} years <br>
+                {{animal.shelter.state}}<br>
                 <!-- could later consider adding a conditional for displaying euthanasia date -->
                 scheduled euthanasia date: {{animal.scheduled_euthanasia_date}} <br>
-                <a href='/animals/{{animal.id}}'> Details</a> <br><br>
+                <a href='/animals/{{animal.id}}'> Details for {{animal.name}}</a> <br><br>
             </div>
             {% if loop.index %3 == 0 %}
                 </div>
             {% endif %}
         {% endfor %}
-    </div>
+   
     <br>     
 
 {% endblock main%}
