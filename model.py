@@ -37,11 +37,12 @@ class Animal(database.Model):
 
 
     id = database.Column(database.Integer,primary_key=True,autoincrement=True)
+    image = database.Column(database.Text, nullable=False)
     name = database.Column(database.Text, nullable=False)
     type = database.Column(database.Text, nullable=False)
     breed = database.Column(database.Text, nullable=False)
     join_date = database.Column(database.Date, nullable=True)
-    age = database.Column(database.Integer, nullable=False)
+    age = database.Column(database.Float, nullable=False)
     weight = database.Column(database.Integer, nullable=True)
     gender = database.Column(database.Text, nullable=False)
     #decision to make on if nullable or not

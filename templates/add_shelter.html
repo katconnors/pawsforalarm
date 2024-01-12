@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<div class="row">
+    <div class="col">
+        <form action="/addshelter" method="POST">
+            <br>
+            <h6> Shelter Info </h2> <br>
+            <label for="shelter-name">Shelter Name: </label>
+            <input type="text" name="name" id="shelter-name"> <br>
+            <br>
+
+            <label for="shelter-address">Street Address: </label>
+            <input type="text" name="address" id="shelter-address"> <br>
+            <br>
+
+            <label for="shelter-city">City: </label>
+            <input type="text" name="city" id="shelter-city"> <br>
+            <br>
+
+            <label for="shelter-state">State: </label>
+            <input type="text" name="state" id="shelter-state"> <br>
+            <br>
+
+            <label for="shelter-zipcode">Zipcode: </label>
+            <input type="text" name="zipcode" id="shelter-zipcode"> <br>
+            <br>
+
+            <label for="shelter-website">Website: </label>
+            <input type="text" name="website" id="shelter-website"> <br>
+            <br>
+
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+
+{% endblock main %}

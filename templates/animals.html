@@ -67,10 +67,16 @@
         
             {% endif %}
             <div class="col">
+                <img src="{{animal.image}}" alt="animal-image" width="180"/> <br>
                 {{animal.name}} <br>
                 {{animal.type}} <br>
                 {{animal.breed}} <br>
-                {{animal.age}} years <br>
+                {{animal.age}} 
+                {% if animal.age <=1 %}
+                year <br>
+                {% else %}
+                years <br>
+                {% endif %}
                 {{animal.shelter.state}}<br>
                 <!-- could later consider adding a conditional for displaying euthanasia date -->
                 scheduled euthanasia date: {{animal.scheduled_euthanasia_date}} <br>
