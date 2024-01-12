@@ -19,10 +19,11 @@ def animals():
     type = request.args.get('type')
     state = request.args.get('state')
 
-   
+    
     animals = crud.view_animals(type,state)
+    animal= animals[0]
 
-    return render_template('animals.html',animals=animals)
+    return render_template('animals.html',animals=animals,animal=animal)
 
 
 @app.route('/animals/<id>')

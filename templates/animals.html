@@ -14,28 +14,49 @@
 
                             <select name="type" id="type-select">
                                 <!-- <option value="all">all</option> -->
-                                <option value="dog">dog</option>
+                                {% if animal.type =='dog' %}
+                                        <option value="dog">dog</option>
+                                        <option value="cat">cat</option>
+
+                                {% else %}
                                 <option value="cat">cat</option>
+                                <option value="dog">dog</option>
+
+                                {% endif %}
+                                
                             </select>
 
                             <label for="state-selection">State: </label>
 
                             <select name="state" id="state-select">
                                 <!-- <option value="all">all</option> -->
-                                <option value="CA">CA</option>
-                                <option value="other">other</option>
+                                
+                                    <!-- update if specifying other states -->
+
+                                    {% if animal.shelter.state =='CA' %}
+                                        <option value="CA">CA</option>
+                                        <option value="other">other</option>
+                        
+
+                                    {% else %}
+                                    <option value="other">other</option>
+                                    <option value="CA">CA</option>
+
+                                    {% endif %}
+                    
+                                
                             </select>
 
                             
                             <br>
                             <br>
                         
-                            <button type="submit">Apply above filters</button>
+                            <button type="submit">Apply the above filters</button>
                         </form>
                         <br>
 
                         <form action="/animals">
-                            <button type="submit">Reset filters/view all</button> 
+                            <button type="submit">View all</button> 
                         </form>
                 </div>
             </div>
