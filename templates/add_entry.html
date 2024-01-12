@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<div class="row">
+    <div class="col">
+        <form action="/add" method="POST">
+            <br>
+            <h6> Animal Info </h2>
+            <label for="animal-name">Name: </label>
+            <input type="text" name="name" id="animal-name"> <br>
+            <br>
+
+            <label for="animal-type">Type: </label>
+            <select name="type" id="type-select">
+                <option value="cat">cat</option>
+                <option value="dog">dog</option> <br>
+            </select>
+            <br>
+            <br>
+
+            <label for="animal-breed">Breed: </label>
+            <input type="text" name="breed" id="animal-breed"> <br>
+            <br>
+
+            <label for="animal-breed">Age (yrs): </label>
+            <input type="text" name="age" id="animal-age"> <br>
+            <br>
+
+            <label for="animal gender">Gender: </label>
+            <select name="gender" id="gender-select">
+                <option value="female">female</option>
+                <option value="male">male</option> <br>
+            </select>
+            <br> <br>
+
+            <label for="animal-code">Adopt Code: </label>
+            <input type="text" name="code" id="animal-code"> <br>
+            <br>
+
+            <label for="entry-source">Entry Source: </label>
+            <input type="text" name="source" id="entry-source"> <br>
+            <br>
+
+            <label for="shelter">Shelter ID: </label>
+            <input type="text" name="shelterid" id="shelter-id"> <br>
+            <br>
+
+            <label for="animal-url">Url: </label>
+            <input type="text" name="url" id="animal-url"> <br>
+            <br>
+
+            <label for="join-date">Join Date:(mm/dd/yyyy),not req. </label>
+            <input type="text" name="joindate" id="join-date"> <br>
+            <br>
+
+            <label for="animal-weight">Weight(lbs),not req.: </label>
+            <input type="text" name="weight" id="animal-weight"> <br>
+            <br>
+
+            <label for="euthanasia-date">Sched. Euth. Date:(mm/dd/yyyy), not req. </label>
+            <input type="text" name="euthdate" id="euth-date"> <br>
+            <br>
+
+            <label for="animalwbio">Bio,not req.: </label>
+            <input type="text" name="bio" id="animal-bio"> <br>
+            <br>
+
+
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+
+{% endblock main %}
