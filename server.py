@@ -21,9 +21,9 @@ def animals():
 
     
     animals = crud.view_animals(type,state)
-    animal= animals[0]
 
-    return render_template('animals.html',animals=animals,animal=animal)
+
+    return render_template('animals.html',animals=animals,type=type,state=state)
 
 
 @app.route('/animals/<id>')

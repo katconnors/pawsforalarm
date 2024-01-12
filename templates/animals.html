@@ -14,7 +14,7 @@
 
                             <select name="type" id="type-select">
                                 <!-- <option value="all">all</option> -->
-                                {% if animal.type =='dog' %}
+                                {% if type =='dog' %}
                                         <option value="dog">dog</option>
                                         <option value="cat">cat</option>
 
@@ -33,7 +33,7 @@
                                 
                                     <!-- update if specifying other states -->
 
-                                    {% if animal.shelter.state =='CA' %}
+                                    {% if state =='CA' %}
                                         <option value="CA">CA</option>
                                         <option value="other">other</option>
                         
