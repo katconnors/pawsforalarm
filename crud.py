@@ -33,7 +33,9 @@ def view_animals(type,state):
     else:
         return Animal.query.all()
 
-
+def specific_shelter(id):
+    
+    return Shelter.query.get(id)
 
 def specific_animal(id):
     
