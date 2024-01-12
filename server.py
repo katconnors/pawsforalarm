@@ -32,6 +32,11 @@ def animal(id):
     animal = crud.specific_animal(id)
     return render_template('animal_detail.html',animal=animal)
 
+@app.route('/faq')
+def faq():
+
+    return render_template('faq.html')
+
 
 
 
