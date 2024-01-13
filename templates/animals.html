@@ -71,15 +71,13 @@
                 {{animal.name}} <br>
                 {{animal.type}} <br>
                 {{animal.breed}} <br>
-                {{animal.age}} 
-                {% if animal.age <=1 %}
-                year <br>
-                {% else %}
-                years <br>
+                {% if animal.age!=None %}
+                    {{animal.age}} years <br>
                 {% endif %}
                 {{animal.shelter.state}}<br>
-                <!-- could later consider adding a conditional for displaying euthanasia date -->
-                scheduled euthanasia date: {{animal.scheduled_euthanasia_date}} <br>
+                {% if animal.weight!=None %}
+                    scheduled euthanasia date: {{animal.scheduled_euthanasia_date}} <br>
+                {% endif %}
                 <a href='/animals/{{animal.id}}'> Details for {{animal.name}}</a> <br><br>
             </div>
             {% if loop.index %3 == 0 %}

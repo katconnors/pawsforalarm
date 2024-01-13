@@ -44,7 +44,7 @@ def add_entry():
     image = request.form.get('image')
     type = request.form.get('type')
     breed = request.form.get('breed')
-    age = request.form.get('age')
+    age = request.form.get('age') if request.form.get('age') else None
     gender = request.form.get('gender')
     code = request.form.get('code')
     source = request.form.get('source')
@@ -63,7 +63,7 @@ def add_entry():
 
     if request.method=='POST':
     
-        crud.create_animal(name,image,type,breed,age,gender,code,source,shelter,url,joindate,weight,euthdate,bio)
+        crud.create_animal(name,image,type,breed,gender,code,source,shelter,url,age,joindate,weight,euthdate,bio)
         return redirect("/confirm")
 
 

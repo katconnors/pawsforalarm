@@ -22,12 +22,11 @@
                     Join Date: {{animal.join_date}} <br>
                 {% endif %}
 
-                Age: {{animal.age}} 
-                {% if animal.age <=1 %}
-                year <br>
-                {% else %}
-                years <br>
+                {% if animal.age!=None %}
+                    Age: {{animal.age}} years <br>
+                    
                 {% endif %}
+                
 
                 {% if animal.weight!=None %}
                     Weight: {{animal.weight}} pounds <br>
