@@ -11,6 +11,8 @@ def create_animal(name,image,type,breed,gender, adopt_code,entry_source,shelter,
 
 def create_shelter(name,street_address,city,state,zipcode,website):
 
+    #if-then statement to check database for already created instance
+
     shelter = Shelter(name=name,street_address=street_address,city=city,state=state,zipcode=zipcode,website=website)
 
     database.session.add(shelter)

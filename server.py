@@ -3,9 +3,11 @@ from flask import Flask, render_template, request, redirect
 from model import database_connect, database
 import crud
 from jinja2 import StrictUndefined
+import os
 
 
 app = Flask(__name__)
+API = os.environ['API_KEY']
 
 @app.route('/')
 def home():
