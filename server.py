@@ -1,6 +1,6 @@
 
 from flask import Flask, render_template, request, redirect
-from model import database_connect, database
+from model import database_connect
 import crud
 from jinja2 import StrictUndefined
 import os
@@ -58,12 +58,13 @@ def add_entry():
     weight = request.form.get('weight') if request.form.get('weight') else None
     euthdate = request.form.get('euthdate') if request.form.get('euthdate') else None
     bio = request.form.get('bio') if request.form.get('bio') else None
+    auth = request.form.get('auth-code') 
 
     shelter = crud.specific_shelter(shelterid)
 
     # can later handle data validation
 
-    if request.method=='POST':
+    if request.method=='POST' and auth== os.environ["password"]:
     
         crud.create_animal(name,image,type,breed,gender,code,source,shelter,url,age,joindate,weight,euthdate,bio)
         return redirect("/confirm")
@@ -85,9 +86,9 @@ def add_shelter():
     state = request.form.get('state')
     zipcode = request.form.get('zipcode')
     website = request.form.get('website')
+    auth = request.form.get('auth-code') 
 
-
-    if request.method=='POST':
+    if request.method=='POST' and auth== os.environ["password"]:
         crud.create_shelter(name,address,city,state,zipcode,website)
         return redirect("/confirm")
 

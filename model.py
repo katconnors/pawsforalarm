@@ -42,7 +42,7 @@ class Animal(database.Model):
     type = database.Column(database.Text, nullable=False)
     breed = database.Column(database.Text, nullable=False)
     join_date = database.Column(database.Date, nullable=True)
-    age = database.Column(database.Float, nullable=True)
+    age = database.Column(database.Text, nullable=True)
     weight = database.Column(database.Integer, nullable=True)
     gender = database.Column(database.Text, nullable=False)
     scheduled_euthanasia_date = database.Column(database.Date, nullable=True)

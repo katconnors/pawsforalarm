@@ -32,11 +32,11 @@ def view_animals(type,state):
     
     # update code when common states are assessed
 
-    if type and (state =="ca"):
-        return Animal.query.join(Shelter).filter(Shelter.state=="ca",Animal.type==type).all()
+    if type and (state =="CA"):
+        return Animal.query.join(Shelter).filter(Shelter.state=="CA",Animal.type==type).all()
     
-    elif type and (state !="ca"):
-        return Animal.query.join(Shelter).filter(Shelter.state!="ca", Animal.type==type).all()
+    elif type and (state !="CA"):
+        return Animal.query.join(Shelter).filter(Shelter.state!="CA", Animal.type==type).all()
     
 
     else:

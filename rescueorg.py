@@ -9,9 +9,7 @@ database_connect(server.app,"pawsforalarm")
 
 
 base_url= "https://api.rescuegroups.org/v5"
-endpt="/public/animals/search/available/haspic?include=pictures,species,orgs&fields[animals]=name,url,sex,rescueId,ageString,breedString,killDate,updatedDate,descriptionText&fields[pictures]=large,small&fields[orgs]=name,street,city,state,postalcode,url"
 headers={"Authorization":server.API}
-url=f"{base_url}{endpt}"
 body={
     "data": {
         "filters": [
@@ -23,7 +21,7 @@ body={
             {
                 "fieldName": "animals.updatedDate",
                 "operation": "greaterthan",
-                "criteria": "2024-01-01T00:00:00Z"
+                "criteria": "2023-11-01T00:00:00Z"
             },
             {
                 "fieldName": "animals.killDate",
@@ -36,20 +34,17 @@ body={
         ]
     }
 }
-response= requests.post(url,headers=headers,json=body)
-data=response.json()
 
 
 
 
 
-data_data = data["data"]
 
 def get_species_id(animal):
     spec_id = animal["relationships"]["species"]["data"][0]["id"]
     return spec_id
 
-def get_species(spec_id):
+def get_species(spec_id,data):
     
     for potentialspecies in data["included"]:
         if potentialspecies["id"]==spec_id and potentialspecies["type"]=="species":
@@ -60,7 +55,7 @@ def get_photo_id(animal):
     photo_id = animal["relationships"]["pictures"]["data"][0]["id"]
     return photo_id
 
-def get_photo(photo_id):
+def get_photo(photo_id,data):
     
     for potentialspecies in data["included"]:
         if potentialspecies["id"]==photo_id and potentialspecies["type"]=="pictures":
@@ -76,11 +71,11 @@ def api_animal(animal, shelter_ob,shelter):
 
     photo_id = get_photo_id(animal)
 
-    image = get_photo(photo_id)
+    image = get_photo(photo_id,data)
 
     species_num= get_species_id(animal)
 
-    species = get_species(species_num)
+    species = get_species(species_num,data)
 
     breed= animal["attributes"]["breedString"]
 
@@ -91,6 +86,9 @@ def api_animal(animal, shelter_ob,shelter):
     entry_source = "rescue_groups_api"
 
     generic= shelter_ob["url"]
+
+    #can later include logic to handle site entry that is incomplete
+
     url = animal["attributes"].get("url", generic)
 
     shelter = shelter
@@ -131,16 +129,16 @@ def api_shelter(shelter_ob):
     name= shelter_ob["name"]
     address = shelter_ob["street"]
     city=shelter_ob["city"]
-    state=shelter_ob["state"]
+    state=shelter_ob["state"].upper()
     zipcode = shelter_ob["postalcode"]
     website = shelter_ob["url"]
 
-    
+    #need to add logic for preventing duplicates
     shelter_pfa= crud.create_shelter(name,address,city,state,zipcode,website)
 
     return shelter_pfa
 
-def loop_through_api():
+def loop_through_api(data_data):
     #find id of the shelter using the API
 
     for animal in data_data:
@@ -149,10 +147,32 @@ def loop_through_api():
 
         shelter_ob= get_shelter_withapi(data,shelterid_api)
 
+        #need to add logic for preventing duplicates
         shelter = api_shelter(shelter_ob)
 
         api_animal(animal,shelter_ob,shelter)
 
+
+page_num=1
+while True:
+    
+    endpt=f"/public/animals/search/available/haspic?page={page_num}&include=pictures,species,orgs&fields[animals]=name,url,sex,rescueId,ageString,breedString,killDate,updatedDate,descriptionText&fields[pictures]=large,small&fields[orgs]=name,street,city,state,postalcode,url"
+    url=f"{base_url}{endpt}"
+    response= requests.post(url,headers=headers,json=body)
+    data=response.json()
+    data_data = data["data"]
+
+    loop_through_api(data_data)
+
+    if data["meta"]["pageReturned"] == data["meta"]["pages"]:
+        break
+
+    else:
+        page_num+= 1
+
+    # print(page_num)
+
+    
 
 
 
@@ -164,4 +184,4 @@ def loop_through_api():
 # additionally, will need a delete functionality if entries no longer appear in api request results
 
 
-loop_through_api()
+

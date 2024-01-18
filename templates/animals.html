@@ -33,14 +33,14 @@
                                 
                                     <!-- update if specifying other states -->
 
-                                    {% if state =='ca' %}
-                                        <option value="ca">ca</option>
+                                    {% if state =='CA' %}
+                                        <option value="CA">CA</option>
                                         <option value="other">other</option>
                         
 
                                     {% else %}
                                     <option value="other">other</option>
-                                    <option value="ca">ca</option>
+                                    <option value="CA">CA</option>
 
                                     {% endif %}
                     
@@ -72,7 +72,7 @@
                 {{animal.type}} <br>
                 {{animal.breed}} <br>
                 {% if animal.age!=None %}
-                    {{animal.age}} years <br>
+                    {{animal.age}} <br>
                 {% endif %}
                 {{animal.shelter.city}}<br>
                 {{animal.shelter.state}}<br>
