@@ -1,6 +1,13 @@
 
 from model import database, Shelter, Animal, database_connect
 
+#nice to have func's
+#deletion func
+#edit field function
+
+
+
+
 #follow up on shelter id
 def create_animal(name,image,type,breed,gender, adopt_code,entry_source,shelter,url,age=None,join_date=None,weight=None,scheduled_euthanasia_date=None,bio=None):
     # make sure to use a full http link for animal url
@@ -25,11 +32,11 @@ def view_animals(type,state):
     
     # update code when common states are assessed
 
-    if type and (state =="CA"):
-        return Animal.query.join(Shelter).filter(Shelter.state=="CA",Animal.type==type).all()
+    if type and (state =="ca"):
+        return Animal.query.join(Shelter).filter(Shelter.state=="ca",Animal.type==type).all()
     
-    elif type and (state !="CA"):
-        return Animal.query.join(Shelter).filter(Shelter.state!="CA", Animal.type==type).all()
+    elif type and (state !="ca"):
+        return Animal.query.join(Shelter).filter(Shelter.state!="ca", Animal.type==type).all()
     
 
     else:

@@ -14,13 +14,13 @@
 
                             <select name="type" id="type-select">
                                 <!-- <option value="all">all</option> -->
-                                {% if type =='dog' %}
-                                        <option value="dog">dog</option>
-                                        <option value="cat">cat</option>
+                                {% if type =='Dog' %}
+                                        <option value="Dog">Dog</option>
+                                        <option value="Cat">Cat</option>
 
                                 {% else %}
-                                <option value="cat">cat</option>
-                                <option value="dog">dog</option>
+                                <option value="Cat">Cat</option>
+                                <option value="Dog">Dog</option>
 
                                 {% endif %}
                                 
@@ -33,14 +33,14 @@
                                 
                                     <!-- update if specifying other states -->
 
-                                    {% if state =='CA' %}
-                                        <option value="CA">CA</option>
+                                    {% if state =='ca' %}
+                                        <option value="ca">ca</option>
                                         <option value="other">other</option>
                         
 
                                     {% else %}
                                     <option value="other">other</option>
-                                    <option value="CA">CA</option>
+                                    <option value="ca">ca</option>
 
                                     {% endif %}
                     
@@ -74,6 +74,7 @@
                 {% if animal.age!=None %}
                     {{animal.age}} years <br>
                 {% endif %}
+                {{animal.shelter.city}}<br>
                 {{animal.shelter.state}}<br>
                 {% if animal.weight!=None %}
                     scheduled euthanasia date: {{animal.scheduled_euthanasia_date}} <br>
