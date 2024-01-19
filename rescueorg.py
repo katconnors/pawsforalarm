@@ -37,14 +37,14 @@ body={
 
 
 
-
-
-
 def get_species_id(animal):
+    """Obtain an API species id for one animal entry"""
+
     spec_id = animal["relationships"]["species"]["data"][0]["id"]
     return spec_id
 
 def get_species(spec_id,data):
+    """Using an API species id, get the species name"""
     
     for potentialspecies in data["included"]:
         if potentialspecies["id"]==spec_id and potentialspecies["type"]=="species":
@@ -52,11 +52,14 @@ def get_species(spec_id,data):
     return species
 
 def get_photo_id(animal):
+    """Obtain an API photo id for one animal entry"""
+
     photo_id = animal["relationships"]["pictures"]["data"][0]["id"]
     return photo_id
 
 def get_photo(photo_id,data):
-    
+    """Using an API photo id, obtain photo url"""
+
     for potentialspecies in data["included"]:
         if potentialspecies["id"]==photo_id and potentialspecies["type"]=="pictures":
             photo = potentialspecies["attributes"]["large"]["url"]
@@ -65,7 +68,7 @@ def get_photo(photo_id,data):
 
 
 def api_animal(animal, shelter_ob,shelter):
-
+    """Take in data from API and create an animal in the Paws for Alarm database"""
 
     name= animal["attributes"]["name"]
 
@@ -111,7 +114,7 @@ def api_animal(animal, shelter_ob,shelter):
 
 def get_shelter_withapi(data,shelterid_api):
 
-    #getting back a specific shelter object from the API
+    """Get back a specific shelter object from the API"""
     
 
     data_inc=data["included"]
@@ -125,6 +128,8 @@ def get_shelter_withapi(data,shelterid_api):
     return shelter_ob
 
 def api_shelter(shelter_ob):
+    """Take in API data and create a shelter in the Paws for Alarm database
+    Returned variable is the shelter in the Paws For Alarm database"""
 
     name= shelter_ob["name"]
     address = shelter_ob["street"]
@@ -133,26 +138,24 @@ def api_shelter(shelter_ob):
     zipcode = shelter_ob["postalcode"]
     website = shelter_ob["url"]
 
-    #need to add logic for preventing duplicates
     shelter_pfa= crud.create_shelter(name,address,city,state,zipcode,website)
 
     return shelter_pfa
 
 def loop_through_api(data_data):
-    #find id of the shelter using the API
-
+    
     for animal in data_data:
 
+        #find id of the shelter using the API
         shelterid_api= animal["relationships"]["orgs"]["data"][0]["id"]
 
         shelter_ob= get_shelter_withapi(data,shelterid_api)
 
-        #need to add logic for preventing duplicates
         shelter = api_shelter(shelter_ob)
 
         api_animal(animal,shelter_ob,shelter)
 
-
+#handle multiple pages of results- note that the API default is to display 25 results per page
 page_num=1
 while True:
     
@@ -169,19 +172,6 @@ while True:
 
     else:
         page_num+= 1
-
-    # print(page_num)
-
-    
-
-
-
-
-#will need to have some some of if statement to prevent duplicates
-
-
-# will need to prevent duplicates here as well
-# additionally, will need a delete functionality if entries no longer appear in api request results
 
 
 

@@ -10,6 +10,7 @@ from model import database, Shelter, Animal, database_connect
 
 #follow up on shelter id
 def create_animal(name,image,type,breed,gender, adopt_code,entry_source,shelter,url,age=None,join_date=None,weight=None,scheduled_euthanasia_date=None,bio=None):
+    """Create shelter animal"""
     # make sure to use a full http link for animal url
     animal = Animal(name=name,image=image,type=type,breed=breed,gender=gender,adopt_code=adopt_code,entry_source=entry_source,shelter=shelter,url=url,age=age,join_date=join_date,weight=weight,scheduled_euthanasia_date=scheduled_euthanasia_date,bio=bio)
 
@@ -17,6 +18,7 @@ def create_animal(name,image,type,breed,gender, adopt_code,entry_source,shelter,
     database.session.commit()
 
 def create_shelter(name,street_address,city,state,zipcode,website):
+    """Create shelter"""
 
     #if-then statement to check database for already created instance
 
@@ -28,7 +30,7 @@ def create_shelter(name,street_address,city,state,zipcode,website):
     return shelter
 
 def view_animals(type,state):
-
+    """View animals, with filter ability"""
     
     # update code when common states are assessed
 
@@ -43,10 +45,12 @@ def view_animals(type,state):
         return Animal.query.all()
 
 def specific_shelter(id):
+    """View shelter, using id"""
     
     return Shelter.query.get(id)
 
 def specific_animal(id):
+    """View animal, using id"""
     
     return Animal.query.get(id)
 

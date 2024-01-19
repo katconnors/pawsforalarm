@@ -11,17 +11,19 @@ API = os.environ['API_KEY']
 
 @app.route('/')
 def home():
+    """Homepage for Paws for Alarm"""
+
     return render_template('homepage.html')
 
 
 
 @app.route('/animals')
 def animals():
+    """Shows all animals at risk, with type and state filters at top of page"""
 
     type = request.args.get('type')
     state = request.args.get('state')
 
-    
     animals = crud.view_animals(type,state)
 
 
@@ -30,18 +32,23 @@ def animals():
 
 @app.route('/animals/<id>')
 def animal(id):
+    """Animal detail page"""
 
     animal = crud.specific_animal(id)
     return render_template('animal_detail.html',animal=animal)
 
+
 @app.route('/faq')
 def faq():
+    """Frequently Asked Questions"""
 
     return render_template('faq.html')
 
+
 @app.route('/add', methods=['GET','POST'])
 def add_entry():
-    # required
+    """Page for admin to manually add animals"""
+    
     name = request.form.get('name')
     image = request.form.get('image')
     type = request.form.get('type')
@@ -52,8 +59,6 @@ def add_entry():
     source = request.form.get('source')
     shelterid = request.form.get('shelterid')
     url = request.form.get('url')
-
-    # optional items
     joindate = request.form.get('joindate') if request.form.get('joindate') else None
     weight = request.form.get('weight') if request.form.get('weight') else None
     euthdate = request.form.get('euthdate') if request.form.get('euthdate') else None
@@ -62,23 +67,21 @@ def add_entry():
 
     shelter = crud.specific_shelter(shelterid)
 
-    # can later handle data validation
 
+    #checks for correct authentication token
     if request.method=='POST' and auth== os.environ["password"]:
     
         crud.create_animal(name,image,type,breed,gender,code,source,shelter,url,age,joindate,weight,euthdate,bio)
         return redirect("/confirm")
 
-
     else:
         return render_template('add_entry.html')
-    
-@app.route
     
 
     
 @app.route('/addshelter',methods=['GET','POST'])
 def add_shelter():
+    """Page for admin to manually add shelters"""
 
     name = request.form.get('name')
     address = request.form.get('address')
@@ -88,10 +91,10 @@ def add_shelter():
     website = request.form.get('website')
     auth = request.form.get('auth-code') 
 
+    #checks for correct authentication token
     if request.method=='POST' and auth== os.environ["password"]:
         crud.create_shelter(name,address,city,state,zipcode,website)
         return redirect("/confirm")
-
 
     else:
         return render_template('add_shelter.html')
@@ -100,9 +103,9 @@ def add_shelter():
 
 @app.route('/confirm')
 def confirm():
+    """Page that appears after a successful shelter or animal entry"""
+
     return render_template('confirm.html')
-
-
 
 
 
