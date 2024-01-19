@@ -1,17 +1,11 @@
 
 from model import database, Shelter, Animal, database_connect
 
-#nice to have func's
-#deletion func
-#edit field function
-
-
-
 
 #follow up on shelter id
 def create_animal(name,image,type,breed,gender, adopt_code,entry_source,shelter,url,age=None,join_date=None,weight=None,scheduled_euthanasia_date=None,bio=None):
     """Create shelter animal"""
-    # make sure to use a full http link for animal url
+    
     animal = Animal(name=name,image=image,type=type,breed=breed,gender=gender,adopt_code=adopt_code,entry_source=entry_source,shelter=shelter,url=url,age=age,join_date=join_date,weight=weight,scheduled_euthanasia_date=scheduled_euthanasia_date,bio=bio)
 
     database.session.add(animal)
@@ -20,7 +14,7 @@ def create_animal(name,image,type,breed,gender, adopt_code,entry_source,shelter,
 def create_shelter(name,street_address,city,state,zipcode,website):
     """Create shelter"""
 
-    #if-then statement to check database for already created instance
+    #later add if-then statement to check database for already created instance
 
     shelter = Shelter(name=name,street_address=street_address,city=city,state=state,zipcode=zipcode,website=website)
 

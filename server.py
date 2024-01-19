@@ -86,12 +86,15 @@ def add_shelter():
     name = request.form.get('name')
     address = request.form.get('address')
     city = request.form.get('city')
-    state = request.form.get('state')
+    state_input = request.form.get('state')
+    #including to prevent inconsistencies in state result capitalization for filter functionality
+    state = state_input.upper()
     zipcode = request.form.get('zipcode')
     website = request.form.get('website')
     auth = request.form.get('auth-code') 
 
     #checks for correct authentication token
+
     if request.method=='POST' and auth== os.environ["password"]:
         crud.create_shelter(name,address,city,state,zipcode,website)
         return redirect("/confirm")
@@ -115,4 +118,5 @@ if __name__ == "__main__":
     database_connect(app,"pawsforalarm")
 
     #important to disable debug later
+
     app.run(debug=True,host="0.0.0.0")

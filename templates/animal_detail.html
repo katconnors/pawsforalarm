@@ -14,6 +14,7 @@
 
                 Breed: {{animal.breed}} <br>
 
+                <!-- conditional display for nullable info -->
                 {% if animal.scheduled_euthanasia_date!=None %}
                     Scheduled Euthanasia Date: {{animal.scheduled_euthanasia_date}} <br>
                 {% endif %}
@@ -24,10 +25,8 @@
 
                 {% if animal.age!=None %}
                     Age: {{animal.age}} <br>
-                    
                 {% endif %}
                 
-
                 {% if animal.weight!=None %}
                     Weight: {{animal.weight}} pounds <br>
                 {% endif %}
@@ -36,12 +35,9 @@
 
                 Adoption Code: {{animal.adopt_code}} <br>
 
-
                 {% if animal.bio!=None %}
                     Bio: {{animal.bio}} <br>
                 {% endif %}
-
-                <!-- make sure to use a full http link -->
 
                 Url: <a href="{{animal.url}}">adoption link </a> <br>
 

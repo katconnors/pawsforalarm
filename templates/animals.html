@@ -13,7 +13,7 @@
                             <label for="type-selection">Type: </label>
 
                             <select name="type" id="type-select">
-                                <!-- <option value="all">all</option> -->
+                                
                                 {% if type =='Dog' %}
                                         <option value="Dog">Dog</option>
                                         <option value="Cat">Cat</option>
@@ -29,7 +29,7 @@
                             <label for="state-selection">State: </label>
 
                             <select name="state" id="state-select">
-                                <!-- <option value="all">all</option> -->
+                                
                                 
                                     <!-- update if specifying other states -->
 
@@ -81,6 +81,7 @@
                 {% endif %}
                 <a href='/animals/{{animal.id}}'> Details for {{animal.name}}</a> <br><br>
             </div>
+            <!-- allow for three animals per row -->
             {% if loop.index %3 == 0 %}
                 </div>
             {% endif %}

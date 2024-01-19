@@ -1,9 +1,7 @@
 import requests
-import os
 import server
 import crud
 from model import database_connect, database
-import pprint
 
 database_connect(server.app,"pawsforalarm")
 

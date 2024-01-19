@@ -14,7 +14,7 @@ database.create_all()
 
 
 #user
-
+#may not need a user table-revisit later
 
 pfaadmin = User(username='pfaadmin', password=os.environ["password"])
 database.session.add(pfaadmin)

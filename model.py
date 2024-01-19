@@ -32,6 +32,7 @@ class Animal(database.Model):
     type = database.Column(database.Text, nullable=False)
     breed = database.Column(database.Text, nullable=False)
     join_date = database.Column(database.Date, nullable=True)
+    #age is not an integer in database due to RG API using strings
     age = database.Column(database.Text, nullable=True)
     weight = database.Column(database.Integer, nullable=True)
     gender = database.Column(database.Text, nullable=False)
