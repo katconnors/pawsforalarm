@@ -9,14 +9,21 @@ import os
 app = Flask(__name__)
 API = os.environ['API_KEY']
 
+#information endpoints
 @app.route('/')
 def home():
     """Homepage for Paws for Alarm"""
 
     return render_template('homepage.html')
 
+@app.route('/faq')
+def faq():
+    """Frequently Asked Questions"""
+
+    return render_template('faq.html')
 
 
+#animal endpoints
 @app.route('/animals')
 def animals():
     """Shows all animals at risk, with type and state filters at top of page"""
@@ -38,13 +45,7 @@ def animal(id):
     return render_template('animal_detail.html',animal=animal)
 
 
-@app.route('/faq')
-def faq():
-    """Frequently Asked Questions"""
-
-    return render_template('faq.html')
-
-
+#admin entry endpoints
 @app.route('/add', methods=['GET','POST'])
 def add_entry():
     """Page for admin to manually add animals"""
@@ -88,7 +89,8 @@ def add_shelter():
     city = request.form.get('city')
     state_input = request.form.get('state')
     #including to prevent inconsistencies in state result capitalization for filter functionality
-    state = state_input.upper()
+    if state_input !=None:
+        state = state_input.upper()
     zipcode = request.form.get('zipcode')
     website = request.form.get('website')
     auth = request.form.get('auth-code') 

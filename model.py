@@ -50,7 +50,8 @@ class Animal(database.Model):
 
     def __repr__(self):
         return f"<id={self.id} name={self.name} type={self.type}>"
-    
+
+ #might remove this class   
 class User(database.Model):
     """Admin user"""
 

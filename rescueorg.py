@@ -1,7 +1,7 @@
 import requests
 import server
 import crud
-from model import database_connect, database
+from model import database_connect
 
 database_connect(server.app,"pawsforalarm")
 
@@ -10,6 +10,8 @@ base_url= "https://api.rescuegroups.org/v5"
 headers={"Authorization":server.API}
 body={
     "data": {
+        #filters for animals with available statuses, with kill dates, that have had updates after Nov 2023
+
         "filters": [
             {
                 "fieldName": "statuses.name",
@@ -25,16 +27,12 @@ body={
                 "fieldName": "animals.killDate",
                 "operation": "notblank",
             }
-            # ,
-            # {   "fieldName": "animals.url",
-            #     "operation": "notblank",
-            # }        
+                 
         ]
     }
 }
 
-
-
+#species functions
 def get_species_id(animal):
     """Obtain an API species id for one animal entry"""
 
@@ -49,6 +47,7 @@ def get_species(spec_id,data):
             species = potentialspecies["attributes"]["singular"]
     return species
 
+#photo functions
 def get_photo_id(animal):
     """Obtain an API photo id for one animal entry"""
 
