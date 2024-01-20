@@ -43,6 +43,17 @@ def specific_shelter(id):
     
     return Shelter.query.get(id)
 
+def shelter_isthere(compare_name):
+    """Check for a shelter in the database, using name
+    Result will be true or false"""
+   
+    return bool(Shelter.query.filter(Shelter.name==compare_name).first())
+
+def shelter_indatabase(compare_name):
+    """Check for shelter info, if already present"""
+    
+    return Shelter.query.filter(Shelter.name==compare_name).first()
+
 def specific_animal(id):
     """View animal, using id"""
     

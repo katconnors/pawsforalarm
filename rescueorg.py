@@ -135,9 +135,17 @@ def api_shelter(shelter_ob):
     zipcode = shelter_ob["postalcode"]
     website = shelter_ob["url"]
 
-    shelter_pfa= crud.create_shelter(name,address,city,state,zipcode,website)
+    if not crud.shelter_isthere(name):
 
-    return shelter_pfa
+        shelter_pfa= crud.create_shelter(name,address,city,state,zipcode,website)
+
+        return shelter_pfa
+    
+    # if shelter is present
+    else:
+        shelter_prev = crud.shelter_indatabase(name)
+
+        return shelter_prev
 
 def loop_through_api(data_data):
     
