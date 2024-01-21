@@ -6,6 +6,12 @@
     <div class="col">
         <form action="/add" method="POST">
             <br>
+            
+            {% if auth %}
+            <div class="alert alert-primary" role="alert">
+            You need to provide a correct auth key!   
+            </div>
+            {% endif %}
 
             <label for="authentication">Authentication: </label>
             <input type="text" name="auth-code" id="auth-code"> <br>

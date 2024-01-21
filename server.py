@@ -76,7 +76,7 @@ def add_entry():
         return redirect("/confirm")
 
     else:
-        return render_template('add_entry.html')
+        return render_template('add_entry.html',auth=auth)
     
 
     
@@ -102,7 +102,7 @@ def add_shelter():
         return redirect("/confirm")
 
     else:
-        return render_template('add_shelter.html')
+        return render_template('add_shelter.html',auth=auth)
     
     
 
