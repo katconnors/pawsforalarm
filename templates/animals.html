@@ -13,16 +13,11 @@
                             <label for="type-selection">Type: </label>
 
                             <select name="type" id="type-select">
+
                                 
-                                {% if type =='Dog' %}
-                                        <option value="Dog">Dog</option>
-                                        <option value="Cat">Cat</option>
+                                <option value="Dog" {% if type=="Dog" %} selected="selected"{% endif %}>Dog </option>
+                                <option value="Cat"{% if type=="Cat" %} selected="selected"{% endif %}>Cat </option>
 
-                                {% else %}
-                                <option value="Cat">Cat</option>
-                                <option value="Dog">Dog</option>
-
-                                {% endif %}
                                 
                             </select>
 
@@ -31,18 +26,12 @@
                             <select name="state" id="state-select">
                                 
                                 
-                                    <!-- update if specifying other states -->
+                                <!-- update if specifying other states -->
 
-                                    {% if state =='CA' %}
-                                        <option value="CA">CA</option>
-                                        <option value="other">other</option>
+                                
+                                <option value="CA"{% if state=="CA" %} selected="selected" {% endif %}>CA</option>
+                                <option value="other"{% if state!="CA" %} selected="selected" {% endif %}>other</option>
                         
-
-                                    {% else %}
-                                    <option value="other">other</option>
-                                    <option value="CA">CA</option>
-
-                                    {% endif %}
                     
                                 
                             </select>
