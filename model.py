@@ -51,20 +51,6 @@ class Animal(database.Model):
     def __repr__(self):
         return f"<id={self.id} name={self.name} type={self.type}>"
 
- #might remove this class   
-class User(database.Model):
-    """Admin user"""
-
-    __tablename__ = "users"
-    
-    id = database.Column(database.Integer,primary_key=True,autoincrement=True)
-    username = database.Column(database.Text, nullable=False)
-    password = database.Column(database.Text, nullable=False)
-
-
-    def __repr__(self):
-        return f"<id={self.id}>"
-
 
 class Shelter(database.Model):
     """Shelters that have animals at risk"""

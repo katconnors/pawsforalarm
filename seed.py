@@ -1,6 +1,6 @@
 
 import os
-from model import User,Shelter,Animal,database,database_connect
+from model import database,database_connect
 import server
 
 #will drop the db
@@ -11,14 +11,6 @@ os.system("createdb pawsforalarm")
 
 database_connect(server.app,"pawsforalarm")
 database.create_all()
-
-
-#user
-#may not need a user table-revisit later
-
-pfaadmin = User(username='pfaadmin', password=os.environ["password"])
-database.session.add(pfaadmin)
-database.session.commit()
 
 
 #test shelter
