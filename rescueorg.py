@@ -33,13 +33,13 @@ body={
 }
 
 #species functions
-def get_species_id(animal):
+def get_api_species_id(animal):
     """Obtain an API species id for one animal entry"""
 
     spec_id = animal["relationships"]["species"]["data"][0]["id"]
     return spec_id
 
-def get_species(spec_id,data):
+def get_api_species(spec_id,data):
     """Using an API species id, get the species name"""
     
     for potentialspecies in data["included"]:
@@ -48,13 +48,13 @@ def get_species(spec_id,data):
     return species
 
 #photo functions
-def get_photo_id(animal):
+def get_api_photo_id(animal):
     """Obtain an API photo id for one animal entry"""
 
     photo_id = animal["relationships"]["pictures"]["data"][0]["id"]
     return photo_id
 
-def get_photo(photo_id,data):
+def get_api_photo(photo_id,data):
     """Using an API photo id, obtain photo url"""
 
     for potentialspecies in data["included"]:
@@ -64,18 +64,18 @@ def get_photo(photo_id,data):
 
 
 
-def api_animal(animal, shelter_ob,shelter):
+def create_animal_from_api(animal, shelter_ob,shelter):
     """Take in data from API and create an animal in the Paws for Alarm database"""
 
     name= animal["attributes"]["name"]
 
-    photo_id = get_photo_id(animal)
+    photo_id = get_api_photo_id(animal)
 
-    image = get_photo(photo_id,data)
+    image = get_api_photo(photo_id,data)
 
-    species_num= get_species_id(animal)
+    species_num= get_api_species_id(animal)
 
-    species = get_species(species_num,data)
+    species = get_api_species(species_num,data)
 
     breed= animal["attributes"]["breedString"]
 
@@ -124,7 +124,7 @@ def get_shelter_withapi(data,shelterid_api):
 
     return shelter_ob
 
-def api_shelter(shelter_ob):
+def create_shelter_from_api(shelter_ob):
     """Take in API data and create a shelter in the Paws for Alarm database
     Returned variable is the shelter in the Paws For Alarm database"""
 
@@ -156,9 +156,9 @@ def loop_through_api(data_data):
 
         shelter_ob= get_shelter_withapi(data,shelterid_api)
 
-        shelter = api_shelter(shelter_ob)
+        shelter = create_shelter_from_api(shelter_ob)
 
-        api_animal(animal,shelter_ob,shelter)
+        create_animal_from_api(animal,shelter_ob,shelter)
 
 #handle multiple pages of results- note that the API default is to display 25 results per page
 page_num=1
