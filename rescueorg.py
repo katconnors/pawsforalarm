@@ -69,6 +69,8 @@ def create_animal_from_api(animal, shelter_ob,shelter):
 
     name= animal["attributes"]["name"]
 
+    api_id = animal["id"]
+
     photo_id = get_api_photo_id(animal)
 
     image = get_api_photo(photo_id,data)
@@ -105,8 +107,10 @@ def create_animal_from_api(animal, shelter_ob,shelter):
 
     bio=animal["attributes"].get("descriptionText")
 
+    #conditional for prevention of duplicates here
 
-    crud.create_animal(name=name,image=image,type=species,breed=breed,gender=gender,adopt_code=adopt_code,entry_source=entry_source,shelter=shelter,url=url,age=age,scheduled_euthanasia_date=scheduled_euthanasia_date,bio=bio)
+    if not crud.animal_id_is_in_pfa(api_id):
+        crud.create_animal(api_id=api_id,name=name,image=image,type=species,breed=breed,gender=gender,adopt_code=adopt_code,entry_source=entry_source,shelter=shelter,url=url,age=age,scheduled_euthanasia_date=scheduled_euthanasia_date,bio=bio)
 
 
 def get_shelter_withapi(data,shelterid_api):
@@ -123,6 +127,8 @@ def get_shelter_withapi(data,shelterid_api):
             shelter_ob = assoc["attributes"]
 
     return shelter_ob
+
+
 
 def create_shelter_from_api(shelter_ob):
     """Take in API data and create a shelter in the Paws for Alarm database
@@ -157,6 +163,7 @@ def loop_through_api(data_data):
         shelter_ob= get_shelter_withapi(data,shelterid_api)
 
         shelter = create_shelter_from_api(shelter_ob)
+
 
         create_animal_from_api(animal,shelter_ob,shelter)
 

@@ -27,6 +27,7 @@ class Animal(database.Model):
 
 
     id = database.Column(database.Integer,primary_key=True,autoincrement=True)
+    api_id = database.Column(database.Text, nullable=True)
     image = database.Column(database.Text, nullable=False)
     name = database.Column(database.Text, nullable=False)
     type = database.Column(database.Text, nullable=False)

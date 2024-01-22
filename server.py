@@ -49,7 +49,8 @@ def animal(id):
 @app.route('/add', methods=['GET','POST'])
 def add_entry():
     """Page for admin to manually add animals"""
-    
+    #note that this will currently default to None for api_id
+    api_id = request.form.get('api-id') if request.form.get('api-id') else None
     name = request.form.get('name')
     image = request.form.get('image')
     type = request.form.get('type')
@@ -72,7 +73,7 @@ def add_entry():
     #checks for correct authentication token
     if request.method=='POST' and auth== os.environ["password"]:
     
-        crud.create_animal(name,image,type,breed,gender,code,source,shelter,url,age,joindate,weight,euthdate,bio)
+        crud.create_animal(api_id,name,image,type,breed,gender,code,source,shelter,url,age,joindate,weight,euthdate,bio)
         return redirect("/confirm")
 
     else:
