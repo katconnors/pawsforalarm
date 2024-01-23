@@ -17,6 +17,7 @@
                                 
                                 <option value="Dog" {% if type=="Dog" %} selected="selected"{% endif %}>Dog </option>
                                 <option value="Cat"{% if type=="Cat" %} selected="selected"{% endif %}>Cat </option>
+                                <option value="Horse"{% if type=="Horse" %} selected="selected"{% endif %}>Horse </option>
 
                                 
                             </select>
@@ -76,8 +77,14 @@
             {% endif %}
         {% endfor %}
    
-    <br>     
-    Return to homepage: <br>
-    <a href="/"> Home </a> <br>
+    <br>    
+
+    <div class="row">
+        <div class="col">
+
+            Return to homepage: <br>
+            <a href="/"> Home </a> <br>
+        </div>
+    </div>
     
 {% endblock main%}
