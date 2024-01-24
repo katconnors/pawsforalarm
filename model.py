@@ -40,7 +40,7 @@ class Animal(database.Model):
     scheduled_euthanasia_date = database.Column(database.Date, nullable=True)
     adopt_code = database.Column(database.Text, nullable=False)
     bio = database.Column(database.Text, nullable=True)
-    url = database.Column(database.Text, nullable=False)
+    url = database.Column(database.Text, nullable=True)
     entry_source = database.Column(database.Text, nullable=False)
     shelter_id = database.Column(database.Integer, database.ForeignKey('shelters.id'))
 

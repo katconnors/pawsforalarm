@@ -86,12 +86,10 @@ def create_animal_from_api(animal, shelter_ob,shelter):
     adopt_code = animal["attributes"]["rescueId"]
 
     entry_source = "rescue_groups_api"
-
-    generic= shelter_ob["url"]
     
     #can later include logic to handle site entry that is incomplete
 
-    url = animal["attributes"].get("url", generic)
+    url = animal["attributes"].get("url")
 
     shelter = shelter
 

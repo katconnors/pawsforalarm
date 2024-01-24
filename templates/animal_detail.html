@@ -36,10 +36,12 @@
                 Adoption Code: {{animal.adopt_code}} <br>
 
                 {% if animal.bio!=None %}
-                    Bio: {{animal.bio}} <br>
+                    Bio: {{animal.bio|safe}} <br>
                 {% endif %}
 
+                {% if animal.url!=None %}
                 Url: <a href="{{animal.url}}">adoption link </a> <br>
+                {% endif %}
 
                 Shelter Name: {{animal.shelter.name}} <br>
 

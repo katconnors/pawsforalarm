@@ -4,7 +4,7 @@ from model import database, Shelter, Animal, database_connect
 
 #animal functions
 
-def create_animal(api_id, name,image,type,breed,gender, adopt_code,entry_source,shelter,url,age=None,join_date=None,weight=None,scheduled_euthanasia_date=None,bio=None):
+def create_animal(api_id, name,image,type,breed,gender, adopt_code,entry_source,shelter,url=None,age=None,join_date=None,weight=None,scheduled_euthanasia_date=None,bio=None):
     """Create shelter animal"""
     
     animal = Animal(api_id=api_id,name=name,image=image,type=type,breed=breed,gender=gender,adopt_code=adopt_code,entry_source=entry_source,shelter=shelter,url=url,age=age,join_date=join_date,weight=weight,scheduled_euthanasia_date=scheduled_euthanasia_date,bio=bio)
@@ -57,6 +57,12 @@ def create_shelter(name,street_address,city,state,zipcode,website):
 
     return shelter
 
+def edit_shelter_url(name,newurl):
+    """Update the url of a shelter"""
+    shelter = Shelter.query.filter(Shelter.name==name).first()
+    shelter.website = newurl
+
+    database.session.commit()
 
 def specific_shelter(id):
     """View shelter, using id"""
