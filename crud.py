@@ -13,20 +13,39 @@ def create_animal(api_id, name,image,type,breed,gender, adopt_code,entry_source,
     database.session.commit()
 
 
-def view_animals(type,state):
+def view_animals(type,state,sort_type):
     """View animals, with filter ability"""
     
-    # update code when common states are assessed
+    ani_obj = Animal.query.join(Shelter)
 
-    if type and (state =="CA"):
-        return Animal.query.join(Shelter).filter(Shelter.state=="CA",Animal.type==type).all()
     
-    elif type and (state !="CA"):
-        return Animal.query.join(Shelter).filter(Shelter.state!="CA", Animal.type==type).all()
+
+    if state =="CA":
+        ani_list = ani_obj.filter(Shelter.state=="CA")
     
+    elif state =="other":
+        ani_list = ani_obj.filter(Shelter.state!="CA")
+    
+    else:
+        ani_list = ani_obj
+
+
+
+    if type and type!="all":
+        type_filter_animals = ani_list.filter(Animal.type==type)
 
     else:
-        return Animal.query.all()   
+        type_filter_animals = ani_list
+    
+    if sort_type:
+        # will also need to add sorting for None items
+        final_list = type_filter_animals.order_by(sort_type).all()
+    else:
+        return type_filter_animals.all()
+
+    return final_list
+
+
     
 
 def specific_animal(id):

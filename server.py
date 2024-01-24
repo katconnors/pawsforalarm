@@ -26,15 +26,18 @@ def faq():
 #animal endpoints
 @app.route('/animals')
 def animals():
-    """Shows all animals at risk, with type and state filters at top of page"""
+    """Shows all animals at risk, with type and state filters at top of page
+    Also includes sorting functionality"""
 
     type = request.args.get('type')
     state = request.args.get('state')
+    sort_type = request.args.get('sort-type')
+    
 
-    animals = crud.view_animals(type,state)
+    animals = crud.view_animals(type,state,sort_type)
 
 
-    return render_template('animals.html',animals=animals,type=type,state=state)
+    return render_template('animals.html',animals=animals,type=type,state=state,sort_type=sort_type)
 
 
 @app.route('/animals/<id>')

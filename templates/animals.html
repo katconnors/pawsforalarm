@@ -14,7 +14,7 @@
 
                             <select name="type" id="type-select">
 
-                                
+                                <option value="all"{% if state=="all" %} selected="selected" {% endif %}>all</option>
                                 <option value="Dog" {% if type=="Dog" %} selected="selected"{% endif %}>Dog </option>
                                 <option value="Cat"{% if type=="Cat" %} selected="selected"{% endif %}>Cat </option>
                                 <option value="Horse"{% if type=="Horse" %} selected="selected"{% endif %}>Horse </option>
@@ -29,19 +29,25 @@
                                 
                                 <!-- update if specifying other states -->
 
-                                
+                                <option value="all"{% if state=="all" %} selected="selected" {% endif %}>all</option>
                                 <option value="CA"{% if state=="CA" %} selected="selected" {% endif %}>CA</option>
-                                <option value="other"{% if state!="CA" %} selected="selected" {% endif %}>other</option>
+                                <option value="other"{% if state=="other" %} selected="selected" {% endif %}>other</option>
                         
                     
                                 
+                            </select>
+
+                            <label for="sort-selection">Sort by: </label>
+                            <select name="sort-type" id="sort-type">
+                                <option value="scheduled_euthanasia_date">Scheduled Euthanasia Date </option>
+
                             </select>
 
                             
                             <br>
                             <br>
                         
-                            <button type="submit">Apply the above filters</button>
+                            <button type="submit">Apply the above filters/sort type </button>
                         </form>
                         <br>
 
