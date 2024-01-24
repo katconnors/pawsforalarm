@@ -63,6 +63,21 @@ def specific_shelter(id):
     
     return Shelter.query.get(id)
 
+def give_shelter_names(typed):
+    """Return a list of results with shelter names that match a typed string"""
+   
+    # case insensitive search
+
+    all_type_match = Shelter.query.filter(Shelter.name.ilike(f'%{typed}%')).all()
+    list_matching = []
+
+    for shelter in all_type_match:
+        list_matching.append({"name":shelter.name,"id": shelter.id})
+
+    return list_matching
+
+
+
 def shelter_isthere(compare_name):
     """Check for a shelter in the database, using name
     Result will be true or false"""

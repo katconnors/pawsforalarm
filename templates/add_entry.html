@@ -60,10 +60,16 @@
             <label for="entry-source">Entry Source: </label>
             <input type="text" name="source" id="entry-source"> <br>
             <br>
+            <!-- search for a shelter, button will initate the ajax request -->
+            <label for="shelter">Shelter Name: </label>
+            <input type="text" name="sheltername" id="shelter-name"> 
+            
 
-            <label for="shelter">Shelter ID: </label>
-            <input type="text" name="shelterid" id="shelter-id"> <br>
-            <br>
+            <button type="button" id="lookup-shelter-button">Lookup Shelter</button> <br> <br>
+           
+            <label for="shelter-id">Shelter: </label>
+            <select name="shelter" id="shelterid">
+            </select> <br> <br>
 
             <label for="animal-url">Url: </label>
             <input type="text" name="url" id="animal-url"> <br>
@@ -90,6 +96,6 @@
             <button type="submit">Submit</button>
         </form>
     </div>
-</div>
-
+</div>    
+<script src="/static/entrytext.js"> </script>
 {% endblock main %}

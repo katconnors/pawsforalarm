@@ -46,6 +46,19 @@ def animal(id):
 
 
 #admin entry endpoints
+@app.route("/sheltername")
+def get_sheltername():
+    """Obtain shelter name"""
+    typed_text = request.args.get("shelter-name")
+
+    suggested_shelters = crud.give_shelter_names(typed_text)
+
+    return {
+        "success": True,
+        "shelters": suggested_shelters}
+
+
+
 @app.route('/add', methods=['GET','POST'])
 def add_entry():
     """Page for admin to manually add animals"""
@@ -59,7 +72,7 @@ def add_entry():
     gender = request.form.get('gender')
     code = request.form.get('code')
     source = request.form.get('source')
-    shelterid = request.form.get('shelterid')
+    shelterid = request.form.get('shelter')
     url = request.form.get('url')
     joindate = request.form.get('joindate') if request.form.get('joindate') else None
     weight = request.form.get('weight') if request.form.get('weight') else None

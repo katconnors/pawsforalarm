@@ -57,7 +57,8 @@
         
             {% endif %}
             <div class="col">
-                <img src="{{animal.image}}" alt="animal-image" width="180"/> <br>
+                <a href='/animals/{{animal.id}}'>
+                    <img src="{{animal.image}}" alt="animal-image" width="180"/> <br> </a>
                 {{animal.name}} <br>
                 {{animal.type}} <br>
                 {{animal.breed}} <br>
@@ -86,5 +87,7 @@
             <a href="/"> Home </a> <br>
         </div>
     </div>
-    
+
+
 {% endblock main%}
+
