@@ -53,11 +53,33 @@ def specific_animal(id):
     
     return Animal.query.get(id)
 
+def animal_by_apiid(api_id):
+    """View animal, using api id"""
+
+    return Animal.query.filter(Animal.api_id==api_id).first()
+
 
 def animal_id_is_in_pfa(api_animalid):
-    """Grab the animal api id from PFA database"""
+    """Check if the animal api id is in PFA database"""
 
     return bool(Animal.query.filter(Animal.api_id==api_animalid).first())
+
+
+def does_animal_euthdatematch(animal_apiid,compare_date):
+    """Check for animal info, if already present"""
+
+    animal = animal_by_apiid(animal_apiid)
+    return bool(animal.scheduled_euthanasia_date==compare_date)
+
+def update_animal_euthdate(animal_apiid, newdate):
+
+    """Update animal euthanasia date"""
+
+    animal = animal_by_apiid(animal_apiid)
+
+    animal.scheduled_euthanasia_date = newdate
+
+    database.session.commit()
 
 
 

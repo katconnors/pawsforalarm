@@ -106,8 +106,12 @@ def create_animal_from_api(animal, shelter_ob,shelter):
     bio=animal["attributes"].get("descriptionText")
 
     #conditional for prevention of duplicates here
+    
+    if crud.animal_id_is_in_pfa(api_id):
+        if not crud.does_animal_euthdatematch(api_id,scheduled_euthanasia_date):
+            crud.update_animal_euthdate(api_id,scheduled_euthanasia_date)
 
-    if not crud.animal_id_is_in_pfa(api_id):
+    else:
         crud.create_animal(api_id=api_id,name=name,image=image,type=species,breed=breed,gender=gender,adopt_code=adopt_code,entry_source=entry_source,shelter=shelter,url=url,age=age,scheduled_euthanasia_date=scheduled_euthanasia_date,bio=bio)
 
 
