@@ -64,7 +64,7 @@ def get_api_photo(photo_id,data):
 
 
 
-def create_animal_from_api(animal, shelter_ob,shelter):
+def create_animal_from_api(animal,shelter_ob, shelter):
     """Take in data from API and create an animal in the Paws for Alarm database"""
 
     name= animal["attributes"]["name"]
@@ -93,6 +93,8 @@ def create_animal_from_api(animal, shelter_ob,shelter):
 
     shelter = shelter
 
+    add_date = animal["attributes"]["createdDate"]
+
     age=animal["attributes"].get("ageString")
 
     # join_date=None
@@ -112,7 +114,7 @@ def create_animal_from_api(animal, shelter_ob,shelter):
             crud.update_animal_euthdate(api_id,scheduled_euthanasia_date)
 
     else:
-        crud.create_animal(api_id=api_id,name=name,image=image,type=species,breed=breed,gender=gender,adopt_code=adopt_code,entry_source=entry_source,shelter=shelter,url=url,age=age,scheduled_euthanasia_date=scheduled_euthanasia_date,bio=bio)
+        crud.create_animal(api_id=api_id,name=name,image=image,type=species,breed=breed,gender=gender,adopt_code=adopt_code,entry_source=entry_source,shelter=shelter,add_date=add_date,url=url,age=age,scheduled_euthanasia_date=scheduled_euthanasia_date,bio=bio)
 
 
 def get_shelter_withapi(data,shelterid_api):
@@ -173,7 +175,7 @@ def loop_through_api(data_data):
 page_num=1
 while True:
     
-    endpt=f"/public/animals/search/available/haspic?page={page_num}&include=pictures,species,orgs&fields[animals]=name,url,sex,rescueId,ageString,breedString,killDate,updatedDate,descriptionText&fields[pictures]=large,small&fields[orgs]=name,street,city,state,postalcode,url"
+    endpt=f"/public/animals/search/available/haspic?page={page_num}&include=pictures,species,orgs&fields[animals]=name,url,createdDate,sex,rescueId,ageString,breedString,killDate,updatedDate,descriptionText&fields[pictures]=large,small&fields[orgs]=name,street,city,state,postalcode,url"
     url=f"{base_url}{endpt}"
     response= requests.post(url,headers=headers,json=body)
     data=response.json()

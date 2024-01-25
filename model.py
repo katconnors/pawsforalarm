@@ -43,6 +43,7 @@ class Animal(database.Model):
     url = database.Column(database.Text, nullable=True)
     entry_source = database.Column(database.Text, nullable=False)
     shelter_id = database.Column(database.Integer, database.ForeignKey('shelters.id'))
+    add_date = database.Column(database.Date, nullable=True)
 
     #relationship between animal and shelter
 
