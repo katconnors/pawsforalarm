@@ -15,10 +15,13 @@
                             <select name="type" id="type-select">
 
                                 <option value="all"{% if state=="all" %} selected="selected" {% endif %}>all</option>
-                                <option value="Dog" {% if type=="Dog" %} selected="selected"{% endif %}>Dog </option>
-                                <option value="Cat"{% if type=="Cat" %} selected="selected"{% endif %}>Cat </option>
-                                <option value="Horse"{% if type=="Horse" %} selected="selected"{% endif %}>Horse </option>
+                            <!-- will dynamically generate a animal type list for the data -->
+                            {% for animal_type in animal_list: %}
 
+                                <option value="{{animal_type}}" {% if animal_type == type %} selected="selected" {% endif %}>{{animal_type}}</option>
+                            
+                            {% endfor %}   
+                                
                                 
                             </select>
 
@@ -27,9 +30,10 @@
                             <select name="state" id="state-select">
                                 
                                 
-                                <!-- will dynamically generate a state list for the data -->
+                                
                                 
                                 <option value="all"{% if query_state=="all" %} selected="selected" {% endif %}>all</option>
+                                <!-- will dynamically generate a state list for the data -->
                                 {% for database_state in state_list: %}
 
                                     <option value="{{database_state}}" {% if database_state == query_state %} selected="selected" {% endif %}>{{database_state}}</option>
