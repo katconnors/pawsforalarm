@@ -5,9 +5,10 @@
         <h4>Animal Details </h4>
         <div class="row">
             <div class="col">
-
+                {% if animal.image!=None %}
                 <img src="{{animal.image}}" alt="animal-image" width="250"/> <br>   
-
+                {% endif %}
+                
                 Name: {{animal.name}} <br>
 
                 Animal Type: {{animal.type}} <br>

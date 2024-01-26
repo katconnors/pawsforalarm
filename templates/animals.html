@@ -64,8 +64,10 @@
         
             {% endif %}
             <div class="col">
-                <a href='/animals/{{animal.id}}'>
-                    <img src="{{animal.image}}" alt="animal-image" width="180"/> <br> </a>
+                {% if animal.image!=None %}
+                    <a href='/animals/{{animal.id}}'>
+                        <img src="{{animal.image}}" alt="animal-image" width="180"/> <br> </a>
+                {% endif %}
                 {{animal.name}} <br>
                 {{animal.type}} <br>
                 {{animal.breed}} <br>

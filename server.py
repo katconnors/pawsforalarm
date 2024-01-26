@@ -31,7 +31,7 @@ def animals():
 
     type = request.args.get('type')
     query_state = request.args.get('state')
-    sort_type = request.args.get('sort-type')
+    sort_type = request.args.get('sort-type',"scheduled_euthanasia_date")
     
 
     animals = crud.view_animals(type,query_state,sort_type)

@@ -29,7 +29,6 @@ def view_animals(type,query_state,sort_type):
         ani_list = ani_obj
 
 
-
     if type and type!="all":
         type_filter_animals = ani_list.filter(Animal.type==type)
 
