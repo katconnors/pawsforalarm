@@ -113,6 +113,8 @@ def create_animal_from_api(animal,shelter_ob, shelter):
 
     age=animal["attributes"].get("ageString")
 
+    
+
     # join_date=None
     # skip
 
@@ -120,6 +122,15 @@ def create_animal_from_api(animal,shelter_ob, shelter):
     # skip
 
     scheduled_euthanasia_date=animal["attributes"].get("killDate")
+
+    if scheduled_euthanasia_date:
+        groupstatus = "euthanasiadates"
+    
+    elif animal["attributes"]["isNeedingFoster"]==True:
+        groupstatus = "fosterrequests"
+
+    else:
+        groupstatus = "other"
 
     bio=animal["attributes"].get("descriptionText")
 
@@ -130,7 +141,7 @@ def create_animal_from_api(animal,shelter_ob, shelter):
             crud.update_animal_euthdate(api_id,scheduled_euthanasia_date)
 
     else:
-        crud.create_animal(api_id=api_id,name=name,image=image,type=species,breed=breed,gender=gender,adopt_code=adopt_code,entry_source=entry_source,shelter=shelter,avail_date=avail_date,url=url,age=age,scheduled_euthanasia_date=scheduled_euthanasia_date,bio=bio)
+        crud.create_animal(api_id=api_id,name=name,image=image,type=species,breed=breed,gender=gender,adopt_code=adopt_code,entry_source=entry_source,shelter=shelter,avail_date=avail_date,groupstatus=groupstatus, url=url,age=age,scheduled_euthanasia_date=scheduled_euthanasia_date,bio=bio)
 
 
 def get_shelter_withapi(data,shelterid_api):
@@ -191,7 +202,7 @@ def loop_through_api(data_data):
 page_num=1
 while True:
     
-    endpt=f"/public/animals/search/available/haspic?page={page_num}&include=pictures,species,orgs&fields[animals]=name,url,availableDate,sex,rescueId,ageString,breedString,killDate,updatedDate,descriptionText&fields[pictures]=large,small&fields[orgs]=name,street,city,state,postalcode,url"
+    endpt=f"/public/animals/search/available/haspic?page={page_num}&include=pictures,species,orgs&fields[animals]=name,url,availableDate,sex,rescueId,ageString,breedString,killDate,isNeedingFoster,updatedDate,descriptionText&fields[pictures]=large,small&fields[orgs]=name,street,city,state,postalcode,url"
     url=f"{base_url}{endpt}"
     response= requests.post(url,headers=headers,json=body)
     data=response.json()

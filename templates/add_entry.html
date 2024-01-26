@@ -20,6 +20,19 @@
             <!-- Note that there is no field for api id -->
 
             <h6> Animal Info </h2>
+
+             <!-- search for a shelter, button will initate the ajax request -->
+             <label for="shelter">Shelter Name: </label>
+             <input type="text" name="sheltername" id="shelter-name"> 
+             
+ 
+             <button type="button" id="lookup-shelter-button">Lookup Shelter</button> <br> <br>
+            
+             <label for="shelter-id">Shelter: </label>
+             <select name="shelter" id="shelterid">
+             </select> <br> <br>
+ 
+
             <label for="animal-name">Name: </label>
             <input type="text" name="name" id="animal-name"> <br>
             <br>
@@ -29,11 +42,8 @@
             <br>
 
             <label for="animal-type">Type: </label>
-            <select name="type" id="type-select">
-                <option value="Cat">Cat</option>
-                <option value="Dog">Dog</option> <br>
-            </select>
-            <br>
+            <input type="text" name="type" id="ype-select"> <br>
+        
             <br>
 
             <label for="animal-breed">Breed: </label>
@@ -60,17 +70,7 @@
             <label for="entry-source">Entry Source: </label>
             <input type="text" name="source" id="entry-source"> <br>
             <br>
-            <!-- search for a shelter, button will initate the ajax request -->
-            <label for="shelter">Shelter Name: </label>
-            <input type="text" name="sheltername" id="shelter-name"> 
-            
-
-            <button type="button" id="lookup-shelter-button">Lookup Shelter</button> <br> <br>
            
-            <label for="shelter-id">Shelter: </label>
-            <select name="shelter" id="shelterid">
-            </select> <br> <br>
-
             <label for="animal-url">Url: </label>
             <input type="text" name="url" id="animal-url"> <br>
             <br>

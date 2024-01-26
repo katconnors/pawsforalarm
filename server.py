@@ -31,15 +31,17 @@ def animals():
 
     type = request.args.get('type')
     query_state = request.args.get('state')
+    group = request.args.get('fosteuthselection')
     sort_type = request.args.get('sort-type',"scheduled_euthanasia_date")
+
     
 
-    animals = crud.view_animals(type,query_state,sort_type)
+    animals = crud.view_animals(type,query_state,group, sort_type)
     state_list = crud.shelter_state_list()
     animal_list = crud.animal_type_list()
 
 
-    return render_template('animals.html',animals=animals,state_list=state_list,animal_list=animal_list,type=type,query_state=query_state,sort_type=sort_type)
+    return render_template('animals.html',animals=animals,state_list=state_list,animal_list=animal_list,group=group, type=type,query_state=query_state,sort_type=sort_type)
 
 
 @app.route('/animals/<id>')

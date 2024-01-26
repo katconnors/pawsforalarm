@@ -4,7 +4,7 @@
 {% block main %}
     <br>
     
-        <h4>Animals at Risk</h4>
+        <h4>Animals at Euthanasia Risk Or In Need of Foster</h4>
         <br>
             <div class="row">
                 <div class="col">
@@ -14,7 +14,7 @@
 
                             <select name="type" id="type-select">
 
-                                <option value="all"{% if state=="all" %} selected="selected" {% endif %}>all</option>
+                                <option value="all"{% if animal_type=="all" %} selected="selected" {% endif %}>all</option>
                             <!-- will dynamically generate a animal type list for the data -->
                             {% for animal_type in animal_list: %}
 
@@ -40,6 +40,16 @@
                                 
                                 {% endfor %}
                                 
+                            </select>
+
+                            <label for="fosteuthselection"> Group: </label>
+
+                            <select name="fosteuthselection" id="fosteuthselection">
+
+
+                                <option value="all"{% if group=="all" %} selected="selected" {% endif %}>all</option>
+                                <option value="euthanasiadates"{% if group=="euthanasiadates" %} selected="selected" {% endif %}>animals with euth. dates</option>
+                                <option value="fosterrequests"{% if group=="fosterrequests" %} selected="selected" {% endif %}>animals with foster requests</option>
                             </select>
 
                             <label for="sort-selection">Sort by: </label>
