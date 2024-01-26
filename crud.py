@@ -1,6 +1,8 @@
 
 from model import database, Shelter, Animal, database_connect
 
+import itertools
+
 
 #animal functions
 
@@ -13,18 +15,15 @@ def create_animal(api_id, name,image,type,breed,gender, adopt_code,entry_source,
     database.session.commit()
 
 
-def view_animals(type,state,sort_type):
+def view_animals(type,query_state,sort_type):
     """View animals, with filter ability"""
     
     ani_obj = Animal.query.join(Shelter)
 
     
 
-    if state =="CA":
-        ani_list = ani_obj.filter(Shelter.state=="CA")
-    
-    elif state =="other":
-        ani_list = ani_obj.filter(Shelter.state!="CA")
+    if query_state and query_state!="all":
+        ani_list = ani_obj.filter(Shelter.state==query_state)
     
     else:
         ani_list = ani_obj
@@ -89,7 +88,6 @@ def update_animal_euthdate(animal_apiid, newdate):
 def create_shelter(name,street_address,city,state,zipcode,website):
     """Create shelter"""
 
-    #later add if-then statement to check database for already created instance
 
     shelter = Shelter(name=name,street_address=street_address,city=city,state=state,zipcode=zipcode,website=website)
 
@@ -97,6 +95,19 @@ def create_shelter(name,street_address,city,state,zipcode,website):
     database.session.commit()
 
     return shelter
+
+
+def shelter_state_list():
+    """Returns a list of shelters' states that are in the database"""
+
+    state_list = database.session.query(Shelter.state).distinct().all()
+    
+    # used guide on how to flatten lists from https://saturncloud.io/blog/how-to-flatten-a-list-of-lists-in-python/
+
+    flat_list = list(itertools.chain(*state_list))
+
+    return flat_list
+
 
 def edit_shelter_url(name,newurl):
     """Update the url of a shelter"""

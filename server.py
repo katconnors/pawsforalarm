@@ -30,14 +30,15 @@ def animals():
     Also includes sorting functionality"""
 
     type = request.args.get('type')
-    state = request.args.get('state')
+    query_state = request.args.get('state')
     sort_type = request.args.get('sort-type')
     
 
-    animals = crud.view_animals(type,state,sort_type)
+    animals = crud.view_animals(type,query_state,sort_type)
+    state_list = crud.shelter_state_list()
 
 
-    return render_template('animals.html',animals=animals,type=type,state=state,sort_type=sort_type)
+    return render_template('animals.html',animals=animals,state_list=state_list,type=type,query_state=query_state,sort_type=sort_type)
 
 
 @app.route('/animals/<id>')

@@ -27,13 +27,14 @@
                             <select name="state" id="state-select">
                                 
                                 
-                                <!-- update if specifying other states -->
+                                <!-- will dynamically generate a state list for the data -->
+                                
+                                <option value="all"{% if query_state=="all" %} selected="selected" {% endif %}>all</option>
+                                {% for database_state in state_list: %}
 
-                                <option value="all"{% if state=="all" %} selected="selected" {% endif %}>all</option>
-                                <option value="CA"{% if state=="CA" %} selected="selected" {% endif %}>CA</option>
-                                <option value="other"{% if state=="other" %} selected="selected" {% endif %}>other</option>
-                        
-                    
+                                    <option value="{{database_state}}" {% if database_state == query_state %} selected="selected" {% endif %}>{{database_state}}</option>
+                                
+                                {% endfor %}
                                 
                             </select>
 
