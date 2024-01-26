@@ -10,7 +10,7 @@ base_url= "https://api.rescuegroups.org/v5"
 headers={"Authorization":server.API}
 body={
     "data": {
-        #filters for animals with available statuses, with kill dates, that have had updates after Nov 2023
+        #filters for animals with available statuses, with kill dates or needing foster, that have had updates after Nov 2023
 
         "filters": [
             {
@@ -26,9 +26,16 @@ body={
             {
                 "fieldName": "animals.killDate",
                 "operation": "notblank",
+            },
+
+              {
+                "fieldName": "animals.isNeedingFoster",
+                "operation": "equals",
+                "criteria":"True"
             }
                  
-        ]
+        ],
+        "filterProcessing": "1 AND 2 AND (3 OR 4)"
     }
 }
 
@@ -50,18 +57,27 @@ def get_api_species(spec_id,data):
 #photo functions
 def get_api_photo_id(animal):
     """Obtain an API photo id for one animal entry"""
+    try:
 
-    photo_id = animal["relationships"]["pictures"]["data"][0]["id"]
-    return photo_id
+        photo_id = animal["relationships"]["pictures"]["data"][0]["id"]
+        return photo_id
+    
+    except KeyError:
+        print("There is no photo id.")
+        photo_id = None
+        return photo_id
+
 
 def get_api_photo(photo_id,data):
     """Using an API photo id, obtain photo url"""
-
-    for potentialspecies in data["included"]:
-        if potentialspecies["id"]==photo_id and potentialspecies["type"]=="pictures":
-            photo = potentialspecies["attributes"]["large"]["url"]
-    return photo
-
+    if photo_id is not None:
+        for potentialspecies in data["included"]:
+            if potentialspecies["id"]==photo_id and potentialspecies["type"]=="pictures":
+                photo = potentialspecies["attributes"]["large"]["url"]
+        return photo
+    else:
+        photo = None
+        return photo
 
 
 def create_animal_from_api(animal,shelter_ob, shelter):
@@ -81,9 +97,9 @@ def create_animal_from_api(animal,shelter_ob, shelter):
 
     breed= animal["attributes"]["breedString"]
 
-    gender = animal["attributes"]["sex"]
+    gender = animal["attributes"].get("sex")
 
-    adopt_code = animal["attributes"]["rescueId"]
+    adopt_code = animal["attributes"].get("rescueId")
 
     entry_source = "rescue_groups_api"
     
@@ -93,7 +109,7 @@ def create_animal_from_api(animal,shelter_ob, shelter):
 
     shelter = shelter
 
-    add_date = animal["attributes"]["createdDate"]
+    avail_date = animal["attributes"].get("availableDate")
 
     age=animal["attributes"].get("ageString")
 
@@ -114,7 +130,7 @@ def create_animal_from_api(animal,shelter_ob, shelter):
             crud.update_animal_euthdate(api_id,scheduled_euthanasia_date)
 
     else:
-        crud.create_animal(api_id=api_id,name=name,image=image,type=species,breed=breed,gender=gender,adopt_code=adopt_code,entry_source=entry_source,shelter=shelter,add_date=add_date,url=url,age=age,scheduled_euthanasia_date=scheduled_euthanasia_date,bio=bio)
+        crud.create_animal(api_id=api_id,name=name,image=image,type=species,breed=breed,gender=gender,adopt_code=adopt_code,entry_source=entry_source,shelter=shelter,avail_date=avail_date,url=url,age=age,scheduled_euthanasia_date=scheduled_euthanasia_date,bio=bio)
 
 
 def get_shelter_withapi(data,shelterid_api):
@@ -139,11 +155,11 @@ def create_shelter_from_api(shelter_ob):
     Returned variable is the shelter in the Paws For Alarm database"""
 
     name= shelter_ob["name"]
-    address = shelter_ob["street"]
+    address = shelter_ob.get("street")
     city=shelter_ob["city"]
     state=shelter_ob["state"].upper()
     zipcode = shelter_ob["postalcode"]
-    website = shelter_ob["url"]
+    website = shelter_ob.get("url")
 
     if not crud.shelter_isthere(name):
 
@@ -175,7 +191,7 @@ def loop_through_api(data_data):
 page_num=1
 while True:
     
-    endpt=f"/public/animals/search/available/haspic?page={page_num}&include=pictures,species,orgs&fields[animals]=name,url,createdDate,sex,rescueId,ageString,breedString,killDate,updatedDate,descriptionText&fields[pictures]=large,small&fields[orgs]=name,street,city,state,postalcode,url"
+    endpt=f"/public/animals/search/available/haspic?page={page_num}&include=pictures,species,orgs&fields[animals]=name,url,availableDate,sex,rescueId,ageString,breedString,killDate,updatedDate,descriptionText&fields[pictures]=large,small&fields[orgs]=name,street,city,state,postalcode,url"
     url=f"{base_url}{endpt}"
     response= requests.post(url,headers=headers,json=body)
     data=response.json()

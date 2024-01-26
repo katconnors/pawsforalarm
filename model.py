@@ -28,7 +28,7 @@ class Animal(database.Model):
 
     id = database.Column(database.Integer,primary_key=True,autoincrement=True)
     api_id = database.Column(database.Text, nullable=True)
-    image = database.Column(database.Text, nullable=False)
+    image = database.Column(database.Text, nullable=True)
     name = database.Column(database.Text, nullable=False)
     type = database.Column(database.Text, nullable=False)
     breed = database.Column(database.Text, nullable=False)
@@ -36,14 +36,14 @@ class Animal(database.Model):
     #age is not an integer in database due to RG API using strings
     age = database.Column(database.Text, nullable=True)
     weight = database.Column(database.Integer, nullable=True)
-    gender = database.Column(database.Text, nullable=False)
+    gender = database.Column(database.Text, nullable=True)
     scheduled_euthanasia_date = database.Column(database.Date, nullable=True)
-    adopt_code = database.Column(database.Text, nullable=False)
+    adopt_code = database.Column(database.Text, nullable=True)
     bio = database.Column(database.Text, nullable=True)
     url = database.Column(database.Text, nullable=True)
     entry_source = database.Column(database.Text, nullable=False)
     shelter_id = database.Column(database.Integer, database.ForeignKey('shelters.id'))
-    add_date = database.Column(database.Date, nullable=True)
+    avail_date = database.Column(database.Date, nullable=True)
 
     #relationship between animal and shelter
 
@@ -62,11 +62,11 @@ class Shelter(database.Model):
 
     id= database.Column(database.Integer,primary_key=True,autoincrement=True)
     name = database.Column(database.Text, nullable=False)
-    street_address = database.Column(database.Text, nullable=False)
+    street_address = database.Column(database.Text, nullable=True)
     city = database.Column(database.Text, nullable=False)
     state = database.Column(database.Text, nullable=False)
     zipcode = database.Column(database.Integer, nullable=False)
-    website = database.Column(database.Text, nullable=False)
+    website = database.Column(database.Text, nullable=True)
 
     #relationship between shelter and animal
 
