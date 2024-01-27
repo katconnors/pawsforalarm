@@ -4,7 +4,7 @@
 {% block main %}
     <br>
     
-        <h4>Animals at Euthanasia Risk Or In Need of Foster</h4>
+        <h4>Animals with Euthanasia Risk Or In Need of Foster</h4>
         <br>
             <div class="row">
                 <div class="col">
@@ -48,13 +48,13 @@
 
 
                                 <option value="all"{% if group=="all" %} selected="selected" {% endif %}>all</option>
-                                <option value="euthanasiadates"{% if group=="euthanasiadates" %} selected="selected" {% endif %}>animals with euth. dates</option>
-                                <option value="fosterrequests"{% if group=="fosterrequests" %} selected="selected" {% endif %}>animals with foster requests</option>
+                                <option value="euthanasiadates"{% if group=="euthanasiadates" %} selected="selected" {% endif %}>animals w/ euthanasia dates</option>
+                                <option value="fosterrequests"{% if group=="fosterrequests" %} selected="selected" {% endif %}>animals w/ foster requests</option>
                             </select>
 
                             <label for="sort-selection">Sort by: </label>
                             <select name="sort-type" id="sort-type">
-                                <option value="scheduled_euthanasia_date">Scheduled Euthanasia Date </option>
+                                <option value="scheduled_euthanasia_date">scheduled euthanasia date </option>
 
                             </select>
 
