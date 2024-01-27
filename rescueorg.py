@@ -172,6 +172,12 @@ def create_shelter_from_api(shelter_ob):
     zipcode = shelter_ob["postalcode"]
     website = shelter_ob.get("url")
 
+    #this bit of code is to handle situations where a rescue has entered this specific string
+    #this has occured for a few shelters
+
+    if website == "http://":
+        website = None 
+
     if not crud.shelter_isthere(name):
 
         shelter_pfa= crud.create_shelter(name,address,city,state,zipcode,website)
