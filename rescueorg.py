@@ -113,6 +113,8 @@ def create_animal_from_api(animal,shelter_ob, shelter):
 
     age=animal["attributes"].get("ageString")
 
+    status = "available"
+
     
 
     # join_date=None
@@ -141,7 +143,11 @@ def create_animal_from_api(animal,shelter_ob, shelter):
             crud.update_animal_euthdate(api_id,scheduled_euthanasia_date)
 
     else:
-        crud.create_animal(api_id=api_id,name=name,image=image,type=species,breed=breed,gender=gender,adopt_code=adopt_code,entry_source=entry_source,shelter=shelter,avail_date=avail_date,groupstatus=groupstatus, url=url,age=age,scheduled_euthanasia_date=scheduled_euthanasia_date,bio=bio)
+        crud.create_animal(api_id=api_id,name=name,image=image,type=species,breed=breed,gender=gender,adopt_code=adopt_code,entry_source=entry_source,shelter=shelter,avail_date=avail_date,groupstatus=groupstatus, status=status, url=url,age=age,scheduled_euthanasia_date=scheduled_euthanasia_date,bio=bio)
+    
+
+    #this return statement is for automation of entry comparisons between pfa and api results
+    return api_id
 
 
 def get_shelter_withapi(data,shelterid_api):
@@ -189,9 +195,31 @@ def create_shelter_from_api(shelter_ob):
         shelter_prev = crud.shelter_indatabase(name)
 
         return shelter_prev
+    
+
+
+
+def check_pfa_vs_apianimals():
+
+    #create a list of all the animal api id's
+
+    pfa_available_animals = set()
+
+    all_statuses_pfa_animals = crud.view_animals()
+
+    for pfa_animal in all_statuses_pfa_animals:
+        if pfa_animal.status =="available":
+            pfa_available_animals.add(pfa_animal.api_id)
+
+    return pfa_available_animals
+
+            
+
 
 def loop_through_api(data_data):
     
+    indiv_num_tracker = set()
+
     for animal in data_data:
 
         #find id of the shelter using the API
@@ -202,8 +230,18 @@ def loop_through_api(data_data):
         shelter = create_shelter_from_api(shelter_ob)
 
 
-        create_animal_from_api(animal,shelter_ob,shelter)
+        api_id = create_animal_from_api(animal,shelter_ob,shelter)
 
+        indiv_num_tracker.add(api_id)
+
+    return indiv_num_tracker
+    
+
+  
+
+        
+
+aggregate_num_tracker = set()
 #handle multiple pages of results- note that the API default is to display 25 results per page
 page_num=1
 while True:
@@ -214,13 +252,38 @@ while True:
     data=response.json()
     data_data = data["data"]
 
-    loop_through_api(data_data)
+    individual_num_tracker = loop_through_api(data_data)
+
+    aggregate_num_tracker.update(individual_num_tracker)
 
     if data["meta"]["pageReturned"] == data["meta"]["pages"]:
         break
 
+
     else:
         page_num+= 1
 
+
+
+
+
+
+#only run this once after all the pages of api data
+
+pfa_available_animals = check_pfa_vs_apianimals()
+
+
+#this result will give the animals that no longer appear in api results, but are still in the pfa database
+set_differences = pfa_available_animals-aggregate_num_tracker
+
+ 
+for api_id in set_differences:
+#changer status function here
+    animal = crud.animal_by_apiid(api_id)
+    crud.update_animal_status(animal, "not available")
+    
+
+# print(pfa_available_animals)
+# print(aggregate_num_tracker)
 
 

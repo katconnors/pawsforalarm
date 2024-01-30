@@ -45,6 +45,7 @@ class Animal(database.Model):
     shelter_id = database.Column(database.Integer, database.ForeignKey('shelters.id'))
     avail_date = database.Column(database.Date, nullable=True)
     groupstatus = database.Column(database.Text, nullable=True)
+    status = database.Column(database.Text, nullable=True)
 
     #relationship between animal and shelter
 

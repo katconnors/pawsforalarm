@@ -6,24 +6,41 @@ import itertools
 
 #animal functions
 
-def create_animal(api_id, name,image,type,breed,gender, adopt_code,entry_source,shelter,avail_date=None, groupstatus=None, url=None,age=None,join_date=None,weight=None,scheduled_euthanasia_date=None,bio=None):
+def create_animal(api_id, name,image,type,breed,gender, adopt_code,entry_source,shelter,avail_date=None, groupstatus=None, status=None, url=None,age=None,join_date=None,weight=None,scheduled_euthanasia_date=None,bio=None):
     """Create shelter animal"""
     
-    animal = Animal(api_id=api_id,name=name,image=image,type=type,breed=breed,gender=gender,adopt_code=adopt_code,entry_source=entry_source,shelter=shelter,avail_date=avail_date, groupstatus=groupstatus, url=url,age=age,join_date=join_date,weight=weight,scheduled_euthanasia_date=scheduled_euthanasia_date,bio=bio)
+    animal = Animal(
+        api_id=api_id,
+        name=name,
+        image=image,
+        type=type,
+        breed=breed,
+        gender=gender,
+        adopt_code=adopt_code,
+        entry_source=entry_source,
+        shelter=shelter,
+        avail_date=avail_date, 
+        groupstatus=groupstatus, 
+        status=status,
+        url=url,age=age,
+        join_date=join_date,
+        weight=weight,
+        scheduled_euthanasia_date=scheduled_euthanasia_date,
+        bio=bio)
 
     database.session.add(animal)
     database.session.commit()
 
 
-def view_animals(type,query_state,group,sort_type):
+def view_animals(type="all",query_state="all",group="all",sort_type="scheduled_euthanasia_date"):
     """View animals, with filter ability"""
     
-    ani_obj = Animal.query.join(Shelter)
+    ani_obj = Animal.query.join(Shelter).filter(Animal.status=="available")
 
     
 
     if query_state and query_state!="all":
-        ani_list = ani_obj.filter(Shelter.state==query_state)
+        ani_list = ani_obj.filter(Shelter.state==query_state,Animal.status=="available")
     
     else:
         ani_list = ani_obj
@@ -94,6 +111,22 @@ def update_animal_euthdate(animal_apiid, newdate):
     animal.scheduled_euthanasia_date = newdate
 
     database.session.commit()
+
+
+
+def update_animal_status(animal, newstatus):
+
+    """Update animal status
+    Status will be used a means to display/not display animal information"""
+
+
+    # print(animal) 
+    # print("Animal changing status")
+
+    animal.status = newstatus
+
+    database.session.commit()
+
 
 
 
