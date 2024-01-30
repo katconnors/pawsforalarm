@@ -78,7 +78,7 @@ def add_entry():
     age = request.form.get('age') if request.form.get('age') else None
     gender = request.form.get('gender')
     code = request.form.get('code')
-    source = request.form.get('source')
+    source = "admin"
     shelterid = request.form.get('shelter')
     url = request.form.get('url')
     joindate = request.form.get('joindate') if request.form.get('joindate') else None
@@ -86,14 +86,16 @@ def add_entry():
     euthdate = request.form.get('euthdate') if request.form.get('euthdate') else None
     bio = request.form.get('bio') if request.form.get('bio') else None
     auth = request.form.get('auth-code') 
-
+    available_date = request.form.get('availabledate') if request.form.get('availabledate') else None
+    groupstatus = request.form.get('groupstatus') if request.form.get('groupstatus') else None
+    status = "available"
     shelter = crud.specific_shelter(shelterid)
 
 
     #checks for correct authentication token
     if request.method=='POST' and auth== os.environ["password"]:
     
-        crud.create_animal(api_id,name,image,type,breed,gender,code,source,shelter,url,age,joindate,weight,euthdate,bio)
+        crud.create_animal(api_id,name,image,type,breed,gender,code,source,shelter,available_date,groupstatus,status,url,age,joindate,weight,euthdate,bio)
         return redirect("/confirm")
 
     else:

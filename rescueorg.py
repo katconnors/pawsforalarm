@@ -208,7 +208,7 @@ def check_pfa_vs_apianimals():
     all_statuses_pfa_animals = crud.view_animals()
 
     for pfa_animal in all_statuses_pfa_animals:
-        if pfa_animal.status =="available":
+        if pfa_animal.status =="available" and pfa_animal.entry_source!="admin":
             pfa_available_animals.add(pfa_animal.api_id)
 
     return pfa_available_animals
@@ -262,9 +262,6 @@ while True:
 
     else:
         page_num+= 1
-
-
-
 
 
 

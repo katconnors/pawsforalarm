@@ -14,7 +14,7 @@
             {% endif %}
 
             <label for="authentication">Authentication: </label>
-            <input type="text" name="auth-code" id="auth-code"> <br>
+            <input type="password" name="auth-code" id="auth-code"> <br>
             <br>
 
             <!-- Note that there is no field for api id -->
@@ -33,7 +33,7 @@
              </select> <br> <br>
  
 
-            <label for="animal-name">Name: </label>
+            <label for="animal-name">Animal name: </label>
             <input type="text" name="name" id="animal-name"> <br>
             <br>
 
@@ -63,12 +63,16 @@
             </select>
             <br> <br>
 
+            <label for="group status">Group Status: </label>
+            <select name="groupstatus" id="groupstatus">
+                <option value="euthanasiadates">euth. date</option>
+                <option value="fosterrequests">foster request</option> <br>
+                <option value="other">other</option> <br>
+            </select>
+            <br> <br>
+
             <label for="animal-code">Adopt Code: </label>
             <input type="text" name="code" id="animal-code"> <br>
-            <br>
-
-            <label for="entry-source">Entry Source: </label>
-            <input type="text" name="source" id="entry-source"> <br>
             <br>
            
             <label for="animal-url">Url: </label>
@@ -77,6 +81,10 @@
 
             <label for="join-date">Join Date:(mm/dd/yyyy): </label>
             <input type="text" name="joindate" id="join-date"> <br>
+            <br>
+
+            <label for="available-date">Available Date:(mm/dd/yyyy): </label>
+            <input type="text" name="availabledate" id="availabledate"> <br>
             <br>
 
             <label for="animal-weight">Weight(lbs): </label>
