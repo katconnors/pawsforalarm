@@ -11,16 +11,13 @@ class IntegrationTests(unittest.TestCase):
     """Tests for the Flask server"""
 
     #setup to reduce repetition between methods
-
-    def setUp(self):
-
-        self.client = server.app.test_client()
-
-        #consider usiung delete func
+    @classmethod
+    def setUpClass(cls):
+        
         os.system("dropdb testdb")
         os.system("createdb testdb")
 
-    # from testing 1 lecture- printing Flask errors
+         # from testing 1 lecture- printing Flask errors
         server.app.config['TESTING'] = True
 
     #connecting to a test database
@@ -29,9 +26,8 @@ class IntegrationTests(unittest.TestCase):
         database_connect(server.app, "testdb")
         database.create_all()
 
-    #can later add sample data here, if needed for testing
-        
-        
+        cls.client = server.app.test_client()
+
         
 
     def test_homepage(self):
