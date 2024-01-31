@@ -76,7 +76,7 @@ def add_entry():
     type = request.form.get('type')
     breed = request.form.get('breed')
     age = request.form.get('age') if request.form.get('age') else None
-    gender = request.form.get('gender')
+    gender = request.form.get('gender') if request.form.get('gender') else None
     code = request.form.get('code')
     source = "admin"
     shelterid = request.form.get('shelter')
