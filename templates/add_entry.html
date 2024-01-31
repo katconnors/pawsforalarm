@@ -13,7 +13,9 @@
             </div>
             {% endif %}
 
-            <label for="authentication">Authentication: </label>
+            * indicates a required field <br> <br>
+
+            <label for="authentication">* Authentication: </label>
             <input type="password" name="auth-code" id="auth-code"> <br>
             <br>
 
@@ -22,18 +24,18 @@
             <h6> Animal Info </h2>
 
              <!-- search for a shelter, button will initate the ajax request -->
-             <label for="shelter">Shelter Name: </label>
+             <label for="shelter">* Shelter Name: </label>
              <input type="text" name="sheltername" id="shelter-name"> 
              
  
              <button type="button" id="lookup-shelter-button">Lookup Shelter</button> <br> <br>
             
-             <label for="shelter-id">Shelter: </label>
+             <label for="shelter-id">* Shelter: </label>
              <select name="shelter" id="shelterid">
              </select> <br> <br>
  
 
-            <label for="animal-name">Animal name: </label>
+            <label for="animal-name">* Animal name: </label>
             <input type="text" name="name" id="animal-name"> <br>
             <br>
 
@@ -41,29 +43,29 @@
             <input type="text" name="image" id="animal-image"> <br>
             <br>
 
-            <label for="animal-type">Type: </label>
+            <label for="animal-type">* Type: </label>
             <input type="text" name="type" id="ype-select"> <br>
         
             <br>
 
-            <label for="animal-breed">Breed: </label>
+            <label for="animal-breed">* Breed: </label>
             <input type="text" name="breed" id="animal-breed"> <br>
             <br>
 
-            <label for="animal-breed">Age (yrs): </label>
+            <label for="animal-breed">Age: </label>
             <input type="text" name="age" id="animal-age"> <br>
             <br>
 
             <!-- circle back to this, if using as a future filter -->
             
-            <label for="animal gender">Gender: </label>
+            <label for="animal gender">* Gender: </label>
             <select name="gender" id="gender-select">
                 <option value="female">female</option>
                 <option value="male">male</option> <br>
             </select>
             <br> <br>
 
-            <label for="group status">Group Status: </label>
+            <label for="group status">* Group Status: </label>
             <select name="groupstatus" id="groupstatus">
                 <option value="euthanasiadates">euth. date</option>
                 <option value="fosterrequests">foster request</option> <br>
@@ -79,11 +81,11 @@
             <input type="text" name="url" id="animal-url"> <br>
             <br>
 
-            <label for="join-date">Join Date:(mm/dd/yyyy): </label>
+            <label for="join-date">Join Date(mm/dd/yyyy): </label>
             <input type="text" name="joindate" id="join-date"> <br>
             <br>
 
-            <label for="available-date">Available Date:(mm/dd/yyyy): </label>
+            <label for="available-date">Available Date(mm/dd/yyyy): </label>
             <input type="text" name="availabledate" id="availabledate"> <br>
             <br>
 
@@ -91,7 +93,7 @@
             <input type="text" name="weight" id="animal-weight"> <br>
             <br>
 
-            <label for="euthanasia-date">Sched. Euth. Date:(mm/dd/yyyy):</label>
+            <label for="euthanasia-date">Sched. Euth. Date(mm/dd/yyyy):</label>
             <input type="text" name="euthdate" id="euth-date"> <br>
             <br>
 
