@@ -35,6 +35,7 @@ def create_animal(api_id, name,image,type,breed,gender, adopt_code,entry_source,
 def view_animals(type="all",query_state="all",group="all",sort_type="scheduled_euthanasia_date"):
     """View animals, with filter ability"""
     
+    #will filter to only show animals that are available
     ani_obj = Animal.query.join(Shelter).filter(Animal.status=="available")
 
     
