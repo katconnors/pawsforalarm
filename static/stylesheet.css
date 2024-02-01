@@ -40,6 +40,12 @@ footer {
 
 /* navigation bar css  */
 
+.nav{
+    text-align: center;
+    width: 70%
+
+
+}
 
 .navbar-brand {
     font-size: 30px;
