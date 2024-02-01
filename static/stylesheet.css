@@ -21,3 +21,17 @@ button {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
+/* navigation bar css  */
+
+
+.navbar-brand {
+    font-size: 35px;
+}
+
+.nav-link{
+    font-size: 20px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+
+
