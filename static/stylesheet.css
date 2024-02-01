@@ -3,8 +3,13 @@
 /* color palettes from colorhunt.co */
 
 body {
-    background-color:#C5FFF8;
+    background-color:#FFFFDD;
     color: #0F1035;
+}
+
+.text-center{
+    background-color: #A2C579;
+    width: 75%;
 }
 
 img {
@@ -15,7 +20,7 @@ img {
 
 /* will target only the images on animals page, and not details page (unless class is changed to col-sm) */
 .col-sm img:hover {
-    outline: 3px solid #5FBDFF;
+    outline: 3px solid #61A3BA;
     border-radius: 18px;
 }
 
