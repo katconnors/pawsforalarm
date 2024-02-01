@@ -4,7 +4,7 @@
 {% block main %}
     <br>
     
-        <h4>Animals with Euthanasia Risk Or In Need of Foster</h4>
+        <h5>Animals with Euthanasia Risk Or In Need of Foster</h5>
         <br>
             <div class="row">
                 <div class="col">
@@ -77,7 +77,8 @@
                 <div class="row">
         
             {% endif %}
-            <div class="col">
+            <!-- specified col-sm to make hover css styling more clear on specific page -->
+            <div class="col-sm">
                 {% if animal.image!=None %}
                     <a href='/animals/{{animal.id}}'>
                         <img src="{{animal.image}}" alt="animal-image" width="180"/> <br> </a>

@@ -9,7 +9,9 @@ img {
     border-radius: 18px;
 }
 
-img:hover {
+
+/* will target only the images on animals page, and not details page (unless class is changed to col-sm) */
+.col-sm img:hover {
     outline: 2px solid rgb(37, 64, 66);
     border-radius: 18px;
 }
