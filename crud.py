@@ -71,6 +71,8 @@ def view_animals(type="all",query_state="all",group="all",sort_type="scheduled_e
 def animal_type_list():
     """Returns a list of animal types that are in the database"""
 
+    #note that this will also include animal types from unavailable animals
+
     animaltype_list = database.session.query(Animal.type).distinct().order_by(Animal.type).all()
     
     # used guide on how to flatten lists from https://saturncloud.io/blog/how-to-flatten-a-list-of-lists-in-python/
@@ -147,7 +149,7 @@ def create_shelter(name,street_address,city,state,zipcode,website):
 
 
 def shelter_state_list():
-    """Returns a list of shelters' states that are in the database"""
+    """Returns a list of states that are in the database"""
 
     state_list = database.session.query(Shelter.state).distinct().order_by(Shelter.state).all()
     

@@ -26,16 +26,17 @@
 
         <div class="container text-center">
           <!-- from Bootstrap navbar documentation  -->
-          
-            <nav class = "navbar fixed-top">
+            <div class="container">
+            <nav class ="navbar navbar-expand-lg navbar-light" style="background-color: #96EFFF;">
                 <div class= "navbar-nav">
+                    <img src="/static/images/pawsphoto.JPG" width="60">
                     <a class= "navbar-brand">Paws For Alarm</a>
                     <a class="nav-link" href="/">Homepage</a>
                     <a class="nav-link" href="/animals">Animals List</a>
                     <a class="nav-link" href="/faq">FAQ</a>
                 </div>
             </nav>
-        
+        </div>
         <!-- <h1>Paws for Alarm</h1> -->
         {% block main %} {% endblock main%}
         <!-- Bootstrap JS script -->

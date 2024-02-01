@@ -7,7 +7,7 @@
         <h5>Animals with Euthanasia Risk Or In Need of Foster</h5>
         <br>
             <div class="row">
-                <div class="col">
+                <div class="col dropdown">
                     <h6>Filters </h6>
                         <form action="/animals">
                             <label for="type-selection">Type: </label>
@@ -41,17 +41,18 @@
                                 {% endfor %}
                                 
                             </select>
-
+                            
                             <label for="fosteuthselection"> Group: </label>
 
                             <select name="fosteuthselection" id="fosteuthselection">
+                            
 
 
                                 <option value="all"{% if group=="all" %} selected="selected" {% endif %}>all</option>
                                 <option value="euthanasiadates"{% if group=="euthanasiadates" %} selected="selected" {% endif %}>animals w/ euthanasia dates</option>
                                 <option value="fosterrequests"{% if group=="fosterrequests" %} selected="selected" {% endif %}>animals w/ foster requests</option>
                             </select>
-
+                            
                             <label for="sort-selection">Sort by: </label>
                             <select name="sort-type" id="sort-type">
                                 <option value="scheduled_euthanasia_date">scheduled euthanasia date </option>
@@ -81,7 +82,7 @@
             <div class="col-sm">
                 {% if animal.image!=None %}
                     <a href='/animals/{{animal.id}}'>
-                        <img src="{{animal.image}}" alt="animal-image" width="180"/> <br> </a>
+                        <img src="{{animal.image}}" alt="animal-image" width="150"/> <br> </a>
                 {% endif %}
                 {{animal.name}} <br>
                 {{animal.type}} <br>
@@ -107,8 +108,8 @@
     <div class="row">
         <div class="col">
 
-            Return to homepage: <br>
-            <a href="/"> Home </a> <br>
+            <!-- Return to homepage: <br>
+            <a href="/"> Home </a> <br> -->
         </div>
     </div>
 

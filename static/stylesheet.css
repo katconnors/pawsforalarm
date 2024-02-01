@@ -1,7 +1,10 @@
 
 
+/* color palettes from colorhunt.co */
+
 body {
-    background-color: rgb(196, 236, 214);
+    background-color:#C5FFF8;
+    color: #0F1035;
 }
 
 img {
@@ -12,7 +15,7 @@ img {
 
 /* will target only the images on animals page, and not details page (unless class is changed to col-sm) */
 .col-sm img:hover {
-    outline: 2px solid rgb(37, 64, 66);
+    outline: 3px solid #5FBDFF;
     border-radius: 18px;
 }
 
@@ -21,11 +24,20 @@ button {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
+footer {
+    color: #0F1035;
+    font-size: 18px;
+}
+
+.dropdown select{
+    text-align:center;
+}
+
 /* navigation bar css  */
 
 
 .navbar-brand {
-    font-size: 35px;
+    font-size: 30px;
 }
 
 .nav-link{
