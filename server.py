@@ -4,10 +4,12 @@ from model import database_connect
 import crud
 from jinja2 import StrictUndefined
 import os
+import forms
 
 
 app = Flask(__name__)
 API = os.environ['API_KEY']
+app.secret_key = os.environ['SECRET_KEY']
 
 #information endpoints
 @app.route('/')
@@ -69,37 +71,46 @@ def get_sheltername():
 @app.route('/add', methods=['GET','POST'])
 def add_entry():
     """Page for admin to manually add animals"""
-    #note that this will currently default to None for api_id
-    api_id = request.form.get('api-id') if request.form.get('api-id') else None
-    name = request.form.get('name')
-    image = request.form.get('image')
-    type = request.form.get('type')
-    breed = request.form.get('breed')
-    age = request.form.get('age') if request.form.get('age') else None
-    gender = request.form.get('gender') if request.form.get('gender') else None
-    code = request.form.get('code')
-    source = "admin"
-    shelterid = request.form.get('shelter')
-    url = request.form.get('url')
-    joindate = request.form.get('joindate') if request.form.get('joindate') else None
-    weight = request.form.get('weight') if request.form.get('weight') else None
-    euthdate = request.form.get('euthdate') if request.form.get('euthdate') else None
-    bio = request.form.get('bio') if request.form.get('bio') else None
-    auth = request.form.get('auth-code') 
-    available_date = request.form.get('availabledate') if request.form.get('availabledate') else None
-    groupstatus = request.form.get('groupstatus') if request.form.get('groupstatus') else None
+
+    #status and source should not be altered
     status = "available"
+    source = "admin"
+    
+
+    #note that this will currently default to None for api_id
+    api_id = None
+
+    shelterid = request.form.get('shelter')
     shelter = crud.specific_shelter(shelterid)
+    
 
+    #data validation
 
-    #checks for correct authentication token
-    if request.method=='POST' and auth== os.environ["password"]:
+    form = forms.AnimalForm(request.form)
+    
+    
+    if form.validate_on_submit():
+        name = form.name.data
+        url = form.url.data
+        image = form.image.data
+        type= form.type.data
+        gender = form.gender.data
+        breed = form.breed.data
+        age = form.age.data
+        available_date = form.availabledate.data
+        euthdate = form.euthdate.data
+        groupstatus = form.groupstatus.data
+        joindate = form.joindate.data
+        code = form.code.data
+        weight= form.weight.data
+        bio = form.bio.data
+
     
         crud.create_animal(api_id,name,image,type,breed,gender,code,source,shelter,available_date,groupstatus,status,url,age,joindate,weight,euthdate,bio)
         return redirect("/confirm")
 
     else:
-        return render_template('add_entry.html',auth=auth)
+        return render_template('add_entry.html',form=form)
     
 
     

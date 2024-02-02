@@ -6,20 +6,11 @@
     <div class="col">
         <form action="/add" method="POST">
             <br>
-            
-            {% if auth %}
-            <div class="alert alert-primary" role="alert">
-            You need to provide a correct auth key!   
-            </div>
-            {% endif %}
+
 
             * indicates a required field <br> <br>
 
-            <label for="authentication">* Authentication: </label>
-            <input type="password" name="auth-code" id="auth-code"> <br>
-            <br>
-
-            <!-- Note that there is no field for api id -->
+        
 
             <h6> Animal Info </h2>
 
@@ -33,81 +24,167 @@
              <label for="shelter-id">* Shelter: </label>
              <select name="shelter" id="shelterid">
              </select> <br> <br>
- 
-
-            <label for="animal-name">* Animal name: </label>
-            <input type="text" name="name" id="animal-name"> <br>
-            <br>
-
-            <label for="animal-img">Image Src: </label>
-            <input type="text" name="image" id="animal-image"> <br>
-            <br>
-
-            <label for="animal-type">* Type: </label>
-            <input type="text" name="type" id="ype-select"> <br>
-        
-            <br>
-
-            <label for="animal-breed">* Breed: </label>
-            <input type="text" name="breed" id="animal-breed"> <br>
-            <br>
-
-            <label for="animal-breed">Age: </label>
-            <input type="text" name="age" id="animal-age"> <br>
-            <br>
-
-            <!-- circle back to this, if using as a future filter -->
-            
-            <label for="animal gender"> Gender: </label>
-            <select name="gender" id="gender-select">
-                <option value="">--</option>
-                <option value="female">female</option>
-                <option value="male">male</option> <br>
-            </select>
-            <br> <br>
-
-            <label for="group status">* Group Status: </label>
-            <select name="groupstatus" id="groupstatus">
-                <option value="other">other</option> <br>
-                <option value="euthanasiadates">euth. date</option>
-                <option value="fosterrequests">foster request</option> <br>
-                
-            </select>
-            <br> <br>
-
-            <label for="animal-code">Adopt Code: </label>
-            <input type="text" name="code" id="animal-code"> <br>
-            <br>
-           
-            <label for="animal-url">Url: </label>
-            <input type="text" name="url" id="animal-url"> <br>
-            <br>
-
-            <label for="join-date">Join Date(mm/dd/yyyy): </label>
-            <input type="text" name="joindate" id="join-date"> <br>
-            <br>
-
-            <label for="available-date">Available Date(mm/dd/yyyy): </label>
-            <input type="text" name="availabledate" id="availabledate"> <br>
-            <br>
-
-            <label for="animal-weight">Weight(lbs): </label>
-            <input type="text" name="weight" id="animal-weight"> <br>
-            <br>
-
-            <label for="euthanasia-date">Sched. Euth. Date(mm/dd/yyyy):</label>
-            <input type="text" name="euthdate" id="euth-date"> <br>
-            <br>
-
-            <label for="animal-bio">Bio: </label>
-            <input type="text" name="bio" id="animal-bio"> <br>
-            <br>
 
 
-
-            <button type="submit">Submit</button>
         </form>
     </div>
 </div>    
+
+<form method="POST" action="/add">
+    <!-- Adding this CSRF token hidden field (affiliated with Flask-WTF) module, if authentication is added later -->
+    {{ form.csrf_token }}
+    <!-- flask-wtf error flags -->
+
+   
+
+    <!-- name -->
+    {% if form.name.errors %}
+        <ul class = "errors">
+        {% for error in form.name.errors %}
+            {{error}}
+        {% endfor %}
+        </ul>
+    {% endif %}
+    {{ form.name.label }} {{ form.name(size=20) }} <br> <br>
+
+    <!-- type -->
+    {% if form.type.errors %}
+        <ul class = "errors">
+        {% for error in form.type.errors %}
+            {{error}}
+        {% endfor %}
+        </ul>
+    {% endif %}
+    {{ form.type.label }} {{ form.type(size=20) }} <br> <br>
+
+    <!-- breed -->
+    {% if form.breed.errors %}
+    <ul class = "errors">
+    {% for error in form.breed.errors %}
+        {{error}}
+    {% endfor %}
+    </ul>
+    {% endif %}
+    {{ form.breed.label }} {{ form.breed(size=20) }} <br> <br>
+
+    <!-- group status -->
+    {% if form.groupstatus.errors %}
+    <ul class = "errors">
+    {% for error in form.groupstatus.errors %}
+        {{error}}
+    {% endfor %}
+    </ul>
+    {% endif %}
+    {{ form.groupstatus.label }} {{ form.groupstatus(size=1) }} <br> <br>
+
+     <!-- euth date -->
+     {% if form.euthdate.errors %}
+     <ul class = "errors">
+     {% for error in form.euthdate.errors %}
+         {{error}}
+     {% endfor %}
+     </ul>
+     {% endif %}
+     {{ form.euthdate.label }} {{ form.euthdate(size=20) }} <br> <br>
+
+    <!-- weight -->
+    {% if form.weight.errors %}
+    <ul class = "errors">
+    {% for error in form.weight.errors %}
+        {{error}}
+    {% endfor %}
+    </ul>
+   {% endif %}
+   {{ form.weight.label }} {{ form.weight(size=20) }} <br> <br>
+
+
+    <!-- avail. date -->
+    {% if form.availabledate.errors %}
+    <ul class = "errors">
+    {% for error in form.availabledate.errors %}
+        {{error}}
+    {% endfor %}
+    </ul>
+    {% endif %}
+    {{ form.availabledate.label }} {{ form.availabledate(size=20) }} <br> <br>
+
+    <!-- join date -->
+    {% if form.joindate.errors %}
+    <ul class = "errors">
+    {% for error in form.joindate.errors %}
+        {{error}}
+    {% endfor %}
+    </ul>
+    {% endif %}
+    {{ form.joindate.label }} {{ form.joindate(size=20) }} <br> <br>
+
+
+    <!-- gender -->
+    {% if form.gender.errors %}
+    <ul class = "errors">
+    {% for error in form.gender.errors %}
+        {{error}}
+    {% endfor %}
+    </ul>
+   {% endif %}
+   {{ form.gender.label }} {{ form.gender(size=1) }} <br> <br>
+
+    <!-- age -->
+    {% if form.age.errors %}
+    <ul class = "errors">
+    {% for error in form.age.errors %}
+        {{error}}
+    {% endfor %}
+    </ul>
+    {% endif %}
+    {{ form.age.label }} {{ form.age(size=20) }} <br> <br>
+
+    <!-- image  -->
+    <!-- doesn't need error display at the moment -->
+    {% if form.image.errors %}
+    <ul class = "errors">
+    {% for error in form.image.errors %}
+        {{error}}
+    {% endfor %}
+    </ul>
+    {% endif %}
+    {{ form.image.label }} {{ form.image(size=20) }} <br> <br> 
+
+    <!-- url -->
+    {% if form.url.errors %}
+        <ul class = "errors">
+        {% for error in form.url.errors %}
+            {{error}}
+        {% endfor %}
+        </ul>
+    {% endif %}
+    {{ form.url.label }} {{ form.url(size=20) }} <br> <br> 
+
+    <!-- type -->
+    {% if form.bio.errors %}
+    <ul class = "errors">
+    {% for error in form.bio.errors %}
+        {{error}}
+    {% endfor %}
+    </ul>
+    {% endif %}
+    {{ form.bio.label }} {{ form.bio(size=20) }} <br> <br>
+
+
+     <!-- authentication -->
+     {% if form.auth.errors %}
+     <ul class = "errors">
+     {% for error in form.auth.errors %}
+         {{error}}
+     {% endfor %}
+     </ul>
+     {% endif %}
+     {{ form.auth.label }} {{ form.auth(size=20) }} <br> <br> 
+   
+    <input type="submit" value="Submit">
+</form>
+
+
+
 <script src="/static/entrytext.js"> </script>
 {% endblock main %}

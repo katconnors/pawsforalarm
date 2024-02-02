@@ -38,6 +38,11 @@ footer {
     text-align:center;
 }
 
+.errors {
+    color: #ba61ae;
+    
+}
+
 /* navigation bar css  */
 
 .nav{
