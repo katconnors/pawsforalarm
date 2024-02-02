@@ -240,48 +240,51 @@ def loop_through_api(data_data):
 
   
 
+def update_from_api():        
+
+    aggregate_num_tracker = set()
+    #handle multiple pages of results- note that the API default is to display 25 results per page
+    page_num=1
+    while True:
+        
+        endpt=f"/public/animals/search/available/haspic?page={page_num}&include=pictures,species,orgs&fields[animals]=name,url,availableDate,sex,rescueId,ageString,breedString,killDate,isNeedingFoster,updatedDate,descriptionText&fields[pictures]=large,small&fields[orgs]=name,street,city,state,postalcode,url"
+        url=f"{base_url}{endpt}"
+        response= requests.post(url,headers=headers,json=body)
+        data=response.json()
+        data_data = data["data"]
+
+        individual_num_tracker = loop_through_api(data_data)
+
+        aggregate_num_tracker.update(individual_num_tracker)
+
+        if data["meta"]["pageReturned"] == data["meta"]["pages"]:
+            break
+
+
+        else:
+            page_num+= 1
+
+
+
+    #only run this once after all the pages of api data
+
+    pfa_available_animals = check_pfa_vs_apianimals()
+
+
+    #this result will give the animals that no longer appear in api results, but are still in the pfa database
+    set_differences = pfa_available_animals-aggregate_num_tracker
+
+    
+    for api_id in set_differences:
+    #changer status function here
+        animal = crud.animal_by_apiid(api_id)
+        crud.update_animal_status(animal, "not available")
         
 
-aggregate_num_tracker = set()
-#handle multiple pages of results- note that the API default is to display 25 results per page
-page_num=1
-while True:
-    
-    endpt=f"/public/animals/search/available/haspic?page={page_num}&include=pictures,species,orgs&fields[animals]=name,url,availableDate,sex,rescueId,ageString,breedString,killDate,isNeedingFoster,updatedDate,descriptionText&fields[pictures]=large,small&fields[orgs]=name,street,city,state,postalcode,url"
-    url=f"{base_url}{endpt}"
-    response= requests.post(url,headers=headers,json=body)
-    data=response.json()
-    data_data = data["data"]
-
-    individual_num_tracker = loop_through_api(data_data)
-
-    aggregate_num_tracker.update(individual_num_tracker)
-
-    if data["meta"]["pageReturned"] == data["meta"]["pages"]:
-        break
+    # print(pfa_available_animals)
+    # print(aggregate_num_tracker)
 
 
-    else:
-        page_num+= 1
-
-
-
-#only run this once after all the pages of api data
-
-pfa_available_animals = check_pfa_vs_apianimals()
-
-
-#this result will give the animals that no longer appear in api results, but are still in the pfa database
-set_differences = pfa_available_animals-aggregate_num_tracker
-
- 
-for api_id in set_differences:
-#changer status function here
-    animal = crud.animal_by_apiid(api_id)
-    crud.update_animal_status(animal, "not available")
-    
-
-# print(pfa_available_animals)
-# print(aggregate_num_tracker)
-
+if __name__ =="__main__":
+    update_from_api()
 

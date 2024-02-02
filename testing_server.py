@@ -45,7 +45,6 @@ class IntegrationTests(unittest.TestCase):
         self.assertIn(b'FAQ', output.data)
 
 
-    
         
     def test_animalpage(self):
 
