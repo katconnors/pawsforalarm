@@ -38,12 +38,12 @@ def animals():
 
     
 
-    animals = crud.view_animals(type,query_state,group, sort_type)
+    animals = crud.view_animals(type,query_state,group,sort_type)
     state_list = crud.shelter_state_list()
     animal_list = crud.animal_type_list()
 
 
-    return render_template('animals.html',animals=animals,state_list=state_list,animal_list=animal_list,group=group, type=type,query_state=query_state,sort_type=sort_type)
+    return render_template('animals.html',animals=animals,state_list=state_list,animal_list=animal_list,group=group,type=type,query_state=query_state,sort_type=sort_type)
 
 
 @app.route('/animals/<id>')
@@ -81,6 +81,8 @@ def add_entry():
     api_id = None
 
     shelterid = request.form.get('shelter')
+
+    #check this
     shelter = crud.specific_shelter(shelterid)
     
 

@@ -12,7 +12,8 @@ class AnimalForm(FlaskForm):
     url = StringField('URL', validators=[validators.URL(),validators.Optional()])
     image = StringField('Image', validators=[validators.Optional()])
     type = StringField('* Type', validators=[validators.DataRequired()])
-    gender = SelectField('Gender', validators=[validators.Optional()], choices=[(None,'-'),('female','female'),('male','male')])
+    #gender not required due to Animal class setup, but flagged with an asterisk as a reminder
+    gender = SelectField('* Gender', validators=[validators.Optional()], choices=[(None,'-'),('female','female'),('male','male')])
     breed = StringField('* Breed', validators=[validators.DataRequired()])
     age = StringField('Age(text)', validators=[validators.Optional()])
     availabledate = DateField('Available Date', validators=[validators.Optional()])

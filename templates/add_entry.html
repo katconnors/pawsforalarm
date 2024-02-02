@@ -4,38 +4,27 @@
 
 <div class="row">
     <div class="col">
-        <form action="/add" method="POST">
-            <br>
-
-
+    
             * indicates a required field <br> <br>
-
-        
-
             <h6> Animal Info </h2>
-
-             <!-- search for a shelter, button will initate the ajax request -->
-             <label for="shelter">* Shelter Name: </label>
-             <input type="text" name="sheltername" id="shelter-name"> 
-             
- 
-             <button type="button" id="lookup-shelter-button">Lookup Shelter</button> <br> <br>
-            
-             <label for="shelter-id">* Shelter: </label>
-             <select name="shelter" id="shelterid">
-             </select> <br> <br>
-
-
-        </form>
     </div>
 </div>    
 
 <form method="POST" action="/add">
     <!-- Adding this CSRF token hidden field (affiliated with Flask-WTF) module, if authentication is added later -->
     {{ form.csrf_token }}
-    <!-- flask-wtf error flags -->
+    
 
+   <!-- search for a shelter, button will initate the ajax request -->
+   <label for="shelter">* Shelter Name: </label>
+   <input type="text" name="sheltername" id="shelter-name"> 
    
+
+   <button type="button" id="lookup-shelter-button">Lookup Shelter</button> <br> <br>
+  
+   <label for="shelter-id">* Shelter: </label>
+   <select name="shelter" id="shelterid">
+   </select> <br> <br>
 
     <!-- name -->
     {% if form.name.errors %}
