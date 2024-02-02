@@ -136,11 +136,11 @@ def update_animal_status(animal, newstatus):
 #shelter functions
 
 
-def create_shelter(name,street_address,city,state,zipcode,website):
+def create_shelter(name,street_address,city,state,zipcode,website,source):
     """Create shelter"""
 
 
-    shelter = Shelter(name=name,street_address=street_address,city=city,state=state,zipcode=zipcode,website=website)
+    shelter = Shelter(name=name,street_address=street_address,city=city,state=state,zipcode=zipcode,website=website,source=source)
 
     database.session.add(shelter)
     database.session.commit()

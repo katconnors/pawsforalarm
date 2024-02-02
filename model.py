@@ -69,6 +69,7 @@ class Shelter(database.Model):
     state = database.Column(database.Text, nullable=False)
     zipcode = database.Column(database.Integer, nullable=False)
     website = database.Column(database.Text, nullable=True)
+    source = database.Column(database.Text, nullable=True)
 
     #relationship between shelter and animal
 

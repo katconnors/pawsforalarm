@@ -177,6 +177,7 @@ def create_shelter_from_api(shelter_ob):
     state=shelter_ob["state"].upper()
     zipcode = shelter_ob["postalcode"]
     website = shelter_ob.get("url")
+    source = "rescue_groups_api"
 
     #this bit of code is to handle situations where a rescue has entered this specific string
     #this has occured for a few shelters
@@ -186,7 +187,7 @@ def create_shelter_from_api(shelter_ob):
 
     if not crud.shelter_isthere(name):
 
-        shelter_pfa= crud.create_shelter(name,address,city,state,zipcode,website)
+        shelter_pfa= crud.create_shelter(name,address,city,state,zipcode,website,source)
 
         return shelter_pfa
     

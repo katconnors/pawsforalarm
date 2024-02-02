@@ -4,53 +4,90 @@
 
 <div class="row">
     <div class="col">
-            {% if auth %}
-            <div class="alert alert-primary" role="alert">
-            You need to provide a correct auth key!   
-            </div>
-            {% endif %}
-        <form action="/addshelter" method="POST">
-            <br>
 
             *indicates a required field <br> <br>
-
-            <label for="authentication">* Authentication: </label>
-            <input type="password" name="auth-code" id="auth-code"> <br>
-            <br>
-            
-            <h6> Shelter Info </h2> 
-            <label for="shelter-name">* Shelter Name: </label>
-            <input type="text" name="name" id="shelter-name"> <br>
-            <br>
-
-            <label for="shelter-address">Street Address: </label>
-            <input type="text" name="address" id="shelter-address"> <br>
-            <br>
-
-            <label for="shelter-city">* City: </label>
-            <input type="text" name="city" id="shelter-city"> <br>
-            <br>
-
-            <label for="shelter-state">* State: </label>
-            <input type="text" name="state" id="shelter-state"> <br>
-            <br>
-
-            <label for="shelter-zipcode">* Zipcode: </label>
-            <input type="text" name="zipcode" id="shelter-zipcode"> <br>
-            <br>
-
-            <label for="shelter-website">Website: </label>
-            <input type="text" name="website" id="shelter-website"> <br>
-            <br>
-
-
-            <button type="submit">Submit</button>
-        </form>
     </div>
 </div>
 
+<form method="POST" action="/addshelter">
+
 <!-- Adding this CSRF token hidden field (affiliated with Flask-WTF) module, if authentication is added later -->
 
+    {{ form.csrf_token }}
+
+
+    <!-- name -->
+    {% if form.name.errors %}
+    <ul class = "errors">
+    {% for error in form.name.errors %}
+        {{error}}
+    {% endfor %}
+    </ul>
+    {% endif %}
+    {{ form.name.label }} {{ form.name(size=20) }} <br> <br>
+
+     <!-- address -->
+     {% if form.streetaddress.errors %}
+     <ul class = "errors">
+     {% for error in form.streetaddress.errors %}
+         {{error}}
+     {% endfor %}
+     </ul>
+     {% endif %}
+     {{ form.streetaddress.label }} {{ form.streetaddress(size=20) }} <br> <br>
+
+     <!-- city -->
+     {% if form.city.errors %}
+     <ul class = "errors">
+     {% for error in form.city.errors %}
+         {{error}}
+     {% endfor %}
+     </ul>
+     {% endif %}
+     {{ form.city.label }} {{ form.city(size=20) }} <br> <br>
+
+     <!-- state -->
+     {% if form.state.errors %}
+     <ul class = "errors">
+     {% for error in form.state.errors %}
+         {{error}}
+     {% endfor %}
+     </ul>
+     {% endif %}
+     {{ form.state.label }} {{ form.state(size=20) }} <br> <br>
+
+     <!-- zipcode -->
+     {% if form.zipcode.errors %}
+     <ul class = "errors">
+     {% for error in form.zipcode.errors %}
+         {{error}}
+     {% endfor %}
+     </ul>
+     {% endif %}
+     {{ form.zipcode.label }} {{ form.zipcode(size=20) }} <br> <br>
+
+     <!-- website-->
+     {% if form.website.errors %}
+     <ul class = "errors">
+     {% for error in form.website.errors %}
+         {{error}}
+     {% endfor %}
+     </ul>
+     {% endif %}
+     {{ form.website.label }} {{ form.website(size=20) }} <br> <br>
+
+    <!-- authentication -->
+    {% if form.auth.errors %}
+    <ul class = "errors">
+    {% for error in form.auth.errors %}
+        {{error}}
+    {% endfor %}
+    </ul>
+    {% endif %}
+    {{ form.auth.label }} {{ form.auth(size=20) }} <br> <br> 
+
+    <input type="submit" value="Submit">
+</form>
 
 
 {% endblock main %}

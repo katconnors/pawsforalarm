@@ -90,6 +90,7 @@ def add_entry():
     
     
     if form.validate_on_submit():
+
         name = form.name.data
         url = form.url.data
         image = form.image.data
@@ -118,25 +119,27 @@ def add_entry():
 def add_shelter():
     """Page for admin to manually add shelters"""
 
-    name = request.form.get('name')
-    address = request.form.get('address')
-    city = request.form.get('city')
-    state_input = request.form.get('state')
-    #including to prevent inconsistencies in state result capitalization for filter functionality
-    if state_input !=None:
-        state = state_input.upper()
-    zipcode = request.form.get('zipcode')
-    website = request.form.get('website')
-    auth = request.form.get('auth-code') 
+    #source should not be altered
+    source = "admin"
 
-    #checks for correct authentication token
+    form = forms.ShelterForm(request.form)
 
-    if request.method=='POST' and auth== os.environ["password"]:
-        crud.create_shelter(name,address,city,state,zipcode,website)
+    if form.validate_on_submit():
+
+        name = form.name.data
+        streetaddress = form.streetaddress.data
+        city = form.city.data
+        state = form.state.data.upper()
+        #including to prevent inconsistencies in state result capitalization for filter functionality
+        zipcode = form.zipcode.data
+        website = form.website.data
+
+    
+        crud.create_shelter(name,streetaddress,city,state,zipcode,website,source)
         return redirect("/confirm")
 
     else:
-        return render_template('add_shelter.html',auth=auth)
+        return render_template('add_shelter.html',form=form)
     
     
 

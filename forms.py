@@ -23,6 +23,12 @@ class AnimalForm(FlaskForm):
     weight = IntegerField('Weight(lbs)', validators=[validators.Optional()])
     bio = TextAreaField('Bio', validators=[validators.Optional()])
 
-# class ShelterForm(FlaskForm):
+class ShelterForm(FlaskForm):
 
-
+    auth = PasswordField('* Authentication', validators=[validators.DataRequired(),validators.Regexp(os.environ["password"], message="Incorrect auth. token")])
+    name = StringField('* Name', validators=[validators.DataRequired()])
+    streetaddress = StringField('Street Address', validators=[validators.Optional()])
+    city = StringField('* City', validators=[validators.DataRequired()])
+    state = StringField('* State', validators=[validators.DataRequired()])
+    zipcode = IntegerField('* Zipcode', validators=[validators.DataRequired()])
+    website = StringField('Website', validators=[validators.Optional()])
