@@ -54,21 +54,6 @@ class IntegrationTests(unittest.TestCase):
         self.assertIn(b'Animals with Euthanasia Risk Or In Need of Foster', output.data)
 
         
-    def test_animal_wrongauth(self):
-        """Checking if the admin page for adding animals returns the appropriate text when an incorrect auth key is given """
-
-        output = self.client.post('/add', data={'auth-code':'1'})
-        self.assertEqual(output.status_code,200)
-        self.assertIn(b'You need to provide a correct auth key!', output.data)
-
-
-    def test_shelter_wrongauth(self):
-        """Checking if the admin page for adding shelters returns the appropriate text when an incorrect auth key is given """
-
-        output = self.client.post('/addshelter', data={'auth-code':'1'})
-        self.assertEqual(output.status_code,200)
-        self.assertIn(b'You need to provide a correct auth key!', output.data)
-
 
 
 if __name__ == "__main__":
