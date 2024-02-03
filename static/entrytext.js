@@ -1,6 +1,3 @@
-
-
-
 const lookupButton = document.querySelector('#lookup-shelter-button');
 const shelterIdDrop = document.querySelector('#shelterid');
 const typedField = document.querySelector('#shelter-name');
