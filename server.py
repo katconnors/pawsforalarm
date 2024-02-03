@@ -82,7 +82,6 @@ def add_entry():
 
     shelterid = request.form.get('shelter')
 
-    #check this
     shelter = crud.specific_shelter(shelterid)
     
 
@@ -131,8 +130,8 @@ def add_shelter():
         name = form.name.data
         streetaddress = form.streetaddress.data
         city = form.city.data
-        state = form.state.data.upper()
         #including to prevent inconsistencies in state result capitalization for filter functionality
+        state = form.state.data.upper()
         zipcode = form.zipcode.data
         website = form.website.data
 

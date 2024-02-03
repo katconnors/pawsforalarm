@@ -17,8 +17,9 @@ img {
     border-radius: 18px;
 }
 
-
+/* outlines image border when user mouses over */
 /* will target only the images on animals page, and not details page (unless class is changed to col-sm) */
+
 .col-sm img:hover {
     outline: 3px solid #61A3BA;
     border-radius: 18px;
@@ -38,6 +39,7 @@ footer {
     text-align:center;
 }
 
+/* errors that result from wt-forms/flask-wtf class validators */
 .errors {
     color: #ba61ae;
     
@@ -48,7 +50,6 @@ footer {
 .nav{
     text-align: center;
     width: 70%
-
 
 }
 

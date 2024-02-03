@@ -31,6 +31,7 @@ class IntegrationTests(unittest.TestCase):
         
 
     def test_homepage(self):
+        """Testing for homepage success"""
 
         output = self.client.get('/')
         self.assertEqual(output.status_code,200)
@@ -39,6 +40,7 @@ class IntegrationTests(unittest.TestCase):
 
 
     def test_faq(self):
+        """Testing for FAQ page success"""
 
         output = self.client.get('/faq')
         self.assertEqual(output.status_code,200)
@@ -47,6 +49,7 @@ class IntegrationTests(unittest.TestCase):
 
         
     def test_animalpage(self):
+        """Testing for animal list page success"""
 
         output = self.client.get('/animals')
         self.assertEqual(output.status_code,200)

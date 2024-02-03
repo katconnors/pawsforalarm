@@ -5,7 +5,7 @@ const lookupButton = document.querySelector('#lookup-shelter-button');
 const shelterIdDrop = document.querySelector('#shelterid');
 const typedField = document.querySelector('#shelter-name');
 
-
+// updates shelter dropdown menu with shelters from pfa db
 
 lookupButton.addEventListener('click', () => {
     const paramurl = `/sheltername?shelter-name=${typedField.value}`;

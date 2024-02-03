@@ -129,7 +129,6 @@
     {{ form.age.label }} {{ form.age(size=20) }} <br> <br>
 
     <!-- image  -->
-    <!-- doesn't need error display at the moment -->
     {% if form.image.errors %}
     <ul class = "errors">
     {% for error in form.image.errors %}

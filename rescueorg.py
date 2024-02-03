@@ -115,8 +115,6 @@ def create_animal_from_api(animal,shelter_ob, shelter):
 
     status = "available"
 
-    
-
     # join_date=None
     # skip
 
@@ -157,7 +155,6 @@ def get_shelter_withapi(data,shelterid_api):
 
     data_inc=data["included"]
 
-    #shelter situation
 
     for assoc in data_inc:
         if assoc["type"] =="orgs" and assoc["id"] == shelterid_api:
@@ -191,7 +188,7 @@ def create_shelter_from_api(shelter_ob):
 
         return shelter_pfa
     
-    # if shelter is present
+
     else:
         shelter_prev = crud.shelter_indatabase(name)
 
@@ -243,7 +240,7 @@ def loop_through_api(data_data):
 def update_from_api():        
 
     aggregate_num_tracker = set()
-    #handle multiple pages of results- note that the API default is to display 25 results per page
+   
     page_num=1
     while True:
         
@@ -267,7 +264,6 @@ def update_from_api():
 
 
     #only run this once after all the pages of api data
-
     pfa_available_animals = check_pfa_vs_apianimals()
 
 
@@ -276,14 +272,10 @@ def update_from_api():
 
     
     for api_id in set_differences:
-    #changer status function here
+
         animal = crud.animal_by_apiid(api_id)
         crud.update_animal_status(animal, "not available")
         
-
-    # print(pfa_available_animals)
-    # print(aggregate_num_tracker)
-
 
 if __name__ =="__main__":
     update_from_api()

@@ -35,10 +35,8 @@ def create_animal(api_id, name,image,type,breed,gender, adopt_code,entry_source,
 def view_animals(type="all",query_state="all",group="all",sort_type="scheduled_euthanasia_date"):
     """View animals, with filter ability"""
     
-    #will filter to only show animals that are available
     ani_obj = Animal.query.join(Shelter).filter(Animal.status=="available")
 
-    
 
     if query_state and query_state!="all":
         ani_list = ani_obj.filter(Shelter.state==query_state,Animal.status=="available")
@@ -71,7 +69,7 @@ def view_animals(type="all",query_state="all",group="all",sort_type="scheduled_e
 def animal_type_list():
     """Returns a list of animal types that are in the database"""
 
-    #note that this will also include animal types from unavailable animals
+    #note that this will also include animal types from unavailable status animals
 
     animaltype_list = database.session.query(Animal.type).distinct().order_by(Animal.type).all()
     
@@ -121,10 +119,6 @@ def update_animal_status(animal, newstatus):
 
     """Update animal status
     Status will be used a means to display/not display animal information"""
-
-
-    # print(animal) 
-    # print("Animal changing status")
 
     animal.status = newstatus
 

@@ -33,7 +33,7 @@ class Animal(database.Model):
     type = database.Column(database.Text, nullable=False)
     breed = database.Column(database.Text, nullable=False)
     join_date = database.Column(database.Date, nullable=True)
-    #age is not an integer in database due to RG API using strings
+    #age is not an integer in database due to RescueGroups.org API using strings
     age = database.Column(database.Text, nullable=True)
     weight = database.Column(database.Integer, nullable=True)
     gender = database.Column(database.Text, nullable=True)
@@ -47,7 +47,6 @@ class Animal(database.Model):
     groupstatus = database.Column(database.Text, nullable=True)
     status = database.Column(database.Text, nullable=True)
 
-    #relationship between animal and shelter
 
     shelter = database.relationship('Shelter',back_populates="animal")
 
@@ -71,7 +70,6 @@ class Shelter(database.Model):
     website = database.Column(database.Text, nullable=True)
     source = database.Column(database.Text, nullable=True)
 
-    #relationship between shelter and animal
 
     animal = database.relationship('Animal',back_populates="shelter")
 
@@ -84,4 +82,4 @@ if __name__== "__main__":
 
     from server import app
     database_connect(app, "pawsforalarm")
-    # print("database connection established")
+
