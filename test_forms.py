@@ -88,24 +88,28 @@ class FormTest(unittest.TestCase):
 
         data = MultiDict({"city":"Test city", "state": "state","zipcode": "12345","auth":os.environ["password"]})
         form = forms.ShelterForm(data)
+        self.assertFalse(form.validate())
 
     def test_city_shelter(self):
         """Tests for missing city resulting in alert in add shelter route"""
 
         data = MultiDict({"name":"Test Shelter", "state": "state","zipcode": "12345","auth":os.environ["password"]})
         form = forms.ShelterForm(data)
+        self.assertFalse(form.validate())
 
     def test_state_shelter(self):
         """Tests for missing state resulting in alert in add shelter route"""
 
         data = MultiDict({"name":"Test Shelter","city":"Test city", "zipcode": "12345","auth":os.environ["password"]})
         form = forms.ShelterForm(data)
+        self.assertFalse(form.validate())
 
     def test_zipcode_shelter(self):
         """Tests for missing zipcode resulting in alert in add shelter route"""
 
         data = MultiDict({"name":"Test Shelter","city":"Test city", "state": "state","auth":os.environ["password"]})
         form = forms.ShelterForm(data)
+        self.assertFalse(form.validate())
         
 
 
