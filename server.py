@@ -28,15 +28,13 @@ def faq():
 #animal endpoints
 @app.route('/animals')
 def animals():
-    """Shows all animals at risk, with type and state filters at top of page
+    """Shows all animals at risk, with type,state, and group filters at top of page
     Also includes sorting functionality"""
 
     type = request.args.get('type')
     query_state = request.args.get('state')
     group = request.args.get('fosteuthselection')
     sort_type = request.args.get('sort-type',"scheduled_euthanasia_date")
-
-    
 
     animals = crud.view_animals(type,query_state,group,sort_type)
     state_list = crud.shelter_state_list()
@@ -55,6 +53,7 @@ def animal(id):
 
 
 #admin entry endpoints
+
 @app.route("/sheltername")
 def get_sheltername():
     """Obtain shelter name"""
@@ -158,5 +157,4 @@ if __name__ == "__main__":
     database_connect(app,"pawsforalarm")
 
     #important to disable debug later
-
     app.run(debug=True,host="0.0.0.0")
