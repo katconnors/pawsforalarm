@@ -34,11 +34,24 @@ footer {
     
 }
 
+#shelter-name,#lookup-shelter-button,#shelterid,#name,#type,#breed,#groupstatus,#euthdate,#weight,#availabledate,#joindate,#gender,#age,#image,#url,#bio,#auth{
+    border: 0px solid black;
+    border-radius: 5px;
+}
+
+#name,#streetaddress, #city, #state, #zipcode, #website, #auth{
+    border: 0px solid black;
+    border-radius: 5px;
+}
+
+
+
+
 /* navigation bar styling  */
 
 .nav{
     text-align: center;
-    width: 95%;
+    width: 100%;
 
 }
 
@@ -138,11 +151,16 @@ img {
 
 .dropdown{
     font-size: 20px;
+    border: 0px solid black;
+    border-radius: 18px;
 }
 
 .dropdown select{
     text-align:center;
     font-size: 20px;
+    border: 0px solid black;
+    border-radius: 5px;
+    
 }
 
 button {
