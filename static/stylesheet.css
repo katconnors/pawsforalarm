@@ -2,13 +2,15 @@
 
 /* color palettes from colorhunt.co */
 
+
 body {
-    background-color:#FFFFDD;
+    background-color:#F4F2DE;
     color: #0F1035;
 }
 
+/* main text background */
 .text-center{
-    background-color: #A2C579;
+    background-color: #A1CCD1;
     width: 75%;
 }
 
@@ -21,14 +23,16 @@ img {
 /* will target only the images on animals page, and not details page (unless class is changed to col-sm) */
 
 .col-sm img:hover {
-    outline: 3px solid #61A3BA;
+    outline: 3px solid black;
     border-radius: 18px;
 }
 
 button {
     border-radius: 5px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
+
+
 
 footer {
     color: #0F1035;
@@ -41,26 +45,87 @@ footer {
 
 /* errors that result from wt-forms/flask-wtf class validators */
 .errors {
-    color: #ba61ae;
+    color: black;
+    position: relative;
+    left: 20%;
+    background-color: #E9B384;
+    width: 60%
     
 }
 
-/* navigation bar css  */
+/* navigation bar styling  */
 
 .nav{
     text-align: center;
-    width: 70%
+    width: 90%;
 
+}
+
+/* useful resource for margins https://stackoverflow.com/questions/55192856/how-do-i-put-padding-outside-an-image-border */
+.navbar-nav img {
+    margin-left: 5px;
 }
 
 .navbar-brand {
-    font-size: 30px;
+    padding-left: 10px;
+    font-size: 35px;
 }
 
 .nav-link{
+    font-size: 25px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.navbar-expand-lg{
     font-size: 20px;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+
+/* animal details page styling */
+
+.nav-link{
+    color: black
+
+}
+
+.nav-tabs{
+   
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+
+.nav-item{
+    margin-left: auto;
+    margin-right: auto;
+    
+
+}
+
+.tab-pane{
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 
 
+
+
+/* homepage styling */
+.homepage{
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+footer {
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+/* animal list styling */
+
+.col-sm {
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.dropdown {
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
