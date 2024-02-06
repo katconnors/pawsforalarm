@@ -3,9 +3,10 @@
 
 {% block main %}
     <br>
-    
-        <h5>Animals with Euthanasia Risk Or In Need of Foster</h5>
-        <br>
+        <div class="animal-header">
+            <h5>Animals with Euthanasia Risk Or In Need of Foster</h5>
+            <br>
+        </div>
             <div class="row">
                 <div class="col dropdown">
                     <h6>Filters </h6>
@@ -82,7 +83,7 @@
             <div class="col-sm">
                 {% if animal.image!=None %}
                     <a href='/animals/{{animal.id}}'>
-                        <img src="{{animal.image}}" alt="animal-image" width="150"/> <br> </a>
+                        <img src="{{animal.image}}" alt="animal-image" width="200"/> <br> </a>
                 {% endif %}
                 {{animal.name}} <br>
                 {{animal.type}} <br>
