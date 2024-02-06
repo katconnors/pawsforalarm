@@ -30,8 +30,8 @@ footer {
     position: relative;
     left: 20%;
     background-color: #E9B384;
-    width: 60%
-    
+    width: 60%;
+    border-radius: 5px;
 }
 
 #shelter-name,#lookup-shelter-button,#shelterid,#name,#type,#breed,#groupstatus,#euthdate,#weight,#availabledate,#joindate,#gender,#age,#image,#url,#bio,#auth{
