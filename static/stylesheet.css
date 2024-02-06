@@ -45,6 +45,7 @@ footer {
 /* useful resource for margins https://stackoverflow.com/questions/55192856/how-do-i-put-padding-outside-an-image-border */
 .navbar-nav img {
     margin-left: 7px;
+    width: 10%;
 }
 
 .navbar-brand {
