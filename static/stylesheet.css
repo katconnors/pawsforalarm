@@ -157,9 +157,10 @@ img {
 
 .dropdown select{
     text-align:center;
-    font-size: 18px;
+    font-size: 16px;
     border: 0px solid black;
-    border-radius: 5px;
+    border-radius: 3px;
+    width: 10%;
     
 }
 
