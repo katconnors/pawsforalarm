@@ -2,7 +2,7 @@
 
 /* color palettes from colorhunt.co */
 
-/* base styling */
+/* base template styling */
 
 
 body {
@@ -14,6 +14,7 @@ body {
 .text-center{
     background-color: #A1CCD1;
     width: 75%;
+    border-radius: 5px;
 }
 
 
@@ -23,6 +24,7 @@ footer {
     font-size: 18px;
 }
 
+/* admin styling */
 
 /* errors that result from wt-forms/flask-wtf class validators */
 .errors {
@@ -46,12 +48,12 @@ footer {
 
 
 
-
 /* navigation bar styling  */
 
 .nav{
     text-align: center;
     width: 100%;
+    border-radius: 5px;
 
 }
 
@@ -123,7 +125,6 @@ footer {
 }
 
 img {
-    border: 0px solid black;
     border-radius: 18px;
 }
 
@@ -151,14 +152,12 @@ img {
 
 .dropdown{
     font-size: 18px;
-    border: 0px solid black;
     border-radius: 18px;
 }
 
 .dropdown select{
     text-align:center;
     font-size: 16px;
-    border: 0px solid black;
     border-radius: 3px;
     width: 10%;
     

@@ -203,7 +203,11 @@ def check_pfa_vs_apianimals():
 
     pfa_available_animals = set()
 
+    # print(pfa_available_animals)
+
     all_statuses_pfa_animals = crud.view_animals()
+
+    print(all_statuses_pfa_animals)
 
     for pfa_animal in all_statuses_pfa_animals:
         if pfa_animal.status =="available" and pfa_animal.entry_source!="admin":
@@ -237,46 +241,48 @@ def loop_through_api(data_data):
 
   
 
-def update_from_api():        
+      
 
-    aggregate_num_tracker = set()
+aggregate_num_tracker = set()
    
-    page_num=1
-    while True:
+page_num=1
+while True:
         
-        endpt=f"/public/animals/search/available/haspic?page={page_num}&include=pictures,species,orgs&fields[animals]=name,url,availableDate,sex,rescueId,ageString,breedString,killDate,isNeedingFoster,updatedDate,descriptionText&fields[pictures]=large,small&fields[orgs]=name,street,city,state,postalcode,url"
-        url=f"{base_url}{endpt}"
-        response= requests.post(url,headers=headers,json=body)
-        data=response.json()
-        data_data = data["data"]
+    endpt=f"/public/animals/search/available/haspic?page={page_num}&include=pictures,species,orgs&fields[animals]=name,url,availableDate,sex,rescueId,ageString,breedString,killDate,isNeedingFoster,updatedDate,descriptionText&fields[pictures]=large,small&fields[orgs]=name,street,city,state,postalcode,url"
+    url=f"{base_url}{endpt}"
+    response= requests.post(url,headers=headers,json=body)
+    data=response.json()
+    data_data = data["data"]
 
-        individual_num_tracker = loop_through_api(data_data)
+    individual_num_tracker = loop_through_api(data_data)
 
-        aggregate_num_tracker.update(individual_num_tracker)
+    aggregate_num_tracker.update(individual_num_tracker)
 
-        if data["meta"]["pageReturned"] == data["meta"]["pages"]:
-            break
-
-
-        else:
-            page_num+= 1
+    if data["meta"]["pageReturned"] == data["meta"]["pages"]:
+        break
 
 
+    else:
+        page_num+= 1
 
-    #only run this once after all the pages of api data
-    pfa_available_animals = check_pfa_vs_apianimals()
 
 
-    #this result will give the animals that no longer appear in api results, but are still in the pfa database
-    set_differences = pfa_available_animals-aggregate_num_tracker
+#only run this once after all the pages of api data
+pfa_available_animals = check_pfa_vs_apianimals()
+
+
+#this result will give the animals that no longer appear in api results, but are still in the pfa database
+set_differences = pfa_available_animals-aggregate_num_tracker
 
     
-    for api_id in set_differences:
+for api_id in set_differences:
 
-        animal = crud.animal_by_apiid(api_id)
-        crud.update_animal_status(animal, "not available")
+    animal = crud.animal_by_apiid(api_id)
+    crud.update_animal_status(animal, "not available")
         
 
-if __name__ =="__main__":
-    update_from_api()
+
+
+# if __name__ =="__main__":
+#     update_from_api()
 
