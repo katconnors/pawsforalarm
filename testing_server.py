@@ -35,7 +35,7 @@ class IntegrationTests(unittest.TestCase):
 
         output = self.client.get('/')
         self.assertEqual(output.status_code,200)
-        self.assertIn(b'Welcome to Paws for Alarm', output.data)
+        self.assertIn(b'Welcome to Paws For Alarm', output.data)
 
 
 
