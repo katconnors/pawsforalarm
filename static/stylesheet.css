@@ -2,8 +2,8 @@
 
 /* color palettes from colorhunt.co */
 
-/* base template styling */
 
+/* base template styling */
 
 body {
     background-color:#F4F2DE;
@@ -18,11 +18,11 @@ body {
 }
 
 
-
 footer {
     color: #0F1035;
     font-size: 18px;
 }
+
 
 /* admin styling */
 
@@ -45,7 +45,6 @@ footer {
     border: 0px solid black;
     border-radius: 5px;
 }
-
 
 
 /* navigation bar styling  */
@@ -107,7 +106,6 @@ footer {
 }
 
 
-
 /* homepage styling */
 .homepage{
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
@@ -116,6 +114,7 @@ footer {
 footer {
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
+
 
 /* animal list styling */
 
@@ -167,6 +166,7 @@ button {
     border-radius: 5px;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
+
 
 /* faq styling  */
 
