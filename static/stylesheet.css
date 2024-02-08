@@ -15,6 +15,7 @@ body {
     background-color: #A1CCD1;
     width: 75%;
     border-radius: 5px;
+    padding: 0px;
 }
 
 
@@ -53,6 +54,7 @@ footer {
     text-align: center;
     width: 100%;
     border-radius: 5px;
+    padding: 0px;
 
 }
 
@@ -71,7 +73,7 @@ footer {
 
 .nav-link{
     padding-top: 40px;
-    font-size: 30px;
+    font-size: 29px;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
@@ -150,14 +152,11 @@ img {
     font-size: 22px;
 }
 
-.dropdown {
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-}
-
 
 .dropdown{
     font-size: 18px;
     border-radius: 18px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .dropdown select{
@@ -165,6 +164,7 @@ img {
     font-size: 16px;
     border-radius: 3px;
     width: 10%;
+    margin-right: 20px;
     
 }
 
