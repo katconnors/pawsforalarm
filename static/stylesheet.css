@@ -121,6 +121,10 @@ footer {
     font-size: 23px;
 }
 
+.tab-content{
+    padding-left: 10px;
+    padding-right: 10px;
+}
 
 /* homepage styling */
 .homepage{
