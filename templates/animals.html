@@ -5,75 +5,90 @@
     <br>
         <div class="animal-header">
             <h5>Animals with Euthanasia Risk Or In Need of Foster</h5>
-            <br>
         </div>
-            <div class="row">
-                <div class="col dropdown">
-                    <h5>Filters </h5>
-                        <form action="/animals">
-                            <label for="type-selection">Type: </label>
 
-                            <select name="type" id="type-select">
+        <!-- bootstrap collapse -->
+        <p class="d-inline-flex gap-1">
+            <a class="btn btn-light" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                <i class="bi bi-filter"></i>
 
-                                <option value="all"{% if animal_type=="all" %} selected="selected" {% endif %}>all</option>
-                            <!-- will dynamically generate a animal type list for the data -->
-                            {% for animal_type in animal_list: %}
-
-                                <option value="{{animal_type}}" {% if animal_type == type %} selected="selected" {% endif %}>{{animal_type}}</option>
-                            
-                            {% endfor %}   
-                                
-                                
-                            </select>
-
-                            <label for="state-selection">State: </label>
-
-                            <select name="state" id="state-select">
-                                
-                                
-                                
-                                
-                                <option value="all"{% if query_state=="all" %} selected="selected" {% endif %}>all</option>
-                                <!-- will dynamically generate a state list for the data -->
-                                {% for database_state in state_list: %}
-
-                                    <option value="{{database_state}}" {% if database_state == query_state %} selected="selected" {% endif %}>{{database_state}}</option>
-                                
-                                {% endfor %}
-                                
-                            </select>
-                            
-                            <label for="fosteuthselection"> Group: </label>
-
-                            <select name="fosteuthselection" id="fosteuthselection">
-                            
-
-
-                                <option value="all"{% if group=="all" %} selected="selected" {% endif %}>all</option>
-                                <option value="euthanasiadates"{% if group=="euthanasiadates" %} selected="selected" {% endif %}>animals w/ euthanasia dates</option>
-                                <option value="fosterrequests"{% if group=="fosterrequests" %} selected="selected" {% endif %}>animals w/ foster requests</option>
-                            </select>
-                            
-                            <label for="sort-selection">Sort by: </label>
-                            <select name="sort-type" id="sort-type">
-                                <option value="scheduled_euthanasia_date">scheduled euthanasia date </option>
-
-                            </select>
-
-                            
-                            <br>
-                            <br>
+            </a>
+          </p>
+          <div class="collapse" id="collapseExample">
+            <div>
+                <div class="row">
+                    <div class="col dropdown">
                         
-                            <button type="submit">Apply the above filters/sort type </button>
-                        </form>
-                        <br>
-
-                        <form action="/animals">
-                            <button type="submit">View all/reset</button> 
-                        </form>
+                            <form action="/animals">
+                                <label for="type-selection">Type: </label>
+    
+                                <select name="type" id="type-select">
+    
+                                    <option value="all"{% if animal_type=="all" %} selected="selected" {% endif %}>all</option>
+                                <!-- will dynamically generate a animal type list for the data -->
+                                {% for animal_type in animal_list: %}
+    
+                                    <option value="{{animal_type}}" {% if animal_type == type %} selected="selected" {% endif %}>{{animal_type}}</option>
+                                
+                                {% endfor %}   
+                                    
+                                    
+                                </select>
+    
+                                <label for="state-selection">State: </label>
+    
+                                <select name="state" id="state-select">
+                                    
+                                    
+                                    
+                                    
+                                    <option value="all"{% if query_state=="all" %} selected="selected" {% endif %}>all</option>
+                                    <!-- will dynamically generate a state list for the data -->
+                                    {% for database_state in state_list: %}
+    
+                                        <option value="{{database_state}}" {% if database_state == query_state %} selected="selected" {% endif %}>{{database_state}}</option>
+                                    
+                                    {% endfor %}
+                                    
+                                </select>
+                                
+                                <label for="fosteuthselection"> Group: </label>
+    
+                                <select name="fosteuthselection" id="fosteuthselection">
+                                
+    
+    
+                                    <option value="all"{% if group=="all" %} selected="selected" {% endif %}>all</option>
+                                    <option value="euthanasiadates"{% if group=="euthanasiadates" %} selected="selected" {% endif %}>animals w/ euthanasia dates</option>
+                                    <option value="fosterrequests"{% if group=="fosterrequests" %} selected="selected" {% endif %}>animals w/ foster requests</option>
+                                </select>
+                                
+                                <label for="sort-selection">Sort by: </label>
+                                <select name="sort-type" id="sort-type">
+                                    <option value="scheduled_euthanasia_date">scheduled euthanasia date </option>
+    
+                                </select>
+    
+                                
+                                <br>
+                                <br>
+                            
+                                <button class="btn btn-light" type="submit">Apply the above filters/sort type </button>
+                            </form>
+                            <br>
+    
+                            <form action="/animals">
+                                <button class="btn btn-light" type="submit">View all/reset</button> 
+                            </form>
+                    </div>
                 </div>
+           <br>
+
             </div>
-       <br>
+          </div>
+
+
+
         {% for animal in animals: %}
             {% if ((loop.index)-1) %3 == 0 %}
                 <div class="row">
