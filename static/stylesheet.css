@@ -77,14 +77,15 @@ footer {
 
 .navbar-brand {
     padding-top: 20px;
-    padding-left: 10px;
+    padding-left: 20px;
     font-size: 48px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .nav-link{
     padding-top: 40px;
-    font-size: 29px;
+    font-size: 30px;
+    margin-left: 10px;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
