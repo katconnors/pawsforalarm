@@ -79,11 +79,12 @@
                 <div class="row">
         
             {% endif %}
-         
+            <!-- object fit 
+            https://www.digitalocean.com/community/tutorials/css-cropping-images-object-fit -->
             <div class="col-sm">
                 {% if animal.image!=None %}
                     <a href='/animals/{{animal.id}}'>
-                        <img src="{{animal.image}}" alt="animal-image" width="200"/> <br> </a>
+                        <img src="{{animal.image}}" alt="animal-image" width="300" height="300" style= "object-fit:contain" /> <br> </a>
                 {% endif %}
                 {{animal.name}} <br>
                 {{animal.type}} <br>
