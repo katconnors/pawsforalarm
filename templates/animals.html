@@ -24,7 +24,7 @@
     
                                 <select name="type" id="type-select">
     
-                                    <option value="all"{% if animal_type=="all" %} selected="selected" {% endif %}>all</option>
+                                    <option value="all"{% if animal_type=="all" %} selected="selected" {% endif %}>All</option>
                                 <!-- will dynamically generate a animal type list for the data -->
                                 {% for animal_type in animal_list: %}
     
@@ -42,7 +42,7 @@
                                     
                                     
                                     
-                                    <option value="all"{% if query_state=="all" %} selected="selected" {% endif %}>all</option>
+                                    <option value="all"{% if query_state=="all" %} selected="selected" {% endif %}>All</option>
                                     <!-- will dynamically generate a state list for the data -->
                                     {% for database_state in state_list: %}
     
@@ -58,14 +58,14 @@
                                 
     
     
-                                    <option value="all"{% if group=="all" %} selected="selected" {% endif %}>all</option>
-                                    <option value="euthanasiadates"{% if group=="euthanasiadates" %} selected="selected" {% endif %}>animals w/ euthanasia dates</option>
-                                    <option value="fosterrequests"{% if group=="fosterrequests" %} selected="selected" {% endif %}>animals w/ foster requests</option>
+                                    <option value="all"{% if group=="all" %} selected="selected" {% endif %}>All</option>
+                                    <option value="euthanasiadates"{% if group=="euthanasiadates" %} selected="selected" {% endif %}>Animals w/ Euthanasia Dates</option>
+                                    <option value="fosterrequests"{% if group=="fosterrequests" %} selected="selected" {% endif %}>Animals w/ Foster Requests</option>
                                 </select>
                                 
                                 <label for="sort-selection">Sort by: </label>
                                 <select name="sort-type" id="sort-type">
-                                    <option value="scheduled_euthanasia_date">scheduled euthanasia date </option>
+                                    <option value="scheduled_euthanasia_date">Scheduled Euthanasia Date </option>
     
                                 </select>
     
@@ -73,12 +73,12 @@
                                 <br>
                                 <br>
                             
-                                <button class="btn btn-light" type="submit">Apply the above filters/sort type </button>
+                                <button class="btn btn-light" type="submit">Apply the Above Filters/Sort Type </button>
                             </form>
                             <br>
     
                             <form action="/animals">
-                                <button class="btn btn-light" type="submit">View all/reset</button> 
+                                <button class="btn btn-light" type="submit">View All/Reset</button> 
                             </form>
                     </div>
                 </div>
