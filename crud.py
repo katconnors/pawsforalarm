@@ -6,7 +6,7 @@ import itertools
 
 #animal functions
 
-def create_animal(api_id, name,image,type,breed,gender, adopt_code,entry_source,shelter,avail_date=None, groupstatus=None, status=None, url=None,age=None,join_date=None,weight=None,scheduled_euthanasia_date=None,bio=None):
+def create_animal(api_id, name,image,type,breed,gender, adopt_code,entry_source,shelter,tracker, avail_date=None, groupstatus=None, status=None, url=None,age=None,join_date=None,weight=None,scheduled_euthanasia_date=None,bio=None):
     """Create shelter animal"""
     
     animal = Animal(
@@ -19,6 +19,7 @@ def create_animal(api_id, name,image,type,breed,gender, adopt_code,entry_source,
         adopt_code=adopt_code,
         entry_source=entry_source,
         shelter=shelter,
+        tracker=tracker,
         avail_date=avail_date, 
         groupstatus=groupstatus, 
         status=status,

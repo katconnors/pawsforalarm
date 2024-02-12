@@ -46,6 +46,8 @@ class Animal(database.Model):
     avail_date = database.Column(database.Date, nullable=True)
     groupstatus = database.Column(database.Text, nullable=True)
     status = database.Column(database.Text, nullable=True)
+    #provides data to shelters regarding where their animals are being viewed
+    tracker = database.Column(database.Text, nullable=False)
 
 
     shelter = database.relationship('Shelter',back_populates="animal")

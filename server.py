@@ -24,6 +24,12 @@ def faq():
 
     return render_template('faq.html')
 
+@app.route('/privacypolicy')
+def policy():
+    """Privacy Policy"""
+
+    return render_template('privacypolicy.html')
+
 
 #animal endpoints
 @app.route('/animals')

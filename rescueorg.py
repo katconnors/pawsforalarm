@@ -109,6 +109,9 @@ def create_animal_from_api(animal,shelter_ob, shelter):
 
     shelter = shelter
 
+    #provides data to shelters regarding where their animals are being viewed
+    tracker = animal["attributes"]["trackerimageUrl"]
+
     avail_date = animal["attributes"].get("availableDate")
 
     age=animal["attributes"].get("ageString")
@@ -141,7 +144,7 @@ def create_animal_from_api(animal,shelter_ob, shelter):
             crud.update_animal_euthdate(api_id,scheduled_euthanasia_date)
 
     else:
-        crud.create_animal(api_id=api_id,name=name,image=image,type=species,breed=breed,gender=gender,adopt_code=adopt_code,entry_source=entry_source,shelter=shelter,avail_date=avail_date,groupstatus=groupstatus, status=status, url=url,age=age,scheduled_euthanasia_date=scheduled_euthanasia_date,bio=bio)
+        crud.create_animal(api_id=api_id,name=name,image=image,type=species,breed=breed,gender=gender,adopt_code=adopt_code,entry_source=entry_source,shelter=shelter,tracker=tracker, avail_date=avail_date,groupstatus=groupstatus, status=status, url=url,age=age,scheduled_euthanasia_date=scheduled_euthanasia_date,bio=bio)
     
 
     #this return statement is for automation of entry comparisons between pfa and api results
@@ -248,7 +251,7 @@ aggregate_num_tracker = set()
 page_num=1
 while True:
         
-    endpt=f"/public/animals/search/available/haspic?page={page_num}&include=pictures,species,orgs&fields[animals]=name,url,availableDate,sex,rescueId,ageString,breedString,killDate,isNeedingFoster,updatedDate,descriptionText&fields[pictures]=large,small&fields[orgs]=name,street,city,state,postalcode,url"
+    endpt=f"/public/animals/search/available/haspic?page={page_num}&include=pictures,species,orgs&fields[animals]=name,url,trackerimageUrl, availableDate,sex,rescueId,ageString,breedString,killDate,isNeedingFoster,updatedDate,descriptionText&fields[pictures]=large,small&fields[orgs]=name,street,city,state,postalcode,url"
     url=f"{base_url}{endpt}"
     response= requests.post(url,headers=headers,json=body)
     data=response.json()
