@@ -9,7 +9,7 @@ PFA has an interface to support adding new animals and updating information each
 Users can view all available animals, or filter results (by species, location, and organizational group).<br><br>
 
 
-![alt text](pfareadme2-alt.jpg)
+![alt text](pfareadme1-alt.jpg)
 
 ## Technologies Used:
 Python<br>
