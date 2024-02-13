@@ -12,7 +12,7 @@ The dropdown on the species filter leverages a query and fields are dynamically 
 ![alt text](pfareadme1-alt.jpg) <br>
 
 Within each animal detail page, there are Bootstrap element tabs to separate the appropriate data. <br>
-![alt text](pfareadme3-1.jpg) <br>
+![alt text](pfareadme3.jpg) <br>
 <br>
 
 ## Admin Routes:
