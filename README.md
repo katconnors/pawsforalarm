@@ -1,4 +1,4 @@
-# pawsforalarm 
+# Paws For Alarm 
 ![alt text](pfareadme1.jpg)
 
 
@@ -10,7 +10,7 @@ Users can view all available animals, or filter results (by species, location, a
 ![alt text](pfareadme2-alt.jpg)
 
 
-### Setup:
+### Setup steps:
 Create a virtual environment. <br>
 Install the items in requirements.txt <br>
 You will need to request an API key from RescueGroups.org.<br>
@@ -18,11 +18,9 @@ To use the manual entry features, you'll need to generate an authentication toke
 Additionally, a password is used for code implemented to prevent CSRF attacks- this will need to be generated.<br><br>
 
 
-
 ### Creator Credit:<br>
 In pursuit of following the educational use terms of RescueGroups.org's API, unsplash images were used to replace shelter animal images for this file.<br>
 When the site launches and the API key use changes, this may be updated.<br>
-<br><br>
 Thank you to the following unsplash photographers.<br>
 @lacellia<br>
 @e_d_g_a_r<br>
