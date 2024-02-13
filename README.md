@@ -29,7 +29,7 @@ Bootstrap<br>
 
 
 
-## Setup steps:
+## Setup:
 Create a virtual environment. <br>
 Install the items in requirements.txt <br>
 You will need to request an API key from RescueGroups.org.<br>
