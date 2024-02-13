@@ -1,5 +1,5 @@
 # Paws For Alarm 
-![alt text](pfareadme1.jpg)
+![alt text](pfareadme.jpg)
 
 
 ## Description:
