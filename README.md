@@ -17,7 +17,7 @@ Within each animal detail page, there are Bootstrap element tabs to separate the
 
 ## Admin Routes:
 Both admin routes have client and server side validation.<br>
-A notable feature of the route is the ability for the admin to search for a shelter in the database without leaving the page.<br>
+A notable feature of the add animal route is the ability for the admin to search for a shelter in the database without leaving the page.<br>
 An AJAX request is made which returns JSON data and updates the DOM- in this case, the dropdown menu.<br><br>
 
 ## Technologies Used:
