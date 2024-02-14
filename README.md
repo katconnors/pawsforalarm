@@ -2,7 +2,7 @@
 ![alt text](pfareadme.jpg)
 
 
-## Description:
+## Description
 Paws For Alarm consolidates listings for animals at risk of euthanasia. As a secondary goal, it endorses animals in need of foster homes. <br>
 The app supports manual entry by an admin, but primarily sources information from the RescueGroups.org API.<br>
 PFA has an interface to support adding new animals and updating information each time data is ingested from external sources.<br>
@@ -15,12 +15,12 @@ Within each animal detail page, there are Bootstrap element tabs to separate the
 ![alt text](pfareadme3.jpg) <br>
 <br>
 
-## Admin Routes:
+## Admin Routes
 Both admin routes have client and server side validation.<br>
 A notable feature of the add animal route is the ability for the admin to search for a shelter in the database without leaving the page.<br>
 An AJAX request is made which returns JSON data and updates the DOM- in this case, the dropdown menu.<br><br>
 
-## Technologies Used:
+## Technologies Used
 Python<br>
 Flask<br>
 PostgreSQL<br>
@@ -33,7 +33,7 @@ AJAX<br>
 JSON<br>
 Bootstrap<br>
 
-## Setup:
+## Setup
 Create a virtual environment. <br>
 Install the items in requirements.txt <br>
 You will need to request an API key from RescueGroups.org.<br>
@@ -41,7 +41,7 @@ To use the manual entry features, you'll need to generate an authentication toke
 Additionally, a password is used for code implemented to prevent CSRF attacks- this will need to be generated.<br><br>
 
 
-## Creator Credit:<br>
+## Creator Credit<br>
 In pursuit of following the educational use terms of RescueGroups.org's API, unsplash images were used to replace shelter animal images for this file.<br>
 When the site launches and the API key use changes, this may be updated.<br>
 Thank you to the following unsplash photographers.<br>
