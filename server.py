@@ -163,4 +163,9 @@ if __name__ == "__main__":
     database_connect(app,"pawsforalarm")
 
     #important to disable debug later
-    app.run(debug=True,host="0.0.0.0")
+
+    if os.environ.get('LOCAL') =="localenv":
+        app.run(debug=True,host="0.0.0.0")
+
+    else:
+        app.run()
