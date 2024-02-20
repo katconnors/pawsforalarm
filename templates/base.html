@@ -1,56 +1,215 @@
 <!DOCTYPE html>
 
 <html>
+  <head>
+    <!-- resource for sizing on different devices: -->
+    <!-- https://stackoverflow.com/questions/29943335/page-is-responsive-but-not-resizing-on-mobile-properly/29943513#29943513 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <head>
-        <!-- resource for sizing on different devices: -->
-        <!-- https://stackoverflow.com/questions/29943335/page-is-responsive-but-not-resizing-on-mobile-properly/29943513#29943513 -->
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Paws for Alarm</title>
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
 
-        <title>Paws for Alarm</title>
-        <!-- Bootstrap -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- icons for bootstrap -->
 
-        
-        <!-- icons for bootstrap -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
 
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- other stylesheet -->
 
-        <!-- other stylesheet -->
+    <link rel="stylesheet" href="/static/stylesheet.css" />
 
-        <link rel="stylesheet" href="/static/stylesheet.css">
-
-        <!-- favicon tutorial:
+    <!-- favicon tutorial:
         https://www.w3schools.com/html/html_favicon.asp -->
 
-        <link rel= "icon" type="image/x-icon" href="/static/images/siteicon.png">
-        
-    </head>
+    <link rel="icon" type="image/x-icon" href="/static/images/siteicon.png" />
+  </head>
 
-    <body> 
+  <body>
+    <div class="container text-center">
+      <!-- from Bootstrap navbar documentation  -->
+      <div class="container nav">
+        <nav
+          class="navbar navbar-expand-lg navbar-light"
+          style="background-color: #e9b384"
+        >
+          <div class="navbar-nav">
+            <img src="/static/images/pfalogo1.png" width="90" height="90" />
+            <a class="navbar-brand">Paws For Alarm</a>
+            <a class="nav-link" href="/"> Home </a>
+            <a class="nav-link" href="/animals"> Animals </a>
+            <a class="nav-link" href="/faq"> FAQ </a>
+          </div>
+        </nav>
+      </div>
 
-        <div class="container text-center">
-          <!-- from Bootstrap navbar documentation  -->
-            <div class="container nav">
-            <nav class ="navbar navbar-expand-lg navbar-light" style="background-color: #E9B384 ;">
-                <div class= "navbar-nav">
-                    <img src="/static/images/pfalogo1.png" width="90" height="90">
-                    <a class= "navbar-brand">Paws For Alarm</a>
-                    <a class="nav-link" href="/"> Home </a>
-                    <a class="nav-link" href="/animals"> Animals </a>
-                    <a class="nav-link" href="/faq"> FAQ </a>
-                </div>
-            </nav>
-        </div>
-  
-        {% block main %} {% endblock main%}
-        <!-- Bootstrap JS script -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+      {% block main %} {% endblock main%}
+      <!-- Bootstrap JS script -->
+      <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"
+      ></script>
 
-        <br> <footer>Connecting animals at risk of euthanasia to their future adopters. <br>
-        <a style="font-size: 10px;"href="/privacypolicy"> Privacy Policy </a> </footer> 
-        </div>
-    </body>
+      <script>
+        // FullStory code snippet
 
+        window["_fs_host"] = "fullstory.com";
+        window["_fs_script"] = "edge.fullstory.com/s/fs.js";
+        window["_fs_org"] = "o-1W7034-na1";
+        window["_fs_namespace"] = "FS";
+        !(function (m, n, e, t, l, o, g, y) {
+          var s,
+            f,
+            a = (function (h) {
+              return (
+                !(h in m) ||
+                (m.console &&
+                  m.console.log &&
+                  m.console.log(
+                    'FullStory namespace conflict. Please set window["_fs_namespace"].'
+                  ),
+                !1)
+              );
+            })(e);
+          function j(b) {
+            var h,
+              d = [];
+            function k() {
+              h &&
+                (d.forEach(function (b) {
+                  var d;
+                  try {
+                    d = b[h[0]] && b[h[0]](h[1]);
+                  } catch (h) {
+                    return void (b[3] && b[3](h));
+                  }
+                  d && d.then ? d.then(b[2], b[3]) : b[2] && b[2](d);
+                }),
+                (d.length = 0));
+            }
+            function r(b) {
+              return function (d) {
+                h || ((h = [b, d]), k());
+              };
+            }
+            return (
+              b(r(0), r(1)),
+              {
+                then: function (b, h) {
+                  return j(function (r, i) {
+                    d.push([b, h, r, i]), k();
+                  });
+                },
+              }
+            );
+          }
+          a &&
+            ((g = m[e] =
+              (function () {
+                var b = function (b, d, k, r) {
+                  function i(i, c) {
+                    h(b, d, k, i, c, r);
+                  }
+                  r = r || 2;
+                  var c,
+                    u = /Async$/;
+                  return u.test(b)
+                    ? ((b = b.replace(u, "")),
+                      "function" == typeof Promise ? new Promise(i) : j(i))
+                    : h(b, d, k, c, c, r);
+                };
+                function h(h, d, k, r, i, c) {
+                  return b._api
+                    ? b._api(h, d, k, r, i, c)
+                    : (b.q && b.q.push([h, d, k, r, i, c]), null);
+                }
+                return (b.q = []), b;
+              })()),
+            (y = function (b) {
+              function h(h) {
+                "function" == typeof h[4] && h[4](new Error(b));
+              }
+              var d = g.q;
+              if (d) {
+                for (var k = 0; k < d.length; k++) h(d[k]);
+                (d.length = 0), (d.push = h);
+              }
+            }),
+            (function () {
+              ((o = n.createElement(t)).async = !0),
+                (o.crossOrigin = "anonymous"),
+                (o.src = "https://" + l),
+                (o.onerror = function () {
+                  y("Error loading " + l);
+                });
+              var b = n.getElementsByTagName(t)[0];
+              b.parentNode.insertBefore(o, b);
+            })(),
+            (function () {
+              function b() {}
+              function h(b, h, d) {
+                g(b, h, d, 1);
+              }
+              function d(b, d, k) {
+                h("setProperties", { type: b, properties: d }, k);
+              }
+              function k(b, h) {
+                d("user", b, h);
+              }
+              function r(b, h, d) {
+                k({ uid: b }, d), h && k(h, d);
+              }
+              (g.identify = r),
+                (g.setUserVars = k),
+                (g.identifyAccount = b),
+                (g.clearUserCookie = b),
+                (g.setVars = d),
+                (g.event = function (b, d, k) {
+                  h("trackEvent", { name: b, properties: d }, k);
+                }),
+                (g.anonymize = function () {
+                  r(!1);
+                }),
+                (g.shutdown = function () {
+                  h("shutdown");
+                }),
+                (g.restart = function () {
+                  h("restart");
+                }),
+                (g.log = function (b, d) {
+                  h("log", { level: b, msg: d });
+                }),
+                (g.consent = function (b) {
+                  h("setIdentity", { consent: !arguments.length || b });
+                });
+            })(),
+            (s = "fetch"),
+            (f = "XMLHttpRequest"),
+            (g._w = {}),
+            (g._w[f] = m[f]),
+            (g._w[s] = m[s]),
+            m[s] &&
+              (m[s] = function () {
+                return g._w[s].apply(this, arguments);
+              }),
+            (g._v = "2.0.0"));
+        })(window, document, window._fs_namespace, "script", window._fs_script);
+      </script>
 
+      <br />
+      <footer>
+        Connecting animals at risk of euthanasia to their future adopters.
+        <br />
+        <a style="font-size: 10px" href="/privacypolicy"> Privacy Policy </a>
+      </footer>
+    </div>
+  </body>
 </html>
