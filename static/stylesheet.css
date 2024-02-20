@@ -1,204 +1,204 @@
-
-
 /* color palettes from colorhunt.co */
-
 
 /* base template styling */
 
 body {
-    background-color:#F4F2DE;
-    color: #0F1035;
+  background-color: #f4f2de;
+  color: #0f1035;
 }
 
 /* main text background */
-.text-center{
-    background-color: #A1CCD1;
-    width: 75%;
-    border-radius: 5px;
-    padding: 0px;
+.text-center {
+  background-color: #a1ccd1;
+  width: 75%;
+  border-radius: 5px;
+  padding: 0px;
 }
-
 
 footer {
-    color: #0F1035;
-    font-size: 20px;
+  color: #0f1035;
+  font-size: 20px;
 }
-
 
 /* admin styling */
 
 /* errors that result from wt-forms/flask-wtf class validators */
 .errors {
-    color: black;
-    position: relative;
-    left: 20%;
-    background-color: #E9B384;
-    width: 60%;
-    border-radius: 5px;
+  color: black;
+  position: relative;
+  left: 20%;
+  background-color: #e9b384;
+  width: 60%;
+  border-radius: 5px;
 }
 
-#shelter-name,#lookup-shelter-button,#shelterid,#name,#type,#breed,#groupstatus,#euthdate,#weight,#availabledate,#joindate,#gender,#age,#image,#url,#bio,#auth{
-    border: 0px solid black;
-    border-radius: 5px;
+#shelter-name,
+#lookup-shelter-button,
+#shelterid,
+#name,
+#type,
+#breed,
+#groupstatus,
+#euthdate,
+#weight,
+#availabledate,
+#joindate,
+#gender,
+#age,
+#image,
+#url,
+#bio,
+#auth {
+  border: 0px solid black;
+  border-radius: 5px;
 }
 
-#name,#streetaddress, #city, #state, #zipcode, #website, #auth{
-    border: 0px solid black;
-    border-radius: 5px;
+#name,
+#streetaddress,
+#city,
+#state,
+#zipcode,
+#website,
+#auth {
+  border: 0px solid black;
+  border-radius: 5px;
 }
-
 
 /* navigation bar styling  */
 
-.navbar-nav{
-    width: 100%;
+.navbar-nav {
+  width: 100%;
 }
 
-.navbar-nav .nav-link:hover{
-    text-decoration: underline;
+.navbar-nav .nav-link:hover {
+  text-decoration: underline;
 }
 
-.nav{
-    text-align: center;
-    width: 100%;
-    border-radius: 5px;
-    padding: 0px;
-
+.nav {
+  text-align: center;
+  width: 100%;
+  border-radius: 5px;
+  padding: 0px;
 }
 
-.navbar-expand-lg{
-    width: 100%;
+.navbar-expand-lg {
+  width: 100%;
 }
 
 /* useful resource for margins https://stackoverflow.com/questions/55192856/how-do-i-put-padding-outside-an-image-border */
 .navbar-nav img {
-    margin-left: 7px;
+  margin-left: 7px;
 }
 
 .navbar-brand {
-    padding-top: 20px;
-    padding-left: 20px;
-    font-size: 48px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  padding-top: 20px;
+  padding-left: 20px;
+  font-size: 24pt;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
-.nav-link{
-    padding-top: 40px;
-    font-size: 30px;
-    margin-left: 10px;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+.nav-link {
+  padding-top: 27px;
+  font-size: 20pt;
+  margin-left: 10px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
-.navbar-expand-lg{
-    font-size: 20px;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+.navbar-expand-lg {
+  font-size: 20px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
-
 
 /* animal details page styling */
 
-.nav-link{
-    color: black
-
+.nav-link {
+  color: black;
 }
 
-.nav-tabs{
-   
-    margin-left: auto;
-    margin-right: auto;
-    
+.nav-tabs {
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.nav-item{
-    margin-left: auto;
-    margin-right: auto;
-    
-
+.nav-item {
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.tab-pane{
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: 23px;
+.tab-pane {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 23px;
 }
 
-.tab-content{
-    padding-left: 10px;
-    padding-right: 10px;
+.tab-content {
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 /* homepage styling */
-.homepage{
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+.homepage {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
-.col h4{
-    font-size: 12px;
+.col h4 {
+  font-size: 12px;
 }
-
-
-
-
 
 /* animal list styling */
 
-.animal-header h5{
-    font-size: 25px;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+.animal-header h5 {
+  font-size: 25px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 img {
-    border-radius: 25px;
-    
+  border-radius: 25px;
 }
 
 /* outlines image border when user mouses over */
 /* will target only the images on animals page, and not details page (unless class is changed to col-sm) */
 
 .col-sm img:hover {
-    outline: 3px solid black;
-    border-radius: 18px;
+  outline: 3px solid black;
+  border-radius: 18px;
 }
 
 .col-sm {
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: 20px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 20px;
 }
 
-.dropdown h6{
-    font-size: 22px;
+.dropdown h6 {
+  font-size: 22px;
 }
 
-
-.dropdown{
-    font-size: 18px;
-    border-radius: 18px;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+.dropdown {
+  font-size: 18px;
+  border-radius: 18px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
-.dropdown select{
-    text-align:center;
-    font-size: 16px;
-    border-radius: 3px;
-    width: 10%;
-    margin-right: 20px;
-    
+.dropdown select {
+  text-align: center;
+  font-size: 16px;
+  border-radius: 3px;
+  width: 10%;
+  margin-right: 20px;
 }
 
 button {
-    border-radius: 5px;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  border-radius: 5px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
-
 
 /* faq styling  */
 
 .text-center {
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 .text-center h6 {
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-weight: 600;
-
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-weight: 600;
 }
