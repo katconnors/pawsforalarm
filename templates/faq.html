@@ -1,33 +1,55 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block main %}
+<br />
+<h3>FAQ</h3>
+<br />
 
+<h6>Q: What is the goal of your site?</h6>
+<text>
+  A: The starting vision was to consolidate adoption posts for animals that are
+  at risk of euthanasia. <br />
+  While this is still the main goal, the site also now promotes animals that are
+  in need of a foster home. <br />
+</text>
+<br />
 
-{% block main %}
-    <br>
-    <h3>FAQ </h3> <br>
+<h6>
+  Q: How do you determine which animals are at risk of euthanasia, or need to be
+  fostered?
+</h6>
+<text>
+  A: A portion of the animals on the site have euthanasia dates, per data
+  provided by the <a href="https://rescuegroups.org/">RescueGroups.org</a> API.
+  <br />
+  Please note that this list <i> is not exhaustive</i>; some shelters don't
+  enter information into RescueGroups.org. <br />
+  In the case of animals in need of foster, shelter groups can flag animals as
+  such.
+</text>
+<br /><br />
 
-    <h6>Q: What is the goal of your site? </h6>
-    <text> A: The starting vision was to consolidate adoption posts for animals that are at risk of euthanasia. <br>
-        While this is still the main goal, the site also now promotes animals that are in need of a foster home. <br>
-    </text> <br>
+<h6>Q: Why is an animal's listed euthanasia date in the past?</h6>
+<text>
+  A: There are many potential answers for this. <br />
+  An animal may be in foster care; if so, their date might not be updated in
+  records. <br />
+  Another explanation is that the animal is no longer available.
+</text>
+<br /><br />
 
-    <h6>Q: How do you determine which animals are at risk of euthanasia, or need to be fostered? </h6>
-    <text> A: A portion of the animals on the site have euthanasia dates, per data provided by the <a href="https://rescuegroups.org/">RescueGroups.org</a> API.  <br>
-        Please note that this list <i> is not exhaustive</i>; some shelters don't enter information into RescueGroups.org. <br>
-        In the case of animals in need of foster, shelter groups can flag animals as such. </text> <br><br>
+<h6>Q: What animals will be on this site?</h6>
+<text>
+  A: The main animal results are of cats and dogs, but other animal types are
+  supported as well.
+</text>
+<br />
+<br />
 
-    <h6>Q: Why is an animal's listed euthanasia date in the past? </h6>
-    <text> A: There are many potential answers for this. <br> An animal may be in foster care; if so, their date might not be updated in records. <br>
-        Another explanation is that the animal is no longer available.  </text> <br><br>
-
-    <h6>Q: What animals will be on this site? </h6>
-    <text> A: The main animal results are of cats and dogs, but other animal types are supported as well. </text> <br> <br>
-
-    <!-- update when daily api interface is automatic -->
-    <h6>Q: How is the site updated?  </h6>
-    <text> A: The information is compiled using information from an API. <br>
-        Ultimately, there may be more regular, automatic updates. </text> <br> <br>
-    
-
-    
+<h6>Q: How is the site updated?</h6>
+<text>
+  A: The information is compiled using information from an API. <br />
+  Updates to the site take place daily.
+</text>
+<br />
+<br />
 
 {% endblock main%}
