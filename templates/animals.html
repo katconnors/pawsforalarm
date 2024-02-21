@@ -16,7 +16,7 @@
         <!-- bootstrap collapse -->
         <p class="d-inline-flex gap-1">
             <a class="btn btn-light" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                <i class="bi bi-filter"></i>
+                <i class="bi bi-filter" data-toggle="tooltip" title="Filters"></i>
 
             </a>
           </p>
@@ -107,17 +107,19 @@
                     <a href='/animals/{{animal.id}}'>
                         <img src="{{animal.image}}" alt="animal-image" width="300" height="300" style= "object-fit:contain" /> <br> </a>
                 {% endif %}
-                {{animal.name}} <br>
-                {{animal.type}} <br>
+                {{animal.name}} {% if animal.groupstatus =="euthanasiadates" %}
+                <i class="bi bi-alarm" data-toggle="tooltip" title="Has a euth. date"></i> 
+                {% elif animal.groupstatus =="fosterrequests" %}
+                <i class="bi bi-house-heart" data-toggle="tooltip" title="Foster request"></i>
+            {% endif %} <br>
                 {{animal.breed}} <br>
                 {% if animal.age!=None %}
                     {{animal.age}} <br>
                 {% endif %}
-                {{animal.shelter.city}}<br>
-                {{animal.shelter.state}}<br>
-                {% if animal.weight!=None %}
-                    scheduled euthanasia date: {{animal.scheduled_euthanasia_date}} <br>
-                {% endif %}
+                {{animal.shelter.city}}, {{animal.shelter.state}}<br>
+
+                
+
                 <a href='/animals/{{animal.id}}'> Details for {{animal.name}}</a> <br><br>
             </div>
             <!-- allow for three animals per row -->
