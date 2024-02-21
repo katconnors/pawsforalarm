@@ -1,103 +1,148 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block heading %}
+<meta property="og:title" content="{{animal.name}} on Paws For Alarm" />
 
-{% block main %}
-        <br>
-        <div class="row">
-            <div class="col">
+<meta
+  property="og:url"
+  content="https://www.pawsforalarm.org/animals/{{animal.id}}"
+/>
 
-                
-                {% if animal.image!=None %}
-                <img src="{{animal.image}}" alt="animal-image" width="400"/> <br>   
-                {% endif %}
-                
-                <!-- from bootstrap docs for tabs  -->
-                <ul class="nav nav-tabs" id="myTab" role="tablist">
+<meta property="og:image" content="{{animal.image}}" />
+{% endblock heading %} {% block main %}
+<br />
 
-                    <!-- buttons -->
+<div class="row">
+  <div class="col">
+    {% if animal.image!=None %}
+    <img src="{{animal.image}}" alt="animal-image" width="400" /> <br />
+    {% endif %}
 
-                    <!-- summary -->
-                    <li class="nav-item" role="presentation">
-                      <button class="nav-link active" id="summary-tab" data-bs-toggle="tab" data-bs-target="#summary" type="button" role="tab" aria-controls="summary" aria-selected="true"> Summary </button>
-                    </li>
+    <!-- from bootstrap docs for tabs  -->
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <!-- buttons -->
 
-                    <!-- bio -->
-                    {% if animal.bio!=None %} <li class="nav-item" role="presentation">
-                      <button class="nav-link" id="bio-tab" data-bs-toggle="tab" data-bs-target="#bio" type="button" role="tab" aria-controls="bio" aria-selected="false"> Bio </button>
-                    </li>
-                    {% endif %}
+      <!-- summary -->
+      <li class="nav-item" role="presentation">
+        <button
+          class="nav-link active"
+          id="summary-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#summary"
+          type="button"
+          role="tab"
+          aria-controls="summary"
+          aria-selected="true"
+        >
+          Summary
+        </button>
+      </li>
 
-                    <!-- shelter info -->
-                    <li class="nav-item" role="presentation">
-                      <button class="nav-link" id="shelterinfo-tab" data-bs-toggle="tab" data-bs-target="#shelterinfo" type="button" role="tab" aria-controls="shelterinfo" aria-selected="false">Shelter Info</button>
-                    </li>
-                  </ul>
+      <!-- bio -->
+      {% if animal.bio!=None %}
+      <li class="nav-item" role="presentation">
+        <button
+          class="nav-link"
+          id="bio-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#bio"
+          type="button"
+          role="tab"
+          aria-controls="bio"
+          aria-selected="false"
+        >
+          Bio
+        </button>
+      </li>
+      {% endif %}
 
-                  <!-- panes of information -->
+      <!-- shelter info -->
+      <li class="nav-item" role="presentation">
+        <button
+          class="nav-link"
+          id="shelterinfo-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#shelterinfo"
+          type="button"
+          role="tab"
+          aria-controls="shelterinfo"
+          aria-selected="false"
+        >
+          Shelter Info
+        </button>
+      </li>
+    </ul>
 
-                  <!-- summary -->
-                  <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade show active" id="summary" role="tabpanel" aria-labelledby="summary-tab">
-                        <br>
-                        Name: {{animal.name}} <br>
+    <!-- panes of information -->
 
-                        Animal Type: {{animal.type}} <br>
-        
-                        Breed: {{animal.breed}} <br>
-        
-                        <!-- conditional display for nullable info -->
-                        {% if animal.scheduled_euthanasia_date!=None %}
-                            Scheduled Euthanasia Date: {{animal.scheduled_euthanasia_date}} <br>
-                        {% endif %}
-        
-                        {% if animal.join_date!=None %}
-                            Join Date: {{animal.join_date}} <br>
-                        {% endif %}
-        
-                        {% if animal.age!=None %}
-                            Age: {{animal.age}} <br>
-                        {% endif %}
-                        
-                        {% if animal.weight!=None %}
-                            Weight: {{animal.weight}} pounds <br>
-                        {% endif %}
-        
-                        Gender: {{animal.gender}} <br>
-        
-                        Adoption Code: {{animal.adopt_code}} 
-                        {% if animal.url!=None %}
-                        <br>
-                         Url: <a href="{{animal.url}}">adoption link </a> <br>
-                        {% endif %}
+    <!-- summary -->
+    <div class="tab-content" id="myTabContent">
+      <div
+        class="tab-pane fade show active"
+        id="summary"
+        role="tabpanel"
+        aria-labelledby="summary-tab"
+      >
+        <br />
+        Name: {{animal.name}} <br />
 
-                        <img src="{{animal.tracker}}" alt="animal-tracker" style="visibility:hidden;"/> <br> 
-                     
-                    </div>
+        Animal Type: {{animal.type}} <br />
 
-                    <!-- bio -->
-                        {% if animal.bio!=None %}<div class="tab-pane fade" id="bio" role="tabpanel" aria-labelledby="bio-tab">
-                            <br> 
-                            {{animal.bio|safe}} <br> </div>
-                        {% endif %}
+        Breed: {{animal.breed}} <br />
 
-                    <!-- shelter info -->
-                    <div class="tab-pane fade" id="shelterinfo" role="tabpanel" aria-labelledby="shelterinfo-tab">
-                        <br>
-                        Shelter Name: {{animal.shelter.name}} <br>
+        <!-- conditional display for nullable info -->
+        {% if animal.scheduled_euthanasia_date!=None %} Scheduled Euthanasia
+        Date: {{animal.scheduled_euthanasia_date}} <br />
+        {% endif %} {% if animal.join_date!=None %} Join Date:
+        {{animal.join_date}} <br />
+        {% endif %} {% if animal.age!=None %} Age: {{animal.age}} <br />
+        {% endif %} {% if animal.weight!=None %} Weight: {{animal.weight}}
+        pounds <br />
+        {% endif %} Gender: {{animal.gender}} <br />
 
-                        Shelter City: {{animal.shelter.city}}<br>
-        
-                        Shelter State: {{animal.shelter.state}}<br>
-        
-                        Shelter Website: <a href="{{animal.shelter.website}}">{{animal.shelter.name}}</a> <br>
-        
-                    </div>
-                  </div>
-                
-                
-                
-            </div>
+        Adoption Code: {{animal.adopt_code}} {% if animal.url!=None %}
+        <br />
+        Url: <a href="{{animal.url}}">adoption link </a> <br />
+        {% endif %}
 
-            
-        </div>
-    
+        <img
+          src="{{animal.tracker}}"
+          alt="animal-tracker"
+          style="visibility: hidden"
+        />
+        <br />
+      </div>
+
+      <!-- bio -->
+      {% if animal.bio!=None %}
+      <div
+        class="tab-pane fade"
+        id="bio"
+        role="tabpanel"
+        aria-labelledby="bio-tab"
+      >
+        <br />
+        {{animal.bio|safe}} <br />
+      </div>
+      {% endif %}
+
+      <!-- shelter info -->
+      <div
+        class="tab-pane fade"
+        id="shelterinfo"
+        role="tabpanel"
+        aria-labelledby="shelterinfo-tab"
+      >
+        <br />
+        Shelter Name: {{animal.shelter.name}} <br />
+
+        Shelter City: {{animal.shelter.city}}<br />
+
+        Shelter State: {{animal.shelter.state}}<br />
+
+        Shelter Website:
+        <a href="{{animal.shelter.website}}">{{animal.shelter.name}}</a> <br />
+      </div>
+    </div>
+  </div>
+</div>
+
 {% endblock main %}

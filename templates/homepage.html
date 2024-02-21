@@ -1,16 +1,24 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block heading %}
+<meta property="og:title" content="Paws For Alarm" />
 
-{% block main %}
+<meta property="og:url" content="https://www.pawsforalarm.org/" />
 
-        <br>
+<meta
+  property="og:image"
+  content="http://www.pawsforalarm.org/static/images/pawsphoto.JPG"
+/>
 
-        <div class="row homepage">
-            <h2>Welcome to Paws For Alarm </h2> <br> 
-                <div class="col text-col">
-                    <img src="/static/images/pawsphoto.JPG" width= 50% alt="Cat paws">
-                    <h4> Homepage photography: Katrina Connors </h4>
-                </div>
-    
-        </div>
-    
+{% endblock heading %} {% block main %}
+
+<br />
+
+<div class="row homepage">
+  <h2>Welcome to Paws For Alarm</h2>
+  <br />
+  <div class="col text-col">
+    <img src="/static/images/pawsphoto.JPG" width="50%" alt="Cat paws" />
+    <h4>Homepage photography: Katrina Connors</h4>
+  </div>
+</div>
+
 {% endblock main %}
