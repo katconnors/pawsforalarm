@@ -7,10 +7,11 @@
 Paws For Alarm consolidates listings for animals at risk of euthanasia. As a secondary goal, it endorses animals in need of foster homes. <br>
 The app supports manual entry by an admin, but primarily sources information from the RescueGroups.org API.<br>
 PFA has an interface to support adding new animals and updating information each time data is ingested from external sources.<br>
+![alt text](pfareadme4.jpg) <br>
 Users can view all available animals, or filter results (by species, location, and organizational group).<br>
 The dropdown on the species filter leverages a query and fields are dynamically updated based on the species that are in the database.<br>
 
-![alt text](pfareadme1-alt.jpg) <br>
+![alt text](pfareadme5.jpg) <br>
 
 Within each animal detail page, there are Bootstrap element tabs to separate the appropriate data. <br>
 ![alt text](pfareadme3.jpg) <br>
