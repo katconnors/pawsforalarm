@@ -8,7 +8,7 @@ body {
 }
 
 /* main text background */
-.text-center {
+.background {
   background-color: #a1ccd1;
   width: 75%;
   border-radius: 5px;
@@ -112,11 +112,19 @@ footer {
 
 /* animal details page styling */
 
+/* https://www.smashingmagazine.com/2010/07/how-to-use-css3-media-queries-to-create-a-mobile-version-of-your-website/ */
+@media only screen and (max-device-width: 400px) {
+  .col img {
+    width: 200px;
+    height: 200px;
+  }
+}
+
 .nav-link {
   color: black;
 }
 
-.nav-tabs {
+/* .nav-tabs {
   margin-left: auto;
   margin-right: auto;
 }
@@ -124,7 +132,7 @@ footer {
 .nav-item {
   margin-left: auto;
   margin-right: auto;
-}
+} */
 
 .tab-pane {
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
@@ -146,6 +154,10 @@ footer {
 }
 
 /* animal list styling */
+
+.ani-list {
+  padding: 25px;
+}
 
 .animal-header h5 {
   font-size: 25px;
@@ -180,7 +192,6 @@ img {
 }
 
 .dropdown select {
-  text-align: center;
   font-size: 16px;
   border-radius: 3px;
   width: 10%;

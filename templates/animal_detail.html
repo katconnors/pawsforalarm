@@ -13,7 +13,10 @@
 <div class="row">
   <div class="col">
     {% if animal.image!=None %}
-    <img src="{{animal.image}}" alt="animal-image" width="400" /> <br />
+    <div class="animal-detail-img text-center">
+      <img src="{{animal.image}}" alt="animal-image" width="400" />
+    </div>
+    <br />
     {% endif %}
 
     <!-- from bootstrap docs for tabs  -->

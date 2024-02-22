@@ -9,6 +9,7 @@
 />{% endblock heading %}
 {% block main %}
     <br>
+        
         <div class="animal-header">
             <h5>Animals with Euthanasia Risk Or In Need of Foster</h5>
         </div>
@@ -94,7 +95,7 @@
           </div>
 
 
-
+            <div class="animal-cont text-center">
         {% for animal in animals: %}
             {% if ((loop.index)-1) %3 == 0 %}
                 <div class="row">
@@ -102,10 +103,10 @@
             {% endif %}
             <!-- object fit 
             https://www.digitalocean.com/community/tutorials/css-cropping-images-object-fit -->
-            <div class="col-sm">
+            <div class="col-sm col">
                 {% if animal.image!=None %}
                     <a href='/animals/{{animal.id}}'>
-                        <img src="{{animal.image}}" alt="animal-image" width="300" height="300" style= "object-fit:contain" /> <br> </a>
+                        <img src="{{animal.image}}" alt="animal-image" width="250" height="250" style= "object-fit:contain" /> <br> </a>
                 {% endif %}
                 {{animal.name}} {% if animal.groupstatus =="euthanasiadates" %}
                 <i class="bi bi-alarm" data-toggle="tooltip" title="Has a euth. date"></i> 
@@ -127,13 +128,15 @@
                 </div>
             {% endif %}
         {% endfor %}
-   
+            </div>
     <br>    
 
     <div class="row">
         <div class="col">
         </div>
     </div>
+
+
 
 
 {% endblock main%}
