@@ -14,7 +14,13 @@
   <div class="col">
     {% if animal.image!=None %}
     <div class="animal-detail-img text-center">
-      <img src="{{animal.image}}" alt="animal-image" width="400" />
+      <img
+        src="{{animal.image}}"
+        alt="animal-image"
+        width="400"
+        height="400"
+        style="object-fit: contain"
+      />
     </div>
     <br />
     {% endif %}
