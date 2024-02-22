@@ -205,11 +205,11 @@ button {
 
 /* faq styling  */
 
-.text-center {
+.ani-list {
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
-.text-center h6 {
+.ani-list h6 {
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   font-weight: 600;
 }
