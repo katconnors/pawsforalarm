@@ -52,6 +52,7 @@ Run seed.py <br>
 Run rescueorg.py <br>
 Confirm local behavior <br>
 Deploy changes to server <br>
+Note that you may need to stop flask using "sudo systemctl stop flask"
 
 ## Creator Credit<br>
 

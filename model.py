@@ -1,5 +1,5 @@
 
-
+import os
 from flask_sqlalchemy import SQLAlchemy
 
 
@@ -9,8 +9,8 @@ database= SQLAlchemy()
 #using the skeleton for the connection in the sql-alchemy 1 lecture
 
 def database_connect(app,database_name):
-
-    app.config["SQLALCHEMY_DATABASE_URI"] = f"postgresql://@localhost:54320/{database_name}"
+    db_uri = os.environ.get('DATABASE_URI',"postgresql:///")
+    app.config["SQLALCHEMY_DATABASE_URI"] = f"{db_uri}{database_name}"
     app.config["SQLALCHEMY_ECHO"] = True
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     
