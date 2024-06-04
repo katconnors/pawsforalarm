@@ -256,6 +256,9 @@ while True:
     response= requests.post(url,headers=headers,json=body)
     data=response.json()
     data_data = data["data"]
+    if page_num == 1:
+
+        print(data_data)
 
     individual_num_tracker = loop_through_api(data_data)
 

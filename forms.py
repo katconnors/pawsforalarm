@@ -31,5 +31,5 @@ class ShelterForm(FlaskForm):
     streetaddress = StringField('Street Address', validators=[validators.Optional()])
     city = StringField('* City', validators=[validators.DataRequired()])
     state = StringField('* State', validators=[validators.DataRequired()])
-    zipcode = IntegerField('* Zipcode', validators=[validators.DataRequired()])
+    zipcode = StringField('* Zipcode', validators=[validators.DataRequired()])
     website = StringField('Website', validators=[validators.Optional()])

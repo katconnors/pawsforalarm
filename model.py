@@ -10,7 +10,7 @@ database= SQLAlchemy()
 
 def database_connect(app,database_name):
 
-    app.config["SQLALCHEMY_DATABASE_URI"] = f"postgresql:///{database_name}"
+    app.config["SQLALCHEMY_DATABASE_URI"] = f"postgresql://@localhost:54320/{database_name}"
     app.config["SQLALCHEMY_ECHO"] = True
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     
@@ -62,13 +62,13 @@ class Shelter(database.Model):
 
     __tablename__ = "shelters"
 
-
     id= database.Column(database.Integer,primary_key=True,autoincrement=True)
     name = database.Column(database.Text, nullable=False)
     street_address = database.Column(database.Text, nullable=True)
     city = database.Column(database.Text, nullable=False)
     state = database.Column(database.Text, nullable=False)
-    zipcode = database.Column(database.Integer, nullable=False)
+    #changed zipcode to text in order to accomodate non numeric shelter zipcodes
+    zipcode = database.Column(database.Text, nullable=False)
     website = database.Column(database.Text, nullable=True)
     source = database.Column(database.Text, nullable=True)
 
