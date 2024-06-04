@@ -50,6 +50,8 @@ Additionally, a password is used for code implemented to prevent CSRF attacks- t
 Make changes to forms.py (in the case of changing data type)<br>
 Run seed.py <br>
 Run rescueorg.py <br>
+Confirm local behavior <br>
+Deploy changes to server <br>
 
 ## Creator Credit<br>
 
