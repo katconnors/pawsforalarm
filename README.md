@@ -44,6 +44,16 @@ Install the items in requirements.txt <br>
 You will need to request an API key from RescueGroups.org.<br>
 To use the manual entry features, you'll need to generate an authentication token.<br>
 Additionally, a password is used for code implemented to prevent CSRF attacks- this will need to be generated.<br><br>
+Run seed.py and rescueorg.py <br>
+
+## Reminders after changes to model.py
+
+Make changes to forms.py (in the case of changing data type)<br>
+Run seed.py <br>
+Run rescueorg.py <br>
+Confirm local behavior <br>
+Deploy changes to server <br>
+Note that you may need to stop flask using "sudo systemctl stop flask"
 
 ## Running locally
 
@@ -55,15 +65,6 @@ Activate virtual environment <br>
 
 Run server file <br>
 ` python3 server.py`
-
-## Reminders after changes to model.py
-
-Make changes to forms.py (in the case of changing data type)<br>
-Run seed.py <br>
-Run rescueorg.py <br>
-Confirm local behavior <br>
-Deploy changes to server <br>
-Note that you may need to stop flask using "sudo systemctl stop flask"
 
 ## Creator Credit<br>
 

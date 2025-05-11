@@ -7,7 +7,6 @@ import server
 
 
 def reset_pfa():
-
     os.system("dropdb pawsforalarm")
     os.system("createdb pawsforalarm")
 
