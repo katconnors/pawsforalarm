@@ -45,6 +45,17 @@ You will need to request an API key from RescueGroups.org.<br>
 To use the manual entry features, you'll need to generate an authentication token.<br>
 Additionally, a password is used for code implemented to prevent CSRF attacks- this will need to be generated.<br><br>
 
+## Running locally
+
+Source your secrets file <br>
+`source secrets.sh`
+
+Activate virtual environment <br>
+`source env/bin/activate`
+
+Run server file <br>
+` python3 server.py`
+
 ## Reminders after changes to model.py
 
 Make changes to forms.py (in the case of changing data type)<br>
