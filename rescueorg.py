@@ -40,7 +40,7 @@ body = {
 class RescueGroupsAnimalFetcher:
 
     def __init__(self):
-        pass
+        self.indiv_num_tracker = set()
 
     def get_api_species_id(self, animal):
         """Obtain an API species id for one animal entry"""
@@ -85,20 +85,21 @@ class RescueGroupsAnimalFetcher:
             photo = None
             return photo
 
-    def create_animal_from_api(self, animal, shelter_ob, shelter):
-        """Take in data from API and create an animal in the Paws for Alarm database"""
+    def create_animal_from_api(self, animal, shelter):
+        """Take in data from API and create an animal in the Paws for Alarm database
+        Additionally, add to list of newly created animals"""
 
         name = animal["attributes"]["name"]
 
         api_id = animal["id"]
 
-        photo_id = get_api_photo_id(animal)
+        photo_id = self.get_api_photo_id(animal)
 
-        image = get_api_photo(photo_id, data)
+        image = self.get_api_photo(photo_id, data)
 
-        species_num = get_api_species_id(animal)
+        species_num = self.get_api_species_id(animal)
 
-        species = get_api_species(species_num, data)
+        species = self.get_api_species(species_num, data)
 
         breed = animal["attributes"]["breedString"]
 
@@ -167,8 +168,7 @@ class RescueGroupsAnimalFetcher:
                 bio=bio,
             )
 
-        # this return statement is for automation of entry comparisons between pfa and api results
-        return api_id
+        self.indiv_num_tracker.add(api_id)
 
     def check_pfa_vs_apianimals():
 
@@ -187,6 +187,9 @@ class RescueGroupsAnimalFetcher:
                 pfa_available_animals.add(pfa_animal.api_id)
 
         return pfa_available_animals
+
+    def get_all_animal_ids(self):
+        return self.indiv_num_tracker
 
 
 class RescueGroupsShelterFetcher:
@@ -234,31 +237,23 @@ class RescueGroupsShelterFetcher:
             return shelter_prev
 
 
-# class here
-
-
 def loop_through_api(data_data):
 
-    indiv_num_tracker = set()
+    new_animal_fetcher = RescueGroupsAnimalFetcher()
 
     for animal in data_data:
 
         # find id of the shelter using the API
-        # instantiate shelter here
+
         shelterid_api = animal["relationships"]["orgs"]["data"][0]["id"]
 
         shelter_ob = RescueGroupsShelterFetcher.get_shelter_withapi(data, shelterid_api)
 
         shelter = RescueGroupsShelterFetcher.create_shelter_from_api(shelter_ob)
 
-        # instantiate animal here
-        api_id = RescueGroupsAnimalFetcher.create_animal_from_api(
-            animal, shelter_ob, shelter
-        )
+        new_animal_fetcher.create_animal_from_api(animal, shelter)
 
-        indiv_num_tracker.add(api_id)
-
-    return indiv_num_tracker
+    return new_animal_fetcher.get_all_animal_ids()
 
 
 aggregate_num_tracker = set()
