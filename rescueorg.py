@@ -240,6 +240,7 @@ class RescueGroupsShelterFetcher:
 def loop_through_api(data_data):
 
     new_animal_fetcher = RescueGroupsAnimalFetcher()
+    new_shelter_fetcher = RescueGroupsShelterFetcher()
 
     for animal in data_data:
 
@@ -247,9 +248,9 @@ def loop_through_api(data_data):
 
         shelterid_api = animal["relationships"]["orgs"]["data"][0]["id"]
 
-        shelter_ob = RescueGroupsShelterFetcher.get_shelter_withapi(data, shelterid_api)
+        shelter_ob = new_shelter_fetcher.get_shelter_withapi(data, shelterid_api)
 
-        shelter = RescueGroupsShelterFetcher.create_shelter_from_api(shelter_ob)
+        shelter = new_shelter_fetcher.create_shelter_from_api(shelter_ob)
 
         new_animal_fetcher.create_animal_from_api(animal, shelter)
 
