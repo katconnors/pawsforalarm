@@ -112,7 +112,7 @@ footer {
 
 /* animal details page styling */
 
-/* https://www.smashingmagazine.com/2010/07/how-to-use-css3-media-queries-to-create-a-mobile-version-of-your-website/ */
+/* source:https://www.smashingmagazine.com/2010/07/how-to-use-css3-media-queries-to-create-a-mobile-version-of-your-website/ */
 @media only screen and (max-device-width: 400px) {
   .col img {
     width: 200px;
