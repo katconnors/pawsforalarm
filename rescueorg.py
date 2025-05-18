@@ -257,7 +257,20 @@ def loop_through_api(data_data):
     return new_animal_fetcher.get_all_animal_ids()
 
 
-aggregate_num_tracker = set()
+def mark_unavailable(animal_ids):
+    # only run this once after all the pages of api data
+    pfa_available_animals = RescueGroupsAnimalFetcher.check_pfa_vs_apianimals()
+
+    # this result will give the animals that no longer appear in api results, but are still in the pfa database
+    set_differences = pfa_available_animals - animal_ids
+
+    for api_id in set_differences:
+
+        animal = crud.animal_by_apiid(api_id)
+        crud.update_animal_status(animal, "not available")
+
+
+unavailable_animal_ids = set()
 
 page_num = 1
 while True:
@@ -273,7 +286,7 @@ while True:
 
     individual_num_tracker = loop_through_api(data_data)
 
-    aggregate_num_tracker.update(individual_num_tracker)
+    unavailable_animal_ids.update(individual_num_tracker)
 
     if data["meta"]["pageReturned"] == data["meta"]["pages"]:
         break
@@ -281,19 +294,7 @@ while True:
     else:
         page_num += 1
 
-
-# only run this once after all the pages of api data
-pfa_available_animals = RescueGroupsAnimalFetcher.check_pfa_vs_apianimals()
-
-
-# this result will give the animals that no longer appear in api results, but are still in the pfa database
-set_differences = pfa_available_animals - aggregate_num_tracker
-
-
-for api_id in set_differences:
-
-    animal = crud.animal_by_apiid(api_id)
-    crud.update_animal_status(animal, "not available")
+mark_unavailable(unavailable_animal_ids)
 
 
 # if __name__ =="__main__":
