@@ -126,12 +126,6 @@ class RescueGroupsAnimalFetcher:
 
         status = "available"
 
-        # join_date=None
-        # skip
-
-        # weight=None
-        # skip
-
         scheduled_euthanasia_date = animal["attributes"].get("killDate")
 
         if scheduled_euthanasia_date:
@@ -181,11 +175,7 @@ class RescueGroupsAnimalFetcher:
 
         pfa_available_animals = set()
 
-        # print(pfa_available_animals)
-
         all_statuses_pfa_animals = crud.view_animals()
-
-        print(all_statuses_pfa_animals)
 
         for pfa_animal in all_statuses_pfa_animals:
             if pfa_animal.status == "available" and pfa_animal.entry_source != "admin":
@@ -224,7 +214,6 @@ class RescueGroupsShelterFetcher:
         source = "rescue_groups_api"
 
         # this bit of code is to handle situations where a rescue has entered this specific string
-        # this has occured for a few shelters
 
         if website == "http://":
             website = None
@@ -264,7 +253,6 @@ def loop_through_api(data_data):
 
 
 def mark_unavailable(animal_ids):
-    # only run this once after all the pages of api data
     pfa_available_animals = RescueGroupsAnimalFetcher.check_pfa_vs_apianimals()
 
     # this result will give the animals that no longer appear in api results, but are still in the pfa database
@@ -286,9 +274,6 @@ while True:
     response = requests.post(url, headers=headers, json=body)
     data = response.json()
     data_data = data["data"]
-    if page_num == 1:
-
-        print(data_data)
 
     individual_num_tracker = loop_through_api(data_data)
 
@@ -301,7 +286,3 @@ while True:
         page_num += 1
 
 mark_unavailable(unavailable_animal_ids)
-
-
-# if __name__ =="__main__":
-#     update_from_api()
