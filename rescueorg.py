@@ -42,13 +42,15 @@ class RescueGroupsAnimalFetcher:
     def __init__(self):
         self.indiv_num_tracker = set()
 
-    def get_api_species_id(self, animal):
+    @staticmethod
+    def get_api_species_id(animal):
         """Obtain an API species id for one animal entry"""
 
         spec_id = animal["relationships"]["species"]["data"][0]["id"]
         return spec_id
 
-    def get_api_species(self, spec_id, data):
+    @staticmethod
+    def get_api_species(spec_id, data):
         """Using an API species id, get the species name"""
 
         for potentialspecies in data["included"]:
@@ -59,7 +61,8 @@ class RescueGroupsAnimalFetcher:
                 species = potentialspecies["attributes"]["singular"]
         return species
 
-    def get_api_photo_id(self, animal):
+    @staticmethod
+    def get_api_photo_id(animal):
         """Obtain an API photo id for one animal entry"""
         try:
 
@@ -71,7 +74,8 @@ class RescueGroupsAnimalFetcher:
             photo_id = None
             return photo_id
 
-    def get_api_photo(self, photo_id, data):
+    @staticmethod
+    def get_api_photo(photo_id, data):
         """Using an API photo id, obtain photo url"""
         if photo_id is not None:
             for potentialspecies in data["included"]:
@@ -170,6 +174,7 @@ class RescueGroupsAnimalFetcher:
 
         self.indiv_num_tracker.add(api_id)
 
+    @staticmethod
     def check_pfa_vs_apianimals():
 
         # create a list of all the animal api id's
@@ -193,8 +198,8 @@ class RescueGroupsAnimalFetcher:
 
 
 class RescueGroupsShelterFetcher:
-
-    def get_shelter_withapi(self, data, shelterid_api):
+    @staticmethod
+    def get_shelter_withapi(data, shelterid_api):
         """Get back a specific shelter object from the API"""
 
         data_inc = data["included"]
@@ -205,7 +210,8 @@ class RescueGroupsShelterFetcher:
 
         return shelter_ob
 
-    def create_shelter_from_api(self, shelter_ob):
+    @staticmethod
+    def create_shelter_from_api(shelter_ob):
         """Take in API data and create a shelter in the Paws for Alarm database
         Returned variable is the shelter in the Paws For Alarm database"""
 
